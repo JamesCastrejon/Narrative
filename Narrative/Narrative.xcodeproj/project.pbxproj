@@ -16,7 +16,7 @@
 		D1BA58AC221B746800483F2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1BA58AA221B746800483F2F /* Main.storyboard */; };
 		D1BA58AE221B74B100483F2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1BA58AD221B74B100483F2F /* Assets.xcassets */; };
 		D1BA58B1221B74B100483F2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1BA58AF221B74B100483F2F /* LaunchScreen.storyboard */; };
-		D1C9AB58221DEFEF001EC435 /* ExpertPalette.json in Resources */ = {isa = PBXBuildFile; fileRef = D1C9AB52221DEFED001EC435 /* ExpertPalette.json */; };
+		D1C9AB58221DEFEF001EC435 /* ProPalette.json in Resources */ = {isa = PBXBuildFile; fileRef = D1C9AB52221DEFED001EC435 /* ProPalette.json */; };
 		D1C9AB59221DEFEF001EC435 /* HamburgerMenu.json in Resources */ = {isa = PBXBuildFile; fileRef = D1C9AB53221DEFED001EC435 /* HamburgerMenu.json */; };
 		D1C9AB5A221DEFEF001EC435 /* Palette.json in Resources */ = {isa = PBXBuildFile; fileRef = D1C9AB54221DEFEE001EC435 /* Palette.json */; };
 		D1C9AB5B221DEFEF001EC435 /* Import.json in Resources */ = {isa = PBXBuildFile; fileRef = D1C9AB55221DEFEE001EC435 /* Import.json */; };
@@ -37,7 +37,7 @@
 		D1BA58AD221B74B100483F2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1BA58B0221B74B100483F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1BA58B2221B74B100483F2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D1C9AB52221DEFED001EC435 /* ExpertPalette.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ExpertPalette.json; sourceTree = "<group>"; };
+		D1C9AB52221DEFED001EC435 /* ProPalette.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ProPalette.json; sourceTree = "<group>"; };
 		D1C9AB53221DEFED001EC435 /* HamburgerMenu.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = HamburgerMenu.json; sourceTree = "<group>"; };
 		D1C9AB54221DEFEE001EC435 /* Palette.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Palette.json; sourceTree = "<group>"; };
 		D1C9AB55221DEFEE001EC435 /* Import.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Import.json; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 		D1C9AB50221DEFC3001EC435 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
-				D1C9AB52221DEFED001EC435 /* ExpertPalette.json */,
+				D1C9AB52221DEFED001EC435 /* ProPalette.json */,
 				D178A901221F39D4002193FC /* Fullscreen.json */,
 				D1C9AB53221DEFED001EC435 /* HamburgerMenu.json */,
 				D1C9AB55221DEFEE001EC435 /* Import.json */,
@@ -200,7 +200,7 @@
 				D1C9AB59221DEFEF001EC435 /* HamburgerMenu.json in Resources */,
 				D1BA58B1221B74B100483F2F /* LaunchScreen.storyboard in Resources */,
 				D1BA58AE221B74B100483F2F /* Assets.xcassets in Resources */,
-				D1C9AB58221DEFEF001EC435 /* ExpertPalette.json in Resources */,
+				D1C9AB58221DEFEF001EC435 /* ProPalette.json in Resources */,
 				D1C9AB5B221DEFEF001EC435 /* Import.json in Resources */,
 				D178A902221F39D4002193FC /* Fullscreen.json in Resources */,
 				D1BA58AC221B746800483F2F /* Main.storyboard in Resources */,

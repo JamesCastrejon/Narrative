@@ -20,7 +20,12 @@ class FrontCover: UIViewController {
     @IBOutlet var buttonExit: UIButton!
     
     @IBOutlet var buttonText: UIButton!
+    
     @IBOutlet var buttonBackground: UIButton!
+    @IBOutlet var buttonPalette: UIButton!
+    @IBOutlet var buttonProPalette: UIButton!
+    @IBOutlet var buttonImport: UIButton!
+    
     @IBOutlet var buttonFullscreen: UIButton!
     
     // MARK: LifeCycle
@@ -41,7 +46,12 @@ class FrontCover: UIViewController {
         let buttonWidth = buttonText.bounds.size.width
         
         buttonText.layer.cornerRadius = 0.5 * buttonWidth
+        
         buttonBackground.layer.cornerRadius = 0.5 * buttonWidth
+        buttonPalette.layer.cornerRadius = 0.5 * buttonWidth
+        buttonProPalette.layer.cornerRadius = 0.5 * buttonWidth
+        buttonImport.layer.cornerRadius = 0.5 * buttonWidth
+        
         buttonFullscreen.layer.cornerRadius = 0.5 * buttonWidth
     }
     
@@ -67,8 +77,8 @@ class FrontCover: UIViewController {
     private func addAnimations(for button: UIButton,with animation: String,_ width:CGFloat,_ height: CGFloat) {
         let animationView = LOTAnimationView(name: animation)
         animationView.frame = CGRect(
-            x: button.layer.position.x,
-            y: button.layer.position.y,
+            x: 0,
+            y: 0,
             width: width,
             height: height)
         animationView.center = button.center
@@ -84,6 +94,11 @@ class FrontCover: UIViewController {
         buttonMenu.isEnabled = false
         
         if !buttonExit.isEnabled {
+            // TODO: disable text, background, fullscreen
+            buttonText.isEnabled = false
+            buttonBackground.isEnabled = false
+            buttonFullscreen.isEnabled = false
+            
             let animationView:LOTAnimationView = buttonMenu.subviews.first as! LOTAnimationView
             animationView.play(fromProgress: 0.0, toProgress: 0.5) { (completed) in
                 self.buttonMenu.isEnabled = true
@@ -107,7 +122,11 @@ class FrontCover: UIViewController {
             var animator: ChainableAnimator = ChainableAnimator(view: buttonSave)
             animator.move(y: -40).animate(t: 0.2)
             animator = ChainableAnimator(view: buttonExit)
-            animator.move(y: -40).thenAfter(t: 0.2).move(y: -40).animate(t: 0.2)
+            animator.move(y: -40).thenAfter(t: 0.2).move(y: -40).animate(t: 0.2) {
+                self.buttonText.isEnabled = true
+                self.buttonBackground.isEnabled = true
+                self.buttonFullscreen.isEnabled = true
+            }
         }
     }
     
@@ -117,6 +136,44 @@ class FrontCover: UIViewController {
     
     @IBAction func exit(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func backgroundMenuVisibility(_ sender: Any) {
+        buttonBackground.isEnabled = false
+        if !buttonPalette.isEnabled {
+            buttonMenu.isEnabled = false
+            buttonText.isEnabled = false
+            buttonFullscreen.isEnabled = false
+            
+            var animator: ChainableAnimator = ChainableAnimator(view: buttonPalette)
+            animator.move(x: -55).thenAfter(t: 0.2).move(y: -60).animate(t: 0.2)
+            animator = ChainableAnimator(view: buttonProPalette)
+            animator.move(x: -55).animate(t: 0.2)
+            animator = ChainableAnimator(view: buttonImport)
+            animator.move(x: -55).thenAfter(t: 0.2).move(y: 60).animate(t: 0.2) {
+                self.buttonPalette.isEnabled = true
+                self.buttonProPalette.isEnabled = true
+                self.buttonImport.isEnabled = true
+                self.buttonBackground.isEnabled = true
+            }
+        }
+        else {
+            self.buttonPalette.isEnabled = false
+            self.buttonProPalette.isEnabled = false
+            self.buttonImport.isEnabled = false
+            
+            var animator: ChainableAnimator = ChainableAnimator(view: buttonPalette)
+            animator.move(y: 60).thenAfter(t: 0.2).move(x: 55).animate(t: 0.2)
+            animator = ChainableAnimator(view: buttonProPalette)
+            animator.move(x: 55).animate(t: 0.2)
+            animator = ChainableAnimator(view: buttonImport)
+            animator.move(y: -60).thenAfter(t: 0.2).move(x: 55).animate(t: 0.2) {
+                self.buttonBackground.isEnabled = true
+                self.buttonMenu.isEnabled = true
+                self.buttonText.isEnabled = true
+                self.buttonFullscreen.isEnabled = true
+            }
+        }
     }
     
     @IBAction func hideUIElements(_ sender: Any) {
@@ -129,6 +186,12 @@ class FrontCover: UIViewController {
         animator = ChainableAnimator(view: buttonText)
         animator.move(x: 80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonBackground)
+        animator.move(x: 80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonPalette)
+        animator.move(x: 80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonProPalette)
+        animator.move(x: 80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonImport)
         animator.move(x: 80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonFullscreen)
         animator.move(x: 80).animate(t: 0.3)
@@ -149,6 +212,12 @@ class FrontCover: UIViewController {
         animator = ChainableAnimator(view: buttonText)
         animator.move(x: -80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonBackground)
+        animator.move(x: -80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonPalette)
+        animator.move(x: -80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonProPalette)
+        animator.move(x: -80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonImport)
         animator.move(x: -80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonFullscreen)
         animator.move(x: -80).animate(t: 0.3)

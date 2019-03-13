@@ -111,6 +111,42 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sco-D0-ZKT" userLabel="Button Palette">
+                                <rect key="frame" x="315" y="313.5" width="40" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="KWr-RS-gk5"/>
+                                    <constraint firstAttribute="width" constant="40" id="TnW-DF-Wwc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="35"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Oq-LS-Acr" userLabel="Button ProPalette">
+                                <rect key="frame" x="315" y="313.5" width="40" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="aJj-px-UQa"/>
+                                    <constraint firstAttribute="height" constant="40" id="y2G-Fp-ncs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="35"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uP-jS-VaO" userLabel="Button Import">
+                                <rect key="frame" x="315" y="313.5" width="40" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="MmT-eI-MzF"/>
+                                    <constraint firstAttribute="height" constant="40" id="dGk-cW-2cE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="35"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1DO-NL-pTh" userLabel="Button Background">
                                 <rect key="frame" x="315" y="313.5" width="40" height="40"/>
                                 <color key="backgroundColor" red="0.83216959239999999" green="0.98548370600000001" blue="0.47333085539999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -122,6 +158,9 @@
                                 <state key="normal" title="B">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="backgroundMenuVisibility:" destination="5ag-Rg-rTH" eventType="touchUpInside" id="afD-8F-Rf9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xF0-DO-8Ax" userLabel="Button Fullscreen">
                                 <rect key="frame" x="315" y="377.5" width="40" height="40"/>
@@ -141,8 +180,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="6uP-jS-VaO" firstAttribute="centerY" secondItem="QUo-Pt-i5d" secondAttribute="centerY" id="3AX-Kp-zbZ"/>
+                            <constraint firstItem="Gif-Jg-Kem" firstAttribute="trailing" secondItem="Sco-D0-ZKT" secondAttribute="trailing" constant="20" id="9DT-7G-hxu"/>
                             <constraint firstItem="xF0-DO-8Ax" firstAttribute="top" secondItem="1DO-NL-pTh" secondAttribute="bottom" constant="24" id="AnZ-VR-Bd6"/>
                             <constraint firstItem="Cfx-r9-16W" firstAttribute="leading" secondItem="Gif-Jg-Kem" secondAttribute="leading" id="CIm-fw-ZYi"/>
+                            <constraint firstItem="Gif-Jg-Kem" firstAttribute="trailing" secondItem="5Oq-LS-Acr" secondAttribute="trailing" constant="20" id="KZ8-y5-U7q"/>
+                            <constraint firstItem="Sco-D0-ZKT" firstAttribute="centerY" secondItem="QUo-Pt-i5d" secondAttribute="centerY" id="ML3-Kk-ji0"/>
+                            <constraint firstItem="5Oq-LS-Acr" firstAttribute="centerY" secondItem="QUo-Pt-i5d" secondAttribute="centerY" id="RJf-u0-Syq"/>
                             <constraint firstItem="e0M-3g-nqZ" firstAttribute="leading" secondItem="Gif-Jg-Kem" secondAttribute="leading" id="RU3-BK-CBI"/>
                             <constraint firstItem="7lU-eI-nPv" firstAttribute="leading" secondItem="QUo-Pt-i5d" secondAttribute="leading" id="Syb-ta-uBg"/>
                             <constraint firstItem="e0M-3g-nqZ" firstAttribute="top" secondItem="QUo-Pt-i5d" secondAttribute="top" id="d9x-vV-oVS"/>
@@ -151,6 +195,7 @@
                             <constraint firstItem="1DO-NL-pTh" firstAttribute="top" secondItem="uFF-F2-wfF" secondAttribute="bottom" constant="24" id="leC-ll-Lq2"/>
                             <constraint firstItem="Gif-Jg-Kem" firstAttribute="trailing" secondItem="xF0-DO-8Ax" secondAttribute="trailing" constant="20" id="lsO-tj-7CX"/>
                             <constraint firstItem="Gif-Jg-Kem" firstAttribute="trailing" secondItem="1DO-NL-pTh" secondAttribute="trailing" constant="20" id="ma1-qH-kna"/>
+                            <constraint firstItem="Gif-Jg-Kem" firstAttribute="trailing" secondItem="6uP-jS-VaO" secondAttribute="trailing" constant="20" id="rve-Rd-fG9"/>
                             <constraint firstItem="7lU-eI-nPv" firstAttribute="top" secondItem="QUo-Pt-i5d" secondAttribute="top" id="u91-Qa-Wvv"/>
                             <constraint firstItem="1DO-NL-pTh" firstAttribute="centerY" secondItem="QUo-Pt-i5d" secondAttribute="centerY" id="zmD-lF-8io"/>
                         </constraints>
@@ -163,7 +208,10 @@
                         <outlet property="buttonBackground" destination="1DO-NL-pTh" id="MvL-sO-PT6"/>
                         <outlet property="buttonExit" destination="7lU-eI-nPv" id="rL8-We-Kfb"/>
                         <outlet property="buttonFullscreen" destination="xF0-DO-8Ax" id="OOh-fc-yg9"/>
+                        <outlet property="buttonImport" destination="6uP-jS-VaO" id="H6R-6w-Zx4"/>
                         <outlet property="buttonMenu" destination="e0M-3g-nqZ" id="c2R-Qo-GdD"/>
+                        <outlet property="buttonPalette" destination="Sco-D0-ZKT" id="aLD-Xx-7lU"/>
+                        <outlet property="buttonProPalette" destination="5Oq-LS-Acr" id="4EU-I8-0kE"/>
                         <outlet property="buttonSave" destination="Cfx-r9-16W" id="6og-8K-36J"/>
                         <outlet property="buttonText" destination="uFF-F2-wfF" id="6jK-Ki-Sle"/>
                         <outlet property="tapShow" destination="kFd-x4-RKB" id="gmM-NA-yhU"/>
