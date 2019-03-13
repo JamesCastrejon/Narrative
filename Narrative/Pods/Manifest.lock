@@ -1,16 +1,20 @@
 PODS:
+  - ChainableAnimations (3.0.1)
   - lottie-ios (2.5.2)
 
 DEPENDENCIES:
+  - ChainableAnimations (~> 3.0.1)
   - lottie-ios
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - ChainableAnimations
     - lottie-ios
 
 SPEC CHECKSUMS:
+  ChainableAnimations: 12e0a88e72fb554ad4cda38c40474e4d65c972a2
   lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
 
-PODFILE CHECKSUM: aa9733851149ff8f6e03b340b36339284ed85a54
+PODFILE CHECKSUM: 7094ed4187e0a12c20bc0c14c9e0b8a7c4b066b4
 
 COCOAPODS: 1.6.0

@@ -39,6 +39,10 @@ class Book: UIPageViewController {
         return UIStoryboard(name: "Main", bundle: nil) .
             instantiateViewController(withIdentifier: "\(part)")
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }
 
 // MARK: UIPageViewControllerDataSource

@@ -3,4 +3,5 @@ platform :ios, '12.1'
 target 'Narrative' do
   use_frameworks!
   pod 'lottie-ios'
+  pod 'ChainableAnimations', '~> 3.0.1'
 end

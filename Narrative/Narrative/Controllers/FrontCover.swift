@@ -8,12 +8,16 @@
 
 import UIKit
 import Lottie
+import ChainableAnimations
 
 class FrontCover: UIViewController {
     
     // MARK: Outlets
+    @IBOutlet var tapShow: UITapGestureRecognizer!
+    
     @IBOutlet var buttonMenu: UIButton!
-    @IBOutlet var buttonTemp: UIButton!
+    @IBOutlet var buttonSave: UIButton!
+    @IBOutlet var buttonExit: UIButton!
     
     @IBOutlet var buttonText: UIButton!
     @IBOutlet var buttonBackground: UIButton!
@@ -42,7 +46,7 @@ class FrontCover: UIViewController {
     }
     
     private func setupButtonShadows() {
-        addShadows(for: buttonMenu)
+        addShadows(for: buttonExit)
         addShadows(for: buttonText)
         addShadows(for: buttonBackground)
         addShadows(for: buttonFullscreen)
@@ -69,14 +73,86 @@ class FrontCover: UIViewController {
             height: height)
         animationView.center = button.center
         animationView.contentMode = .scaleAspectFit
+        animationView.isUserInteractionEnabled = false
         
-        self.view.addSubview(animationView)
+        button.addSubview(animationView)
     }
     
     // MARK: Button Functionality
     
-    @IBAction func hideUIElements(_ sender: Any) {
+    @IBAction func menuVisibility(_ sender: Any) {
+        buttonMenu.isEnabled = false
         
+        if !buttonExit.isEnabled {
+            let animationView:LOTAnimationView = buttonMenu.subviews.first as! LOTAnimationView
+            animationView.play(fromProgress: 0.0, toProgress: 0.5) { (completed) in
+                self.buttonMenu.isEnabled = true
+            }
+            
+            buttonSave.isEnabled = true
+            buttonExit.isEnabled = true
+            var animator: ChainableAnimator = ChainableAnimator(view: buttonSave)
+            animator.move(y: 40).animate(t: 0.2)
+            animator = ChainableAnimator(view: buttonExit)
+            animator.move(y: 40).thenAfter(t: 0.2).move(y: 40).animate(t: 0.2)
+        }
+        else {
+            let animationView:LOTAnimationView = buttonMenu.subviews.first as! LOTAnimationView
+            animationView.play(fromProgress: 0.5, toProgress: 1.0) { (completed) in
+                self.buttonMenu.isEnabled = true
+            }
+            
+            buttonSave.isEnabled = false
+            buttonExit.isEnabled = false
+            var animator: ChainableAnimator = ChainableAnimator(view: buttonSave)
+            animator.move(y: -40).animate(t: 0.2)
+            animator = ChainableAnimator(view: buttonExit)
+            animator.move(y: -40).thenAfter(t: 0.2).move(y: -40).animate(t: 0.2)
+        }
+    }
+    
+    @IBAction func save(_ sender: Any) {
+        
+    }
+    
+    @IBAction func exit(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func hideUIElements(_ sender: Any) {
+        var animator: ChainableAnimator = ChainableAnimator(view: buttonMenu)
+        animator.move(x: -80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonSave)
+        animator.move(x: -80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonExit)
+        animator.move(x: -80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonText)
+        animator.move(x: 80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonBackground)
+        animator.move(x: 80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonFullscreen)
+        animator.move(x: 80).animate(t: 0.3)
+        
+        tapShow.isEnabled = true
+    }
+    
+    // MARK: Tap Register
+    
+    @IBAction func showUIElements(_ sender: Any) {
+        buttonMenu.isHidden = false
+        var animator: ChainableAnimator = ChainableAnimator(view: buttonMenu)
+        animator.move(x: 80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonSave)
+        animator.move(x: 80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonExit)
+        animator.move(x: 80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonText)
+        animator.move(x: -80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonBackground)
+        animator.move(x: -80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonFullscreen)
+        animator.move(x: -80).animate(t: 0.3)
+        tapShow.isEnabled = false
     }
     
 }
