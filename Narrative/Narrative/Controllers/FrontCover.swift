@@ -59,7 +59,13 @@ class FrontCover: UIViewController {
         addShadows(for: buttonExit)
         addShadows(for: buttonText)
         addShadows(for: buttonBackground)
+        addShadows(for: buttonPalette)
+        addShadows(for: buttonProPalette)
+        addShadows(for: buttonImport)
         addShadows(for: buttonFullscreen)
+        buttonPalette.layer.shadowColor = UIColor.clear.cgColor
+        buttonProPalette.layer.shadowColor = UIColor.clear.cgColor
+        buttonImport.layer.shadowColor = UIColor.clear.cgColor
     }
     
     private func addShadows(for button: UIButton) {
@@ -155,12 +161,18 @@ class FrontCover: UIViewController {
                 self.buttonProPalette.isEnabled = true
                 self.buttonImport.isEnabled = true
                 self.buttonBackground.isEnabled = true
+                self.buttonPalette.layer.shadowColor = UIColor.black.cgColor
+                self.buttonProPalette.layer.shadowColor = UIColor.black.cgColor
+                self.buttonImport.layer.shadowColor = UIColor.black.cgColor
             }
         }
         else {
-            self.buttonPalette.isEnabled = false
-            self.buttonProPalette.isEnabled = false
-            self.buttonImport.isEnabled = false
+            buttonPalette.isEnabled = false
+            buttonProPalette.isEnabled = false
+            buttonImport.isEnabled = false
+            buttonPalette.layer.shadowColor = UIColor.clear.cgColor
+            buttonProPalette.layer.shadowColor = UIColor.clear.cgColor
+            buttonImport.layer.shadowColor = UIColor.clear.cgColor
             
             var animator: ChainableAnimator = ChainableAnimator(view: buttonPalette)
             animator.move(y: 60).thenAfter(t: 0.2).move(x: 55).animate(t: 0.2)
@@ -174,6 +186,18 @@ class FrontCover: UIViewController {
                 self.buttonFullscreen.isEnabled = true
             }
         }
+    }
+    
+    @IBAction func changeBackgroundColorStandard(_ sender: Any) {
+        print("Standard Color")
+    }
+    
+    @IBAction func changeBackgroundColorSpecial(_ sender: Any) {
+        print("Special Color")
+    }
+    
+    @IBAction func changeBackgroundImportImage(_ sender: Any) {
+        print("Import Image")
     }
     
     @IBAction func hideUIElements(_ sender: Any) {
