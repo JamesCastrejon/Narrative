@@ -9,10 +9,12 @@
 import UIKit
 import Lottie
 import ChainableAnimations
+import IGColorPicker
 
 class FrontCover: UIViewController {
     
     // MARK: Outlets
+    
     @IBOutlet var tapShow: UITapGestureRecognizer!
     
     @IBOutlet var buttonMenu: UIButton!
@@ -26,12 +28,17 @@ class FrontCover: UIViewController {
     @IBOutlet var buttonProPalette: UIButton!
     @IBOutlet var buttonImport: UIButton!
     
+    @IBOutlet var colorPickerView: ColorPickerView!
+    
     @IBOutlet var buttonFullscreen: UIButton!
     
     // MARK: LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        colorPickerView.delegate = self
+        colorPickerView.layoutDelegate = self
         
         self.setupButtons()
     }
@@ -190,14 +197,26 @@ class FrontCover: UIViewController {
     
     @IBAction func changeBackgroundColorStandard(_ sender: Any) {
         print("Standard Color")
+        if colorPickerView.isHidden {
+            colorPickerView.isHidden = false
+            buttonProPalette.isEnabled = false
+            buttonImport.isEnabled = false
+        }
+        else {
+            colorPickerView.isHidden = true
+            buttonProPalette.isEnabled = true
+            buttonImport.isEnabled = true
+        }
     }
     
     @IBAction func changeBackgroundColorSpecial(_ sender: Any) {
         print("Special Color")
+        
     }
     
     @IBAction func changeBackgroundImportImage(_ sender: Any) {
         print("Import Image")
+        
     }
     
     @IBAction func hideUIElements(_ sender: Any) {
@@ -246,6 +265,50 @@ class FrontCover: UIViewController {
         animator = ChainableAnimator(view: buttonFullscreen)
         animator.move(x: -80).animate(t: 0.3)
         tapShow.isEnabled = false
+    }
+    
+}
+
+// MARK: - ColorPickerViewDelegate
+extension FrontCover: ColorPickerViewDelegate {
+    
+    func colorPickerView(_ colorPickerView: ColorPickerView, didSelectItemAt indexPath: IndexPath) {
+        // A color has been selected
+        self.view.backgroundColor = colorPickerView.colors[indexPath.row]
+        colorPickerView.isHidden = true
+        buttonProPalette.isEnabled = true
+        buttonImport.isEnabled = true
+    }
+    
+    // This is an optional method
+    func colorPickerView(_ colorPickerView: ColorPickerView, didDeselectItemAt indexPath: IndexPath) {
+        // A color has been deselected
+        self.view.backgroundColor = UIColor.white
+    }
+    
+}
+
+// MARK: - ColorPickerViewDelegateFlowLayout
+extension FrontCover: ColorPickerViewDelegateFlowLayout {
+    
+    func colorPickerView(_ colorPickerView: ColorPickerView, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // The size for each cell
+        // 👉🏻 WIDTH AND HEIGHT MUST BE EQUALS!
+        return CGSize(width: 30, height: 30)
+    }
+    
+    func colorPickerView(_ colorPickerView: ColorPickerView, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        // Space between cells
+        return 0.0
+    }
+    
+    func colorPickerView(_ colorPickerView: ColorPickerView, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        // Space between rows
+        return 0.0
+    }
+    
+    func colorPickerView(_ colorPickerView: ColorPickerView, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
     }
     
 }

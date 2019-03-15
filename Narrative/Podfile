@@ -4,4 +4,6 @@ target 'Narrative' do
   use_frameworks!
   pod 'lottie-ios'
   pod 'ChainableAnimations', '~> 3.0.1'
+  pod 'IGColorPicker'
+  pod 'ChromaColorPicker'
 end
