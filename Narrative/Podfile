@@ -6,4 +6,5 @@ target 'Narrative' do
   pod 'ChainableAnimations', '~> 3.0.1'
   pod 'IGColorPicker'
   pod 'ChromaColorPicker'
+  pod 'YPImagePicker'
 end

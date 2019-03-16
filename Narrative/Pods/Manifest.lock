@@ -5,12 +5,18 @@ PODS:
     - M13Checkbox (~> 3.2.0)
   - lottie-ios (2.5.3)
   - M13Checkbox (3.2.2)
+  - PryntTrimmerView (3.0.0)
+  - SteviaLayout (4.4.4)
+  - YPImagePicker (3.5.3):
+    - PryntTrimmerView (~> 3.0.0)
+    - SteviaLayout (~> 4.4.1)
 
 DEPENDENCIES:
   - ChainableAnimations (~> 3.0.1)
   - ChromaColorPicker
   - IGColorPicker
   - lottie-ios
+  - YPImagePicker
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -19,6 +25,9 @@ SPEC REPOS:
     - IGColorPicker
     - lottie-ios
     - M13Checkbox
+    - PryntTrimmerView
+    - SteviaLayout
+    - YPImagePicker
 
 SPEC CHECKSUMS:
   ChainableAnimations: 12e0a88e72fb554ad4cda38c40474e4d65c972a2
@@ -26,7 +35,10 @@ SPEC CHECKSUMS:
   IGColorPicker: c6d43aa386a9fdc8f958f3bd4e5ab85905242c8a
   lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
   M13Checkbox: a8c2491cfbbca10797925fd0b9154a782bf40d89
+  PryntTrimmerView: 53ac64053c7ce63cb3e27f54090f52da0734891d
+  SteviaLayout: 523469269059f2c6da02820bb2ff28a5fe0780aa
+  YPImagePicker: 5dd3814b47b1208e9c8cc8f6ef77fe90db3723b6
 
-PODFILE CHECKSUM: f8c85dd5ce150ac4174c6d91a8e244fad6c79aae
+PODFILE CHECKSUM: 5daf3f8c89fa6daab90530f8840b4fbca288b91b
 
 COCOAPODS: 1.6.0

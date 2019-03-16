@@ -10,37 +10,69 @@ import UIKit
 import Lottie
 import ChainableAnimations
 import IGColorPicker
+import ChromaColorPicker
+import YPImagePicker
 
 class FrontCover: UIViewController {
     
     // MARK: Outlets
-    
     @IBOutlet var tapShow: UITapGestureRecognizer!
     
     @IBOutlet var buttonMenu: UIButton!
+    @IBOutlet var buttonReset: UIButton!
+    @IBOutlet var buttonResetSave: UIButton!
     @IBOutlet var buttonSave: UIButton!
     @IBOutlet var buttonExit: UIButton!
-    
-    @IBOutlet var buttonText: UIButton!
     
     @IBOutlet var buttonBackground: UIButton!
     @IBOutlet var buttonPalette: UIButton!
     @IBOutlet var buttonProPalette: UIButton!
     @IBOutlet var buttonImport: UIButton!
     
-    @IBOutlet var colorPickerView: ColorPickerView!
-    
+    @IBOutlet var buttonFormat: UIButton!
+    @IBOutlet var buttonAddPage: UIButton!
+    @IBOutlet var buttonDeletePage: UIButton!
     @IBOutlet var buttonFullscreen: UIButton!
+    @IBOutlet var imageBackground: UIImageView!
+    
+    // MARK: Variables
+    var previousColor: UIColor = UIColor.white
+    var colorPickerView: ColorPickerView!
+    var neatColorPicker: ChromaColorPicker!
+    let picker = YPImagePicker()
+    // TODO: Replace this with loaded color/image, keep white if nonexistent
     
     // MARK: LifeCycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupColorPicker()
+        self.setupProColorPicker()
+        self.setupButtons()
+    }
+    
+    private func setupColorPicker() {
+        colorPickerView = ColorPickerView(frame: CGRect(x: 0.0, y: 0.0, width: 180, height: 200))
         colorPickerView.delegate = self
         colorPickerView.layoutDelegate = self
+        colorPickerView.center = self.view.center
+        colorPickerView.selectionStyle = ColorPickerViewSelectStyle.none
+        colorPickerView.backgroundColor = UIColor.clear
+        colorPickerView.isHidden = true
         
-        self.setupButtons()
+        view.addSubview(colorPickerView)
+    }
+    
+    private func setupProColorPicker() {
+        neatColorPicker = ChromaColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+        neatColorPicker.delegate = self
+        neatColorPicker.center = self.view.center
+        neatColorPicker.padding = 5
+        neatColorPicker.stroke = 3
+        neatColorPicker.hexLabel.textColor = UIColor.white
+        neatColorPicker.isHidden = true
+        
+        view.addSubview(neatColorPicker)
     }
     
     private func setupButtons() {
@@ -50,25 +82,29 @@ class FrontCover: UIViewController {
     }
     
     private func setupButtonRadius() {
-        let buttonWidth = buttonText.bounds.size.width
-        
-        buttonText.layer.cornerRadius = 0.5 * buttonWidth
+        let buttonWidth = buttonBackground.bounds.size.width
         
         buttonBackground.layer.cornerRadius = 0.5 * buttonWidth
         buttonPalette.layer.cornerRadius = 0.5 * buttonWidth
         buttonProPalette.layer.cornerRadius = 0.5 * buttonWidth
         buttonImport.layer.cornerRadius = 0.5 * buttonWidth
         
+        
+        buttonFormat.layer.cornerRadius = 0.5 * buttonWidth
+        buttonAddPage.layer.cornerRadius = 0.5 * buttonWidth
+        buttonDeletePage.layer.cornerRadius = 0.5 * buttonWidth
         buttonFullscreen.layer.cornerRadius = 0.5 * buttonWidth
     }
     
     private func setupButtonShadows() {
         addShadows(for: buttonExit)
-        addShadows(for: buttonText)
         addShadows(for: buttonBackground)
         addShadows(for: buttonPalette)
         addShadows(for: buttonProPalette)
         addShadows(for: buttonImport)
+        addShadows(for: buttonFormat)
+        addShadows(for: buttonAddPage)
+        addShadows(for: buttonDeletePage)
         addShadows(for: buttonFullscreen)
         buttonPalette.layer.shadowColor = UIColor.clear.cgColor
         buttonProPalette.layer.shadowColor = UIColor.clear.cgColor
@@ -102,14 +138,15 @@ class FrontCover: UIViewController {
     }
     
     // MARK: Button Functionality
-    
     @IBAction func menuVisibility(_ sender: Any) {
         buttonMenu.isEnabled = false
         
         if !buttonExit.isEnabled {
             // TODO: disable text, background, fullscreen
-            buttonText.isEnabled = false
             buttonBackground.isEnabled = false
+            buttonFormat.isEnabled = false
+            buttonAddPage.isEnabled = false
+            buttonDeletePage.isEnabled = false
             buttonFullscreen.isEnabled = false
             
             let animationView:LOTAnimationView = buttonMenu.subviews.first as! LOTAnimationView
@@ -117,12 +154,18 @@ class FrontCover: UIViewController {
                 self.buttonMenu.isEnabled = true
             }
             
+            buttonReset.isEnabled = true
+            buttonResetSave.isEnabled = true
             buttonSave.isEnabled = true
             buttonExit.isEnabled = true
-            var animator: ChainableAnimator = ChainableAnimator(view: buttonSave)
-            animator.move(y: 40).animate(t: 0.2)
+            var animator: ChainableAnimator = ChainableAnimator(view: buttonReset)
+            animator.transform(y: 40).animate(t: 0.2)
+            animator = ChainableAnimator(view: buttonResetSave)
+            animator.transform(y: 40).thenAfter(t: 0.2).transform(y: 40).animate(t: 0.2)
+            animator = ChainableAnimator(view: buttonSave)
+            animator.transform(y: 40).thenAfter(t: 0.2).transform(y: 40).thenAfter(t: 0.2).transform(y: 40).animate(t: 0.2)
             animator = ChainableAnimator(view: buttonExit)
-            animator.move(y: 40).thenAfter(t: 0.2).move(y: 40).animate(t: 0.2)
+            animator.transform(y: 40).thenAfter(t: 0.2).transform(y: 40).thenAfter(t: 0.2).transform(y: 40).thenAfter(t: 0.2).transform(y: 40).animate(t: 0.2)
         }
         else {
             let animationView:LOTAnimationView = buttonMenu.subviews.first as! LOTAnimationView
@@ -130,17 +173,32 @@ class FrontCover: UIViewController {
                 self.buttonMenu.isEnabled = true
             }
             
+            buttonReset.isEnabled = true
+            buttonResetSave.isEnabled = true
             buttonSave.isEnabled = false
             buttonExit.isEnabled = false
-            var animator: ChainableAnimator = ChainableAnimator(view: buttonSave)
-            animator.move(y: -40).animate(t: 0.2)
+            var animator: ChainableAnimator = ChainableAnimator(view: buttonReset)
+            animator.transform(y: -40).animate(t: 0.2)
+            animator = ChainableAnimator(view: buttonResetSave)
+            animator.transform(y: -40).thenAfter(t: 0.2).transform(y: -40).animate(t: 0.2)
+            animator = ChainableAnimator(view: buttonSave)
+            animator.transform(y: -40).thenAfter(t: 0.2).transform(y: -40).thenAfter(t: 0.2).transform(y: -40).animate(t: 0.2)
             animator = ChainableAnimator(view: buttonExit)
-            animator.move(y: -40).thenAfter(t: 0.2).move(y: -40).animate(t: 0.2) {
-                self.buttonText.isEnabled = true
+            animator.transform(y: -40).thenAfter(t: 0.2).transform(y: -40).thenAfter(t: 0.2).transform(y: -40).thenAfter(t: 0.2).transform(y: -40).animate(t: 0.2) {
                 self.buttonBackground.isEnabled = true
+                self.buttonFormat.isEnabled = true
+                self.buttonAddPage.isEnabled = true
+                self.buttonDeletePage.isEnabled = true
                 self.buttonFullscreen.isEnabled = true
             }
         }
+    }
+    @IBAction func reset(_ sender: Any) {
+        
+    }
+    
+    @IBAction func resetSave(_ sender: Any) {
+        
     }
     
     @IBAction func save(_ sender: Any) {
@@ -155,15 +213,17 @@ class FrontCover: UIViewController {
         buttonBackground.isEnabled = false
         if !buttonPalette.isEnabled {
             buttonMenu.isEnabled = false
-            buttonText.isEnabled = false
+            buttonFormat.isEnabled = false
+            buttonAddPage.isEnabled = false
+            buttonDeletePage.isEnabled = false
             buttonFullscreen.isEnabled = false
             
             var animator: ChainableAnimator = ChainableAnimator(view: buttonPalette)
-            animator.move(x: -55).thenAfter(t: 0.2).move(y: -60).animate(t: 0.2)
+            animator.transform(x: -55).thenAfter(t: 0.2).transform(y: -60).animate(t: 0.2)
             animator = ChainableAnimator(view: buttonProPalette)
-            animator.move(x: -55).animate(t: 0.2)
+            animator.transform(x: -55).animate(t: 0.2)
             animator = ChainableAnimator(view: buttonImport)
-            animator.move(x: -55).thenAfter(t: 0.2).move(y: 60).animate(t: 0.2) {
+            animator.transform(x: -55).thenAfter(t: 0.2).transform(y: 60).animate(t: 0.2) {
                 self.buttonPalette.isEnabled = true
                 self.buttonProPalette.isEnabled = true
                 self.buttonImport.isEnabled = true
@@ -182,21 +242,22 @@ class FrontCover: UIViewController {
             buttonImport.layer.shadowColor = UIColor.clear.cgColor
             
             var animator: ChainableAnimator = ChainableAnimator(view: buttonPalette)
-            animator.move(y: 60).thenAfter(t: 0.2).move(x: 55).animate(t: 0.2)
+            animator.transform(y: 60).thenAfter(t: 0.2).transform(x: 55).animate(t: 0.2)
             animator = ChainableAnimator(view: buttonProPalette)
-            animator.move(x: 55).animate(t: 0.2)
+            animator.transform(x: 55).animate(t: 0.2)
             animator = ChainableAnimator(view: buttonImport)
-            animator.move(y: -60).thenAfter(t: 0.2).move(x: 55).animate(t: 0.2) {
-                self.buttonBackground.isEnabled = true
+            animator.transform(y: -60).thenAfter(t: 0.2).transform(x: 55).animate(t: 0.2) {
                 self.buttonMenu.isEnabled = true
-                self.buttonText.isEnabled = true
+                self.buttonBackground.isEnabled = true
+                self.buttonFormat.isEnabled = true
+                self.buttonAddPage.isEnabled = true
+                self.buttonDeletePage.isEnabled = true
                 self.buttonFullscreen.isEnabled = true
             }
         }
     }
     
     @IBAction func changeBackgroundColorStandard(_ sender: Any) {
-        print("Standard Color")
         if colorPickerView.isHidden {
             colorPickerView.isHidden = false
             buttonProPalette.isEnabled = false
@@ -210,60 +271,90 @@ class FrontCover: UIViewController {
     }
     
     @IBAction func changeBackgroundColorSpecial(_ sender: Any) {
-        print("Special Color")
-        
+        if neatColorPicker.isHidden {
+            neatColorPicker.isHidden = false
+            buttonPalette.isEnabled = false
+            buttonImport.isEnabled = false
+        }
+        else {
+            neatColorPicker.isHidden = true
+            buttonPalette.isEnabled = true
+            buttonImport.isEnabled = true
+        }
     }
     
     @IBAction func changeBackgroundImportImage(_ sender: Any) {
-        print("Import Image")
-        
+        picker.didFinishPicking { [unowned picker] items, _ in
+            if let photo = items.singlePhoto {
+                self.view.backgroundColor = UIColor.white
+                self.imageBackground.image = photo.image
+            }
+            
+            picker.dismiss(animated: true, completion: nil)
+        }
+        present(picker, animated: true, completion: nil)
     }
     
     @IBAction func hideUIElements(_ sender: Any) {
         var animator: ChainableAnimator = ChainableAnimator(view: buttonMenu)
-        animator.move(x: -80).animate(t: 0.3)
+        animator.transform(x: -80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonReset)
+        animator.transform(x: -80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonResetSave)
+        animator.transform(x: -80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonSave)
-        animator.move(x: -80).animate(t: 0.3)
+        animator.transform(x: -80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonExit)
-        animator.move(x: -80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonText)
-        animator.move(x: 80).animate(t: 0.3)
+        animator.transform(x: -80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonBackground)
-        animator.move(x: 80).animate(t: 0.3)
+        animator.transform(x: 80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonPalette)
-        animator.move(x: 80).animate(t: 0.3)
+        animator.transform(x: 80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonProPalette)
-        animator.move(x: 80).animate(t: 0.3)
+        animator.transform(x: 80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonImport)
-        animator.move(x: 80).animate(t: 0.3)
+        animator.transform(x: 80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonFormat)
+        animator.transform(x: 80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonAddPage)
+        animator.transform(x: 80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonDeletePage)
+        animator.transform(x: 80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonFullscreen)
-        animator.move(x: 80).animate(t: 0.3)
+        animator.transform(x: 80).animate(t: 0.3)
         
         tapShow.isEnabled = true
     }
     
     // MARK: Tap Register
-    
     @IBAction func showUIElements(_ sender: Any) {
         buttonMenu.isHidden = false
         var animator: ChainableAnimator = ChainableAnimator(view: buttonMenu)
-        animator.move(x: 80).animate(t: 0.3)
+        animator.transform(x: 80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonReset)
+        animator.transform(x: 80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonResetSave)
+        animator.transform(x: 80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonSave)
-        animator.move(x: 80).animate(t: 0.3)
+        animator.transform(x: 80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonExit)
-        animator.move(x: 80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonText)
-        animator.move(x: -80).animate(t: 0.3)
+        animator.transform(x: 80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonBackground)
-        animator.move(x: -80).animate(t: 0.3)
+        animator.transform(x: -80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonPalette)
-        animator.move(x: -80).animate(t: 0.3)
+        animator.transform(x: -80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonProPalette)
-        animator.move(x: -80).animate(t: 0.3)
+        animator.transform(x: -80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonImport)
-        animator.move(x: -80).animate(t: 0.3)
+        animator.transform(x: -80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonFormat)
+        animator.transform(x: -80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonAddPage)
+        animator.transform(x: -80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonDeletePage)
+        animator.transform(x: -80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonFullscreen)
-        animator.move(x: -80).animate(t: 0.3)
+        animator.transform(x: -80).animate(t: 0.3)
         tapShow.isEnabled = false
     }
     
@@ -271,26 +362,29 @@ class FrontCover: UIViewController {
 
 // MARK: - ColorPickerViewDelegate
 extension FrontCover: ColorPickerViewDelegate {
-    
     func colorPickerView(_ colorPickerView: ColorPickerView, didSelectItemAt indexPath: IndexPath) {
+        // TODO: refactor this method
         // A color has been selected
-        self.view.backgroundColor = colorPickerView.colors[indexPath.row]
-        colorPickerView.isHidden = true
-        buttonProPalette.isEnabled = true
-        buttonImport.isEnabled = true
+        self.imageBackground.image = nil
+        if previousColor != colorPickerView.colors[indexPath.row] {
+            previousColor = colorPickerView.colors[indexPath.row]
+            self.view.backgroundColor = colorPickerView.colors[indexPath.row]
+            colorPickerView.isHidden = true
+            buttonProPalette.isEnabled = true
+            buttonImport.isEnabled = true
+        }
+        else {
+            previousColor = UIColor.white
+            self.view.backgroundColor = UIColor.white
+            colorPickerView.isHidden = true
+            buttonProPalette.isEnabled = true
+            buttonImport.isEnabled = true
+        }
     }
-    
-    // This is an optional method
-    func colorPickerView(_ colorPickerView: ColorPickerView, didDeselectItemAt indexPath: IndexPath) {
-        // A color has been deselected
-        self.view.backgroundColor = UIColor.white
-    }
-    
 }
 
 // MARK: - ColorPickerViewDelegateFlowLayout
 extension FrontCover: ColorPickerViewDelegateFlowLayout {
-    
     func colorPickerView(_ colorPickerView: ColorPickerView, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // The size for each cell
         // 👉🏻 WIDTH AND HEIGHT MUST BE EQUALS!
@@ -310,5 +404,16 @@ extension FrontCover: ColorPickerViewDelegateFlowLayout {
     func colorPickerView(_ colorPickerView: ColorPickerView, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
     }
-    
+}
+
+// MARK: - ChromaColorPicker Delegate
+extension FrontCover: ChromaColorPickerDelegate {
+    func colorPickerDidChooseColor(_ colorPicker: ChromaColorPicker, color: UIColor) {
+        self.imageBackground.image = nil
+        previousColor = color
+        self.view.backgroundColor = color
+        neatColorPicker.isHidden = true
+        buttonPalette.isEnabled = true
+        buttonImport.isEnabled = true
+    }
 }

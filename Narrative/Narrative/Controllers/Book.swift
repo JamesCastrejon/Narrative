@@ -88,4 +88,12 @@ extension Book: UIPageViewControllerDataSource {
         return orderedViewControllers[nextIndex]
     }
     
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return orderedViewControllers.count
+    }
+    
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        return 0
+    }
+    
 }
