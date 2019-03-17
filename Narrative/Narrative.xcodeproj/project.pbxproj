@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		48FBD7BDBA712243F89CCC0E /* Pods_Narrative.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AEC7B5817A36D9052C0B01E /* Pods_Narrative.framework */; };
+		D1242625223DA01A00C04C48 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1242624223DA01900C04C48 /* Book.swift */; };
+		D1242627223DBC3D00C04C48 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1242626223DBC3D00C04C48 /* Page.swift */; };
+		D124262D223DBE1500C04C48 /* BackCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D124262C223DBE1500C04C48 /* BackCover.swift */; };
 		D178A8F3221F030A002193FC /* FrontCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D178A8F2221F030A002193FC /* FrontCover.swift */; };
 		D18F4789221DC53600A58BA5 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18F4788221DC53600A58BA5 /* MainMenu.swift */; };
 		D1BA58A7221B746800483F2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BA58A6221B746800483F2F /* AppDelegate.swift */; };
@@ -15,13 +18,16 @@
 		D1BA58AE221B74B100483F2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1BA58AD221B74B100483F2F /* Assets.xcassets */; };
 		D1BA58B1221B74B100483F2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1BA58AF221B74B100483F2F /* LaunchScreen.storyboard */; };
 		D1C9AB59221DEFEF001EC435 /* HamburgerMenu.json in Resources */ = {isa = PBXBuildFile; fileRef = D1C9AB53221DEFED001EC435 /* HamburgerMenu.json */; };
-		D1C9AB60221E05BF001EC435 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C9AB5F221E05BF001EC435 /* Book.swift */; };
+		D1C9AB60221E05BF001EC435 /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C9AB5F221E05BF001EC435 /* BookManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1AF7EEB127FD7668B1E6A8F8 /* Pods-Narrative.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Narrative.debug.xcconfig"; path = "Target Support Files/Pods-Narrative/Pods-Narrative.debug.xcconfig"; sourceTree = "<group>"; };
 		37E8EC97C4D3BB5C2CC5F1D3 /* Pods-Narrative.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Narrative.release.xcconfig"; path = "Target Support Files/Pods-Narrative/Pods-Narrative.release.xcconfig"; sourceTree = "<group>"; };
 		9AEC7B5817A36D9052C0B01E /* Pods_Narrative.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Narrative.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1242624223DA01900C04C48 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		D1242626223DBC3D00C04C48 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		D124262C223DBE1500C04C48 /* BackCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackCover.swift; sourceTree = "<group>"; };
 		D178A8F2221F030A002193FC /* FrontCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontCover.swift; sourceTree = "<group>"; };
 		D18F4788221DC53600A58BA5 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		D1BA58A3221B746800483F2F /* Narrative.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Narrative.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,7 +37,7 @@
 		D1BA58B0221B74B100483F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1BA58B2221B74B100483F2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1C9AB53221DEFED001EC435 /* HamburgerMenu.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = HamburgerMenu.json; sourceTree = "<group>"; };
-		D1C9AB5F221E05BF001EC435 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		D1C9AB5F221E05BF001EC435 /* BookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +97,10 @@
 			isa = PBXGroup;
 			children = (
 				D18F4788221DC53600A58BA5 /* MainMenu.swift */,
-				D1C9AB5F221E05BF001EC435 /* Book.swift */,
+				D1C9AB5F221E05BF001EC435 /* BookManager.swift */,
 				D178A8F2221F030A002193FC /* FrontCover.swift */,
+				D1242626223DBC3D00C04C48 /* Page.swift */,
+				D124262C223DBE1500C04C48 /* BackCover.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -100,6 +108,7 @@
 		D1BA58B9221B759900483F2F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D1242624223DA01900C04C48 /* Book.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -258,8 +267,11 @@
 			files = (
 				D178A8F3221F030A002193FC /* FrontCover.swift in Sources */,
 				D18F4789221DC53600A58BA5 /* MainMenu.swift in Sources */,
+				D1242627223DBC3D00C04C48 /* Page.swift in Sources */,
 				D1BA58A7221B746800483F2F /* AppDelegate.swift in Sources */,
-				D1C9AB60221E05BF001EC435 /* Book.swift in Sources */,
+				D124262D223DBE1500C04C48 /* BackCover.swift in Sources */,
+				D1242625223DA01A00C04C48 /* Book.swift in Sources */,
+				D1C9AB60221E05BF001EC435 /* BookManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

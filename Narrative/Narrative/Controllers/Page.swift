@@ -1,8 +1,8 @@
 //
-//  FrontCover.swift
+//  Page.swift
 //  Narrative
 //
-//  Created by James Castrejon on 2/21/19.
+//  Created by James Castrejon on 3/16/19.
 //  Copyright © 2019 James Castrejon. All rights reserved.
 //
 
@@ -13,7 +13,7 @@ import IGColorPicker
 import ChromaColorPicker
 import YPImagePicker
 
-class FrontCover: UIViewController {
+class Page: UIViewController {
     
     // MARK: Outlets
     @IBOutlet var tapShow: UITapGestureRecognizer!
@@ -31,6 +31,7 @@ class FrontCover: UIViewController {
     
     @IBOutlet var buttonFormat: UIButton!
     @IBOutlet var buttonAddPage: UIButton!
+    @IBOutlet var buttonDeletePage: UIButton!
     @IBOutlet var buttonFullscreen: UIButton!
     @IBOutlet var imageBackground: UIImageView!
     
@@ -91,6 +92,7 @@ class FrontCover: UIViewController {
         
         buttonFormat.layer.cornerRadius = 0.5 * buttonWidth
         buttonAddPage.layer.cornerRadius = 0.5 * buttonWidth
+        buttonDeletePage.layer.cornerRadius = 0.5 * buttonWidth
         buttonFullscreen.layer.cornerRadius = 0.5 * buttonWidth
     }
     
@@ -102,6 +104,7 @@ class FrontCover: UIViewController {
         addShadows(for: buttonImport)
         addShadows(for: buttonFormat)
         addShadows(for: buttonAddPage)
+        addShadows(for: buttonDeletePage)
         addShadows(for: buttonFullscreen)
         buttonPalette.layer.shadowColor = UIColor.clear.cgColor
         buttonProPalette.layer.shadowColor = UIColor.clear.cgColor
@@ -143,6 +146,7 @@ class FrontCover: UIViewController {
             buttonBackground.isEnabled = false
             buttonFormat.isEnabled = false
             buttonAddPage.isEnabled = false
+            buttonDeletePage.isEnabled = false
             buttonFullscreen.isEnabled = false
             
             let animationView:LOTAnimationView = buttonMenu.subviews.first as! LOTAnimationView
@@ -184,6 +188,7 @@ class FrontCover: UIViewController {
                 self.buttonBackground.isEnabled = true
                 self.buttonFormat.isEnabled = true
                 self.buttonAddPage.isEnabled = true
+                self.buttonDeletePage.isEnabled = true
                 self.buttonFullscreen.isEnabled = true
             }
         }
@@ -210,6 +215,7 @@ class FrontCover: UIViewController {
             buttonMenu.isEnabled = false
             buttonFormat.isEnabled = false
             buttonAddPage.isEnabled = false
+            buttonDeletePage.isEnabled = false
             buttonFullscreen.isEnabled = false
             
             var animator: ChainableAnimator = ChainableAnimator(view: buttonPalette)
@@ -245,6 +251,7 @@ class FrontCover: UIViewController {
                 self.buttonBackground.isEnabled = true
                 self.buttonFormat.isEnabled = true
                 self.buttonAddPage.isEnabled = true
+                self.buttonDeletePage.isEnabled = true
                 self.buttonFullscreen.isEnabled = true
             }
         }
@@ -301,6 +308,17 @@ class FrontCover: UIViewController {
         book.addPage(after: self.restorationIdentifier!)
     }
     
+    @IBAction func deletePage(_ sender: Any) {
+        if Book.orderedViewControllers.count > 3 && self.restorationIdentifier! != "FrontCover" && self.restorationIdentifier! != "BackCover" {
+            (self.parent as! BookManager).goToPreviousPage(self)
+            var book: Book = Book()
+            book.deletePage()
+            for x in stride(from: 0, to: Book.orderedViewControllers.count, by: 1) {
+                print("Page: \(Book.orderedViewControllers[x].restorationIdentifier)")
+            }
+        }
+    }
+    
     @IBAction func hideUIElements(_ sender: Any) {
         var animator: ChainableAnimator = ChainableAnimator(view: buttonMenu)
         animator.transform(x: -80).animate(t: 0.3)
@@ -323,6 +341,8 @@ class FrontCover: UIViewController {
         animator = ChainableAnimator(view: buttonFormat)
         animator.transform(x: 80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonAddPage)
+        animator.transform(x: 80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonDeletePage)
         animator.transform(x: 80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonFullscreen)
         animator.transform(x: 80).animate(t: 0.3)
@@ -355,6 +375,8 @@ class FrontCover: UIViewController {
         animator.transform(x: -80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonAddPage)
         animator.transform(x: -80).animate(t: 0.3)
+        animator = ChainableAnimator(view: buttonDeletePage)
+        animator.transform(x: -80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonFullscreen)
         animator.transform(x: -80).animate(t: 0.3)
         tapShow.isEnabled = false
@@ -363,7 +385,7 @@ class FrontCover: UIViewController {
 }
 
 // MARK: - ColorPickerViewDelegate
-extension FrontCover: ColorPickerViewDelegate {
+extension Page: ColorPickerViewDelegate {
     func colorPickerView(_ colorPickerView: ColorPickerView, didSelectItemAt indexPath: IndexPath) {
         // TODO: refactor this method
         // A color has been selected
@@ -384,7 +406,7 @@ extension FrontCover: ColorPickerViewDelegate {
 }
 
 // MARK: - ColorPickerViewDelegateFlowLayout
-extension FrontCover: ColorPickerViewDelegateFlowLayout {
+extension Page: ColorPickerViewDelegateFlowLayout {
     func colorPickerView(_ colorPickerView: ColorPickerView, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // The size for each cell
         // 👉🏻 WIDTH AND HEIGHT MUST BE EQUALS!
@@ -407,7 +429,7 @@ extension FrontCover: ColorPickerViewDelegateFlowLayout {
 }
 
 // MARK: - ChromaColorPicker Delegate
-extension FrontCover: ChromaColorPickerDelegate {
+extension Page: ChromaColorPickerDelegate {
     func colorPickerDidChooseColor(_ colorPicker: ChromaColorPicker, color: UIColor) {
         self.imageBackground.image = nil
         buttonBackground.isEnabled = true
