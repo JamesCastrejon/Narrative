@@ -297,8 +297,17 @@ class FrontCover: UIViewController {
     }
     
     @IBAction func addPage(_ sender: Any) {
-        var book: Book = Book()
-        book.addPage(after: self.restorationIdentifier!)
+        if Book.orderedViewControllers.count < 20 && self.restorationIdentifier != "BackCover" {
+            var book: Book = Book()
+            book.addPage()
+        } else {
+            let alertController = UIAlertController(title: "Oh, no!", message: "Sorry but you've reached a maximum of 20 pages.\n:(", preferredStyle: .alert)
+            
+            let action1 = UIAlertAction(title: "Okay", style: .default)
+            
+            alertController.addAction(action1)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     @IBAction func hideUIElements(_ sender: Any) {

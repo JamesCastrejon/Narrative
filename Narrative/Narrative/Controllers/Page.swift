@@ -304,18 +304,40 @@ class Page: UIViewController {
     }
     
     @IBAction func addPage(_ sender: Any) {
-        var book: Book = Book()
-        book.addPage(after: self.restorationIdentifier!)
+        if Book.orderedViewControllers.count < 20 && self.restorationIdentifier != "BackCover" {
+            var book: Book = Book()
+            book.addPage()
+        } else {
+            let alertController = UIAlertController(title: "Oh, no!", message: "Sorry but you cannot have more than 20 pages.\n:(", preferredStyle: .alert)
+            
+            let action1 = UIAlertAction(title: "Okay", style: .default)
+            
+            alertController.addAction(action1)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     @IBAction func deletePage(_ sender: Any) {
         if Book.orderedViewControllers.count > 3 && self.restorationIdentifier! != "FrontCover" && self.restorationIdentifier! != "BackCover" {
-            (self.parent as! BookManager).goToPreviousPage(self)
-            var book: Book = Book()
-            book.deletePage()
-            for x in stride(from: 0, to: Book.orderedViewControllers.count, by: 1) {
-                print("Page: \(Book.orderedViewControllers[x].restorationIdentifier)")
+            let alertController = UIAlertController(title: "Stop!", message: "Are you sure?", preferredStyle: .alert)
+            
+            let action1 = UIAlertAction(title: "Yes", style: .destructive) { (action:UIAlertAction) in
+                (self.parent as! BookManager).goToPreviousPage(self)
+                var book: Book = Book()
+                book.deletePage()
             }
+            let action2 = UIAlertAction(title: "No thanks.", style: .default)
+            
+            alertController.addAction(action1)
+            alertController.addAction(action2)
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            let alertController = UIAlertController(title: "Oh, no!", message: "Sorry but you cannot delete more than 3 pages.\n:(", preferredStyle: .alert)
+            
+            let action1 = UIAlertAction(title: "Okay", style: .default)
+            
+            alertController.addAction(action1)
+            self.present(alertController, animated: true, completion: nil)
         }
     }
     

@@ -26,10 +26,8 @@ struct Book {
             instantiateViewController(withIdentifier: "\(type)")
     }
     
-    mutating func addPage(after identifier: String) {
-        if Book.orderedViewControllers.count < 20 && identifier != "BackCover" {
-            Book.orderedViewControllers.insert(newPage(type: "Page"), at: Book.pageNumber + 1)
-        }
+    mutating func addPage() {
+        Book.orderedViewControllers.insert(newPage(type: "Page"), at: Book.pageNumber + 1)
     }
     
     mutating func deletePage() {
