@@ -270,6 +270,7 @@ class Page: UIViewController {
             buttonImport.isEnabled = true
             buttonBackground.isEnabled = true
         }
+        (self.parent as! BookManager).changeSwipeGesture(enabled: colorPickerView.isHidden)
     }
     
     @IBAction func changeBackgroundColorSpecial(_ sender: Any) {
@@ -285,6 +286,7 @@ class Page: UIViewController {
             buttonImport.isEnabled = true
             buttonBackground.isEnabled = true
         }
+        (self.parent as! BookManager).changeSwipeGesture(enabled: neatColorPicker.isHidden)
     }
     
     @IBAction func changeBackgroundImportImage(_ sender: Any) {
@@ -424,6 +426,7 @@ extension Page: ColorPickerViewDelegate {
             previousColor = UIColor.white
             self.view.backgroundColor = UIColor.white
         }
+        (self.parent as! BookManager).changeSwipeGesture(enabled: true)
     }
 }
 
@@ -460,5 +463,6 @@ extension Page: ChromaColorPickerDelegate {
         neatColorPicker.isHidden = true
         buttonPalette.isEnabled = true
         buttonImport.isEnabled = true
+        (self.parent as! BookManager).changeSwipeGesture(enabled: true)
     }
 }

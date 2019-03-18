@@ -40,24 +40,11 @@ class BookManager: UIPageViewController {
         viewController.removeFromParent()
     }
     
-//    func goToPreviousPage() {
-//        self.setViewControllers(
-//            viewControllers,
-//            direction: UIPageViewController.NavigationDirection.forward,
-//            animated: true,
-//            completion: { [weak self] (finished: Bool) in
-//                if finished {
-//                    DispatchQueue.main.async {
-//                        self!.setViewControllers(
-//                            self!.viewControllers,
-//                            direction: UIPageViewController.NavigationDirection.forward,
-//                            animated: false,
-//                            completion: nil
-//                        )
-//                    }
-//                }
-//        })
-//    }
+    func changeSwipeGesture(enabled: Bool){
+        for recognizer in self.gestureRecognizers {
+            recognizer.isEnabled = enabled
+        }
+    }
 }
 
 // MARK: UIPageViewControllerDataSource
