@@ -73,6 +73,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SKn-2a-3bn" userLabel="ImageBackground">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <gestureRecognizers/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lU-eI-nPv">
                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -246,7 +247,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="hideUIElements:" destination="5ag-Rg-rTH" eventType="touchUpInside" id="P6L-CH-uCw"/>
+                                    <action selector="hideUIElements:" destination="5ag-Rg-rTH" eventType="touchUpInside" id="8pn-XZ-yBC"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -301,13 +302,13 @@
                         <outlet property="buttonResetSave" destination="aEk-pg-aDN" id="TFe-m7-EnO"/>
                         <outlet property="buttonSave" destination="Cfx-r9-16W" id="6og-8K-36J"/>
                         <outlet property="imageBackground" destination="SKn-2a-3bn" id="iA5-LP-S23"/>
-                        <outlet property="tapShow" destination="kFd-x4-RKB" id="gmM-NA-yhU"/>
+                        <outlet property="tapVisibility" destination="kFd-x4-RKB" id="gmM-NA-yhU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FcH-zy-0We" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer enabled="NO" id="kFd-x4-RKB">
                     <connections>
-                        <action selector="showUIElements:" destination="5ag-Rg-rTH" id="awp-74-SDf"/>
+                        <action selector="uielementsVisibility:" destination="5ag-Rg-rTH" id="awp-74-SDf"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -569,13 +570,13 @@
                         <outlet property="buttonResetSave" destination="gF2-0F-1uJ" id="8g2-TD-iRo"/>
                         <outlet property="buttonSave" destination="J8p-5N-78X" id="T0K-0E-kGM"/>
                         <outlet property="imageBackground" destination="By1-ro-m7G" id="4x8-vf-OTM"/>
-                        <outlet property="tapShow" destination="o5z-o7-jnF" id="djv-nr-RKk"/>
+                        <outlet property="tapVisibility" destination="o5z-o7-jnF" id="djv-nr-RKk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pX3-bA-LEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer enabled="NO" id="o5z-o7-jnF" userLabel="Tap Show">
+                <tapGestureRecognizer enabled="NO" id="o5z-o7-jnF" userLabel="Tap Visibility">
                     <connections>
-                        <action selector="showUIElements:" destination="NKG-NZ-iZW" id="y35-eB-ITV"/>
+                        <action selector="uielementsVisibility:" destination="NKG-NZ-iZW" id="y35-eB-ITV"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -802,13 +803,13 @@
                         <outlet property="buttonResetSave" destination="zLU-nU-T20" id="kiS-Gs-zad"/>
                         <outlet property="buttonSave" destination="x3v-YJ-hFn" id="pMX-LR-WPz"/>
                         <outlet property="imageBackground" destination="eKv-Wy-5Un" id="Ywp-lv-jXO"/>
-                        <outlet property="tapShow" destination="pLL-LD-Rmo" id="2az-w7-Bat"/>
+                        <outlet property="tapVisibility" destination="pLL-LD-Rmo" id="2az-w7-Bat"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BDj-IM-KlL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer enabled="NO" id="pLL-LD-Rmo" userLabel="Tap Show">
+                <tapGestureRecognizer enabled="NO" id="pLL-LD-Rmo" userLabel="Tap Visibility">
                     <connections>
-                        <action selector="showUIElements:" destination="OGg-6W-XUX" id="oV7-Xu-ld0"/>
+                        <action selector="uielementsVisibility:" destination="OGg-6W-XUX" id="oV7-Xu-ld0"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

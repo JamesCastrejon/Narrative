@@ -16,7 +16,7 @@ import YPImagePicker
 class FrontCover: UIViewController {
     
     // MARK: Outlets
-    @IBOutlet var tapShow: UITapGestureRecognizer!
+    @IBOutlet var tapVisibility: UITapGestureRecognizer!
     
     @IBOutlet var buttonMenu: UIButton!
     @IBOutlet var buttonReset: UIButton!
@@ -256,12 +256,14 @@ class FrontCover: UIViewController {
             buttonProPalette.isEnabled = false
             buttonImport.isEnabled = false
             buttonBackground.isEnabled = false
+            tapVisibility.isEnabled = true
         }
         else {
             colorPickerView.isHidden = true
             buttonProPalette.isEnabled = true
             buttonImport.isEnabled = true
             buttonBackground.isEnabled = true
+            tapVisibility.isEnabled = false
         }
         (self.parent as! BookManager).changeSwipeGesture(enabled: colorPickerView.isHidden)
     }
@@ -272,12 +274,14 @@ class FrontCover: UIViewController {
             buttonPalette.isEnabled = false
             buttonImport.isEnabled = false
             buttonBackground.isEnabled = false
+            tapVisibility.isEnabled = true
         }
         else {
             neatColorPicker.isHidden = true
             buttonPalette.isEnabled = true
             buttonImport.isEnabled = true
             buttonBackground.isEnabled = true
+            tapVisibility.isEnabled = false
         }
         (self.parent as! BookManager).changeSwipeGesture(enabled: neatColorPicker.isHidden)
     }
@@ -338,39 +342,54 @@ class FrontCover: UIViewController {
         animator = ChainableAnimator(view: buttonFullscreen)
         animator.transform(x: 80).animate(t: 0.3)
         
-        tapShow.isEnabled = true
+        tapVisibility.isEnabled = true
     }
     
     // MARK: Tap Register
-    @IBAction func showUIElements(_ sender: Any) {
-        buttonMenu.isHidden = false
-        var animator: ChainableAnimator = ChainableAnimator(view: buttonMenu)
-        animator.transform(x: 80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonReset)
-        animator.transform(x: 80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonResetSave)
-        animator.transform(x: 80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonSave)
-        animator.transform(x: 80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonExit)
-        animator.transform(x: 80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonBackground)
-        animator.transform(x: -80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonPalette)
-        animator.transform(x: -80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonProPalette)
-        animator.transform(x: -80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonImport)
-        animator.transform(x: -80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonFormat)
-        animator.transform(x: -80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonAddPage)
-        animator.transform(x: -80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonFullscreen)
-        animator.transform(x: -80).animate(t: 0.3)
-        tapShow.isEnabled = false
+    @IBAction func uielementsVisibility(_ sender: Any) {
+        if !colorPickerView.isHidden || !neatColorPicker.isHidden {
+            buttonPalette.isEnabled = true
+            buttonProPalette.isEnabled = true
+            buttonImport.isEnabled = true
+            buttonBackground.isEnabled = true
+            tapVisibility.isEnabled = false
+            if !colorPickerView.isHidden {
+                colorPickerView.isHidden = true
+                (self.parent as! BookManager).changeSwipeGesture(enabled: colorPickerView.isHidden)
+            }
+            else if !neatColorPicker.isHidden {
+                neatColorPicker.isHidden = true
+                (self.parent as! BookManager).changeSwipeGesture(enabled: colorPickerView.isHidden)
+            }
+        }
+        else {
+            var animator: ChainableAnimator = ChainableAnimator(view: buttonMenu)
+            animator.transform(x: 80).animate(t: 0.3)
+            animator = ChainableAnimator(view: buttonReset)
+            animator.transform(x: 80).animate(t: 0.3)
+            animator = ChainableAnimator(view: buttonResetSave)
+            animator.transform(x: 80).animate(t: 0.3)
+            animator = ChainableAnimator(view: buttonSave)
+            animator.transform(x: 80).animate(t: 0.3)
+            animator = ChainableAnimator(view: buttonExit)
+            animator.transform(x: 80).animate(t: 0.3)
+            animator = ChainableAnimator(view: buttonBackground)
+            animator.transform(x: -80).animate(t: 0.3)
+            animator = ChainableAnimator(view: buttonPalette)
+            animator.transform(x: -80).animate(t: 0.3)
+            animator = ChainableAnimator(view: buttonProPalette)
+            animator.transform(x: -80).animate(t: 0.3)
+            animator = ChainableAnimator(view: buttonImport)
+            animator.transform(x: -80).animate(t: 0.3)
+            animator = ChainableAnimator(view: buttonFormat)
+            animator.transform(x: -80).animate(t: 0.3)
+            animator = ChainableAnimator(view: buttonAddPage)
+            animator.transform(x: -80).animate(t: 0.3)
+            animator = ChainableAnimator(view: buttonFullscreen)
+            animator.transform(x: -80).animate(t: 0.3)
+            tapVisibility.isEnabled = false
+        }
     }
-    
 }
 
 // MARK: - ColorPickerViewDelegate
@@ -392,6 +411,7 @@ extension FrontCover: ColorPickerViewDelegate {
             self.view.backgroundColor = UIColor.white
         }
         (self.parent as! BookManager).changeSwipeGesture(enabled: true)
+        tapVisibility.isEnabled = false
     }
 }
 
@@ -429,5 +449,6 @@ extension FrontCover: ChromaColorPickerDelegate {
         buttonPalette.isEnabled = true
         buttonImport.isEnabled = true
         (self.parent as! BookManager).changeSwipeGesture(enabled: true)
+        tapVisibility.isEnabled = false
     }
 }
