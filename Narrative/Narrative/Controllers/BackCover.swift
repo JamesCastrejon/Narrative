@@ -336,7 +336,7 @@ class BackCover: UIViewController {
             }
             else if !neatColorPicker.isHidden {
                 neatColorPicker.isHidden = true
-                (self.parent as! BookManager).changeSwipeGesture(enabled: colorPickerView.isHidden)
+                (self.parent as! BookManager).changeSwipeGesture(enabled: neatColorPicker.isHidden)
             }
         }
         else {

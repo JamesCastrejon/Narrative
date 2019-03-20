@@ -306,7 +306,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FcH-zy-0We" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer enabled="NO" id="kFd-x4-RKB">
+                <tapGestureRecognizer enabled="NO" cancelsTouchesInView="NO" id="kFd-x4-RKB">
                     <connections>
                         <action selector="uielementsVisibility:" destination="5ag-Rg-rTH" id="awp-74-SDf"/>
                     </connections>
@@ -574,7 +574,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pX3-bA-LEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer enabled="NO" id="o5z-o7-jnF" userLabel="Tap Visibility">
+                <tapGestureRecognizer enabled="NO" cancelsTouchesInView="NO" id="o5z-o7-jnF" userLabel="Tap Visibility">
                     <connections>
                         <action selector="uielementsVisibility:" destination="NKG-NZ-iZW" id="y35-eB-ITV"/>
                     </connections>
@@ -807,7 +807,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BDj-IM-KlL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer enabled="NO" id="pLL-LD-Rmo" userLabel="Tap Visibility">
+                <tapGestureRecognizer enabled="NO" cancelsTouchesInView="NO" id="pLL-LD-Rmo" userLabel="Tap Visibility">
                     <connections>
                         <action selector="uielementsVisibility:" destination="OGg-6W-XUX" id="oV7-Xu-ld0"/>
                     </connections>
