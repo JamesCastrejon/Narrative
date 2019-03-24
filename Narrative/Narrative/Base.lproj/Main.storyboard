@@ -75,6 +75,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <gestureRecognizers/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Front Cover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQJ-Ra-oCZ" userLabel="Label Page Number Editor">
+                                <rect key="frame" x="116.5" y="618" width="142" height="29"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lU-eI-nPv">
                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                 <color key="backgroundColor" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -262,10 +268,12 @@
                             <constraint firstItem="857-2y-1wL" firstAttribute="leading" secondItem="Gif-Jg-Kem" secondAttribute="leading" id="Ge9-vP-Jty"/>
                             <constraint firstAttribute="bottomMargin" secondItem="SKn-2a-3bn" secondAttribute="bottom" id="JeO-MZ-AIg"/>
                             <constraint firstItem="Gif-Jg-Kem" firstAttribute="trailing" secondItem="5Oq-LS-Acr" secondAttribute="trailing" constant="20" id="KZ8-y5-U7q"/>
+                            <constraint firstItem="Gif-Jg-Kem" firstAttribute="bottom" secondItem="ZQJ-Ra-oCZ" secondAttribute="bottom" constant="20" id="L0z-dr-fsA"/>
                             <constraint firstItem="SKn-2a-3bn" firstAttribute="top" secondItem="QUo-Pt-i5d" secondAttribute="topMargin" constant="-20" id="LZV-HO-4E5"/>
                             <constraint firstItem="e0M-3g-nqZ" firstAttribute="leading" secondItem="Gif-Jg-Kem" secondAttribute="leading" id="RU3-BK-CBI"/>
                             <constraint firstItem="7lU-eI-nPv" firstAttribute="leading" secondItem="QUo-Pt-i5d" secondAttribute="leading" id="Syb-ta-uBg"/>
                             <constraint firstItem="sW2-Pd-gJa" firstAttribute="top" secondItem="5Oq-LS-Acr" secondAttribute="bottom" constant="24" id="TJi-kU-jz4"/>
+                            <constraint firstItem="ZQJ-Ra-oCZ" firstAttribute="centerX" secondItem="QUo-Pt-i5d" secondAttribute="centerX" id="TTB-An-1VA"/>
                             <constraint firstItem="aEk-pg-aDN" firstAttribute="top" secondItem="QUo-Pt-i5d" secondAttribute="top" id="TcA-pY-HX1"/>
                             <constraint firstItem="aEk-pg-aDN" firstAttribute="leading" secondItem="Gif-Jg-Kem" secondAttribute="leading" id="V5E-1s-uvz"/>
                             <constraint firstItem="sW2-Pd-gJa" firstAttribute="top" secondItem="1DO-NL-pTh" secondAttribute="bottom" constant="24" id="VI1-gX-Gec"/>
@@ -325,6 +333,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="By1-ro-m7G" userLabel="ImageBackground">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3aA-rn-fVG" userLabel="Label Page Number Editor">
+                                <rect key="frame" x="154.5" y="618" width="66.5" height="29"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yne-ws-JRI">
                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                 <color key="backgroundColor" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -521,6 +535,7 @@
                         <constraints>
                             <constraint firstItem="yne-ws-JRI" firstAttribute="leading" secondItem="esa-i4-Fq8" secondAttribute="leading" id="12u-mb-MyL"/>
                             <constraint firstItem="gkW-9o-8l8" firstAttribute="leading" secondItem="0CE-IO-oJR" secondAttribute="leading" id="26N-w4-St0"/>
+                            <constraint firstItem="0CE-IO-oJR" firstAttribute="bottom" secondItem="3aA-rn-fVG" secondAttribute="bottom" constant="20" id="2d4-dJ-G6F"/>
                             <constraint firstItem="Gqj-31-zry" firstAttribute="top" secondItem="zTx-e5-gxD" secondAttribute="bottom" constant="24" id="3Fx-Ng-Tsx"/>
                             <constraint firstItem="lAT-MF-xu8" firstAttribute="top" secondItem="eKz-V8-pSg" secondAttribute="bottom" constant="24" id="52o-db-6JK"/>
                             <constraint firstItem="By1-ro-m7G" firstAttribute="leading" secondItem="esa-i4-Fq8" secondAttribute="leadingMargin" constant="-16" id="86l-VH-Etq"/>
@@ -540,6 +555,7 @@
                             <constraint firstItem="eKz-V8-pSg" firstAttribute="centerY" secondItem="esa-i4-Fq8" secondAttribute="centerY" id="kJf-pd-YLO"/>
                             <constraint firstItem="0CE-IO-oJR" firstAttribute="trailing" secondItem="lAT-MF-xu8" secondAttribute="trailing" constant="20" id="mAo-NJ-way"/>
                             <constraint firstItem="gF2-0F-1uJ" firstAttribute="top" secondItem="esa-i4-Fq8" secondAttribute="top" id="mq9-bN-o3S"/>
+                            <constraint firstItem="3aA-rn-fVG" firstAttribute="centerX" secondItem="esa-i4-Fq8" secondAttribute="centerX" id="mzK-Nu-4Sa"/>
                             <constraint firstItem="Gqj-31-zry" firstAttribute="top" secondItem="CvF-j5-E5C" secondAttribute="bottom" constant="24" id="nfB-O2-Pe8"/>
                             <constraint firstItem="gkW-9o-8l8" firstAttribute="top" secondItem="esa-i4-Fq8" secondAttribute="top" id="qY1-AY-lFF"/>
                             <constraint firstItem="0CE-IO-oJR" firstAttribute="trailing" secondItem="eKz-V8-pSg" secondAttribute="trailing" constant="20" id="qZT-D3-0S1"/>
@@ -570,6 +586,7 @@
                         <outlet property="buttonResetSave" destination="gF2-0F-1uJ" id="8g2-TD-iRo"/>
                         <outlet property="buttonSave" destination="J8p-5N-78X" id="T0K-0E-kGM"/>
                         <outlet property="imageBackground" destination="By1-ro-m7G" id="4x8-vf-OTM"/>
+                        <outlet property="labelPageNumberEditor" destination="3aA-rn-fVG" id="qLh-18-Xii"/>
                         <outlet property="tapVisibility" destination="o5z-o7-jnF" id="djv-nr-RKk"/>
                     </connections>
                 </viewController>
@@ -754,6 +771,12 @@
                                     <action selector="hideUIElements:" destination="OGg-6W-XUX" eventType="touchUpInside" id="UDT-hN-6Sz"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back Cover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TC7-aj-7eQ" userLabel="Label Page Number Editor">
+                                <rect key="frame" x="117.5" y="618" width="140" height="29"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
@@ -764,10 +787,12 @@
                             <constraint firstItem="eKv-Wy-5Un" firstAttribute="leading" secondItem="zDy-d9-xNT" secondAttribute="leadingMargin" constant="-16" id="8kM-DU-rw5"/>
                             <constraint firstItem="t0d-ZV-i0n" firstAttribute="top" secondItem="MTC-6h-fcP" secondAttribute="bottom" constant="24" id="AgG-wR-wJI"/>
                             <constraint firstItem="klj-nv-OEx" firstAttribute="trailing" secondItem="kxF-FO-OcW" secondAttribute="trailing" constant="20" id="BZM-Ke-jEM"/>
+                            <constraint firstItem="TC7-aj-7eQ" firstAttribute="centerX" secondItem="zDy-d9-xNT" secondAttribute="centerX" id="Erf-Fw-L8b"/>
                             <constraint firstItem="Kzh-g0-CRt" firstAttribute="leading" secondItem="zDy-d9-xNT" secondAttribute="leading" id="G1A-Rr-iwD"/>
                             <constraint firstItem="klj-nv-OEx" firstAttribute="trailing" secondItem="ww2-zI-dGA" secondAttribute="trailing" constant="20" id="GKm-ie-vXU"/>
                             <constraint firstAttribute="bottomMargin" secondItem="eKv-Wy-5Un" secondAttribute="bottom" id="IuR-2o-tf0"/>
                             <constraint firstItem="klj-nv-OEx" firstAttribute="trailing" secondItem="MTC-6h-fcP" secondAttribute="trailing" constant="20" id="Ns9-6A-XkC"/>
+                            <constraint firstItem="klj-nv-OEx" firstAttribute="bottom" secondItem="TC7-aj-7eQ" secondAttribute="bottom" constant="20" id="RGA-lH-uey"/>
                             <constraint firstItem="t0d-ZV-i0n" firstAttribute="top" secondItem="kxF-FO-OcW" secondAttribute="bottom" constant="24" id="RNg-Z7-ITl"/>
                             <constraint firstItem="klj-nv-OEx" firstAttribute="trailing" secondItem="Sig-2G-9Ar" secondAttribute="trailing" constant="20" id="SPf-Pv-G4K"/>
                             <constraint firstItem="x3v-YJ-hFn" firstAttribute="top" secondItem="zDy-d9-xNT" secondAttribute="top" id="WTQ-la-qI4"/>

@@ -88,7 +88,6 @@ class FrontCover: UIViewController {
         buttonProPalette.layer.cornerRadius = 0.5 * buttonWidth
         buttonImport.layer.cornerRadius = 0.5 * buttonWidth
         
-        
         buttonFormat.layer.cornerRadius = 0.5 * buttonWidth
         buttonAddPage.layer.cornerRadius = 0.5 * buttonWidth
         buttonFullscreen.layer.cornerRadius = 0.5 * buttonWidth

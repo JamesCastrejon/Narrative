@@ -34,6 +34,7 @@ class Page: UIViewController {
     @IBOutlet var buttonDeletePage: UIButton!
     @IBOutlet var buttonFullscreen: UIButton!
     @IBOutlet var imageBackground: UIImageView!
+    @IBOutlet var labelPageNumberEditor: UILabel!
     
     // MARK: Variables
     var previousColor: UIColor = UIColor.white
@@ -46,9 +47,14 @@ class Page: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        labelPageNumberEditor.text = "Page \(Book.pageNumber)"
         self.setupColorPicker()
         self.setupProColorPicker()
         self.setupButtons()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        labelPageNumberEditor.text = "Page \(Book.pageNumber)"
     }
     
     private func setupColorPicker() {
