@@ -380,6 +380,8 @@ class Page: UIViewController {
         animator.transform(x: 80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonFullscreen)
         animator.transform(x: 80).animate(t: 0.3)
+        animator = ChainableAnimator(view: labelPageNumberEditor)
+        animator.transform(y: 80).animate(t: 0.3)
         
         tapVisibility.isEnabled = true
     }
@@ -428,6 +430,8 @@ class Page: UIViewController {
             animator.transform(x: -80).animate(t: 0.3)
             animator = ChainableAnimator(view: buttonFullscreen)
             animator.transform(x: -80).animate(t: 0.3)
+            animator = ChainableAnimator(view: labelPageNumberEditor)
+            animator.transform(y: -80).animate(t: 0.3)
             tapVisibility.isEnabled = false
         }
     }

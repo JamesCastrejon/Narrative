@@ -310,6 +310,7 @@
                         <outlet property="buttonResetSave" destination="aEk-pg-aDN" id="TFe-m7-EnO"/>
                         <outlet property="buttonSave" destination="Cfx-r9-16W" id="6og-8K-36J"/>
                         <outlet property="imageBackground" destination="SKn-2a-3bn" id="iA5-LP-S23"/>
+                        <outlet property="labelPageNumberEditor" destination="ZQJ-Ra-oCZ" id="XzO-EY-wcU"/>
                         <outlet property="tapVisibility" destination="kFd-x4-RKB" id="gmM-NA-yhU"/>
                     </connections>
                 </viewController>
@@ -828,6 +829,7 @@
                         <outlet property="buttonResetSave" destination="zLU-nU-T20" id="kiS-Gs-zad"/>
                         <outlet property="buttonSave" destination="x3v-YJ-hFn" id="pMX-LR-WPz"/>
                         <outlet property="imageBackground" destination="eKv-Wy-5Un" id="Ywp-lv-jXO"/>
+                        <outlet property="labelPageNumberEditor" destination="TC7-aj-7eQ" id="SfU-VS-Aed"/>
                         <outlet property="tapVisibility" destination="pLL-LD-Rmo" id="2az-w7-Bat"/>
                     </connections>
                 </viewController>

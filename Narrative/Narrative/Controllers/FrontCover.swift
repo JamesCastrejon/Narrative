@@ -33,6 +33,7 @@ class FrontCover: UIViewController {
     @IBOutlet var buttonAddPage: UIButton!
     @IBOutlet var buttonFullscreen: UIButton!
     @IBOutlet var imageBackground: UIImageView!
+    @IBOutlet var labelPageNumberEditor: UILabel!
     
     // MARK: Variables
     var previousColor: UIColor = UIColor.white
@@ -340,6 +341,8 @@ class FrontCover: UIViewController {
         animator.transform(x: 80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonFullscreen)
         animator.transform(x: 80).animate(t: 0.3)
+        animator = ChainableAnimator(view: labelPageNumberEditor)
+        animator.transform(y: 80).animate(t: 0.3)
         
         tapVisibility.isEnabled = true
     }
@@ -386,6 +389,8 @@ class FrontCover: UIViewController {
             animator.transform(x: -80).animate(t: 0.3)
             animator = ChainableAnimator(view: buttonFullscreen)
             animator.transform(x: -80).animate(t: 0.3)
+            animator = ChainableAnimator(view: labelPageNumberEditor)
+            animator.transform(y: -80).animate(t: 0.3)
             tapVisibility.isEnabled = false
         }
     }

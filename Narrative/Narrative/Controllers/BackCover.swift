@@ -32,6 +32,7 @@ class BackCover: UIViewController {
     @IBOutlet var buttonFormat: UIButton!
     @IBOutlet var buttonFullscreen: UIButton!
     @IBOutlet var imageBackground: UIImageView!
+    @IBOutlet var labelPageNumberEditor: UILabel!
     
     // MARK: Variables
     var previousColor: UIColor = UIColor.white
@@ -318,6 +319,8 @@ class BackCover: UIViewController {
         animator.transform(x: 80).animate(t: 0.3)
         animator = ChainableAnimator(view: buttonFullscreen)
         animator.transform(x: 80).animate(t: 0.3)
+        animator = ChainableAnimator(view: labelPageNumberEditor)
+        animator.transform(y: 80).animate(t: 0.3)
         
         tapVisibility.isEnabled = true
     }
@@ -362,6 +365,8 @@ class BackCover: UIViewController {
             animator.transform(x: -80).animate(t: 0.3)
             animator = ChainableAnimator(view: buttonFullscreen)
             animator.transform(x: -80).animate(t: 0.3)
+            animator = ChainableAnimator(view: labelPageNumberEditor)
+            animator.transform(y: -80).animate(t: 0.3)
             tapVisibility.isEnabled = false
         }
     }
