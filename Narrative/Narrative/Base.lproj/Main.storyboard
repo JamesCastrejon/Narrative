@@ -61,7 +61,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="7X1-Dc-5QR" customClass="BookManager" customModule="Narrative" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="avf-w2-X95" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1716" y="152"/>
+            <point key="canvasLocation" x="874" y="134"/>
         </scene>
         <!--Front Cover-->
         <scene sceneID="JRV-oe-HGY">
@@ -71,10 +71,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SKn-2a-3bn" userLabel="ImageBackground">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cTf-ss-cjb">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <gestureRecognizers/>
-                            </imageView>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SKn-2a-3bn" userLabel="ImageBackground">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <gestureRecognizers/>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="RK1-d1-dl2">
+                                        <rect key="frame" x="139" y="38" width="97" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="40"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert" returnKeyType="done"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="SKn-2a-3bn" secondAttribute="trailing" id="AII-fE-aby"/>
+                                    <constraint firstAttribute="bottom" secondItem="SKn-2a-3bn" secondAttribute="bottom" id="Feb-Ut-7d2"/>
+                                    <constraint firstItem="SKn-2a-3bn" firstAttribute="top" secondItem="cTf-ss-cjb" secondAttribute="top" id="f8Q-Nh-7Qx"/>
+                                    <constraint firstItem="SKn-2a-3bn" firstAttribute="leading" secondItem="cTf-ss-cjb" secondAttribute="leading" id="nLR-3G-FAr"/>
+                                    <constraint firstAttribute="width" constant="375" id="sgf-v8-df7"/>
+                                    <constraint firstAttribute="height" constant="667" id="y95-SX-DqH"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Front Cover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQJ-Ra-oCZ" userLabel="Label Page Number Editor">
                                 <rect key="frame" x="116.5" y="618" width="142" height="29"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="25"/>
@@ -260,16 +281,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="SKn-2a-3bn" firstAttribute="leading" secondItem="QUo-Pt-i5d" secondAttribute="leadingMargin" constant="-16" id="0e9-LW-NDU"/>
                             <constraint firstItem="Gif-Jg-Kem" firstAttribute="trailing" secondItem="Sco-D0-ZKT" secondAttribute="trailing" constant="20" id="9DT-7G-hxu"/>
                             <constraint firstItem="xF0-DO-8Ax" firstAttribute="top" secondItem="uFF-F2-wfF" secondAttribute="bottom" constant="24" id="9t9-Ij-ats"/>
                             <constraint firstItem="Cfx-r9-16W" firstAttribute="leading" secondItem="Gif-Jg-Kem" secondAttribute="leading" id="CIm-fw-ZYi"/>
                             <constraint firstItem="sW2-Pd-gJa" firstAttribute="top" secondItem="6uP-jS-VaO" secondAttribute="bottom" constant="24" id="Ec4-nD-Lvu"/>
                             <constraint firstItem="857-2y-1wL" firstAttribute="leading" secondItem="Gif-Jg-Kem" secondAttribute="leading" id="Ge9-vP-Jty"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="SKn-2a-3bn" secondAttribute="bottom" id="JeO-MZ-AIg"/>
                             <constraint firstItem="Gif-Jg-Kem" firstAttribute="trailing" secondItem="5Oq-LS-Acr" secondAttribute="trailing" constant="20" id="KZ8-y5-U7q"/>
                             <constraint firstItem="Gif-Jg-Kem" firstAttribute="bottom" secondItem="ZQJ-Ra-oCZ" secondAttribute="bottom" constant="20" id="L0z-dr-fsA"/>
-                            <constraint firstItem="SKn-2a-3bn" firstAttribute="top" secondItem="QUo-Pt-i5d" secondAttribute="topMargin" constant="-20" id="LZV-HO-4E5"/>
+                            <constraint firstItem="cTf-ss-cjb" firstAttribute="top" secondItem="QUo-Pt-i5d" secondAttribute="top" id="LOR-pH-cJX"/>
                             <constraint firstItem="e0M-3g-nqZ" firstAttribute="leading" secondItem="Gif-Jg-Kem" secondAttribute="leading" id="RU3-BK-CBI"/>
                             <constraint firstItem="7lU-eI-nPv" firstAttribute="leading" secondItem="QUo-Pt-i5d" secondAttribute="leading" id="Syb-ta-uBg"/>
                             <constraint firstItem="sW2-Pd-gJa" firstAttribute="top" secondItem="5Oq-LS-Acr" secondAttribute="bottom" constant="24" id="TJi-kU-jz4"/>
@@ -280,6 +299,7 @@
                             <constraint firstItem="857-2y-1wL" firstAttribute="top" secondItem="QUo-Pt-i5d" secondAttribute="top" id="XYT-hm-1ED"/>
                             <constraint firstItem="uFF-F2-wfF" firstAttribute="top" secondItem="sW2-Pd-gJa" secondAttribute="bottom" constant="24" id="ZE4-5L-3T9"/>
                             <constraint firstItem="e0M-3g-nqZ" firstAttribute="top" secondItem="QUo-Pt-i5d" secondAttribute="top" id="d9x-vV-oVS"/>
+                            <constraint firstItem="cTf-ss-cjb" firstAttribute="top" secondItem="QUo-Pt-i5d" secondAttribute="top" id="dEV-z7-X7j"/>
                             <constraint firstItem="sW2-Pd-gJa" firstAttribute="top" secondItem="Sco-D0-ZKT" secondAttribute="bottom" constant="24" id="fPy-8R-RG6"/>
                             <constraint firstItem="Cfx-r9-16W" firstAttribute="top" secondItem="QUo-Pt-i5d" secondAttribute="top" id="jsh-Gb-Zv6"/>
                             <constraint firstItem="Gif-Jg-Kem" firstAttribute="trailing" secondItem="uFF-F2-wfF" secondAttribute="trailing" constant="20" id="kn4-Yt-lxT"/>
@@ -289,7 +309,7 @@
                             <constraint firstItem="sW2-Pd-gJa" firstAttribute="centerY" secondItem="QUo-Pt-i5d" secondAttribute="centerY" id="teh-rj-GNN"/>
                             <constraint firstItem="7lU-eI-nPv" firstAttribute="top" secondItem="QUo-Pt-i5d" secondAttribute="top" id="u91-Qa-Wvv"/>
                             <constraint firstItem="Gif-Jg-Kem" firstAttribute="trailing" secondItem="sW2-Pd-gJa" secondAttribute="trailing" constant="20" id="uHi-vA-oKc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="SKn-2a-3bn" secondAttribute="trailing" constant="-16" id="vbW-3N-lIh"/>
+                            <constraint firstItem="cTf-ss-cjb" firstAttribute="centerX" secondItem="QUo-Pt-i5d" secondAttribute="centerX" id="ziO-EK-taS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Gif-Jg-Kem"/>
                         <connections>
@@ -321,7 +341,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1020" y="868"/>
+            <point key="canvasLocation" x="178" y="850"/>
         </scene>
         <!--Page-->
         <scene sceneID="lAN-1Q-ts0">
@@ -598,7 +618,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1716" y="868"/>
+            <point key="canvasLocation" x="874" y="850"/>
         </scene>
         <!--Back Cover-->
         <scene sceneID="1a7-eT-Wa0">
@@ -840,7 +860,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2407" y="868"/>
+            <point key="canvasLocation" x="1564" y="850"/>
         </scene>
     </scenes>
     <resources>
