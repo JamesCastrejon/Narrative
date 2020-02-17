@@ -11,6 +11,7 @@
 		D1242625223DA01A00C04C48 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1242624223DA01900C04C48 /* Book.swift */; };
 		D1242627223DBC3D00C04C48 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1242626223DBC3D00C04C48 /* Page.swift */; };
 		D124262D223DBE1500C04C48 /* BackCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D124262C223DBE1500C04C48 /* BackCover.swift */; };
+		D141BCBB23FAF40800466EBB /* ButtonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D141BCBA23FAF40800466EBB /* ButtonManager.swift */; };
 		D178A8F3221F030A002193FC /* FrontCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D178A8F2221F030A002193FC /* FrontCover.swift */; };
 		D18F4789221DC53600A58BA5 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18F4788221DC53600A58BA5 /* MainMenu.swift */; };
 		D1BA58A7221B746800483F2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BA58A6221B746800483F2F /* AppDelegate.swift */; };
@@ -28,6 +29,7 @@
 		D1242624223DA01900C04C48 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		D1242626223DBC3D00C04C48 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		D124262C223DBE1500C04C48 /* BackCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackCover.swift; sourceTree = "<group>"; };
+		D141BCBA23FAF40800466EBB /* ButtonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonManager.swift; sourceTree = "<group>"; };
 		D178A8F2221F030A002193FC /* FrontCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontCover.swift; sourceTree = "<group>"; };
 		D18F4788221DC53600A58BA5 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		D1BA58A3221B746800483F2F /* Narrative.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Narrative.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +60,26 @@
 				9AEC7B5817A36D9052C0B01E /* Pods_Narrative.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D141BCB823FAF38C00466EBB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D18F4788221DC53600A58BA5 /* MainMenu.swift */,
+				D1C9AB5F221E05BF001EC435 /* BookManager.swift */,
+				D178A8F2221F030A002193FC /* FrontCover.swift */,
+				D1242626223DBC3D00C04C48 /* Page.swift */,
+				D124262C223DBE1500C04C48 /* BackCover.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D141BCB923FAF3D300466EBB /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				D141BCBA23FAF40800466EBB /* ButtonManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		D1BA589A221B746700483F2F = {
@@ -96,11 +118,8 @@
 		D1BA58B8221B758F00483F2F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D18F4788221DC53600A58BA5 /* MainMenu.swift */,
-				D1C9AB5F221E05BF001EC435 /* BookManager.swift */,
-				D178A8F2221F030A002193FC /* FrontCover.swift */,
-				D1242626223DBC3D00C04C48 /* Page.swift */,
-				D124262C223DBE1500C04C48 /* BackCover.swift */,
+				D141BCB923FAF3D300466EBB /* Managers */,
+				D141BCB823FAF38C00466EBB /* ViewControllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -270,6 +289,7 @@
 				D1242627223DBC3D00C04C48 /* Page.swift in Sources */,
 				D1BA58A7221B746800483F2F /* AppDelegate.swift in Sources */,
 				D124262D223DBE1500C04C48 /* BackCover.swift in Sources */,
+				D141BCBB23FAF40800466EBB /* ButtonManager.swift in Sources */,
 				D1242625223DA01A00C04C48 /* Book.swift in Sources */,
 				D1C9AB60221E05BF001EC435 /* BookManager.swift in Sources */,
 			);

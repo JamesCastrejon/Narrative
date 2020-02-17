@@ -75,43 +75,40 @@ class BackCover: UIViewController {
     }
     
     private func setupButtons() {
-        setupButtonRadius()
-        setupButtonShadows()
+        setupButtonRadius(for: buttonBackground)
+        setupButtonRadius(for: buttonPalette)
+        setupButtonRadius(for: buttonProPalette)
+        setupButtonRadius(for: buttonImport)
+        setupButtonRadius(for: buttonFormat)
+        setupButtonRadius(for: buttonFullscreen)
+        setupButtonShadows(for: buttonExit)
+        setupButtonShadows(for: buttonBackground)
+        setupButtonShadows(for: buttonPalette)
+        setupButtonShadows(for: buttonProPalette)
+        setupButtonShadows(for: buttonImport)
+        setupButtonShadows(for: buttonFormat)
+        setupButtonShadows(for: buttonFullscreen)
+        hideShadow(for: buttonPalette)
+        hideShadow(for: buttonProPalette)
+        hideShadow(for: buttonImport)
         setupButtonAnimations()
     }
     
-    private func setupButtonRadius() {
+    private func setupButtonRadius(for button: UIButton) {
         let buttonWidth = buttonBackground.bounds.size.width
-        
-        buttonBackground.layer.cornerRadius = 0.5 * buttonWidth
-        buttonPalette.layer.cornerRadius = 0.5 * buttonWidth
-        buttonProPalette.layer.cornerRadius = 0.5 * buttonWidth
-        buttonImport.layer.cornerRadius = 0.5 * buttonWidth
-        
-        
-        buttonFormat.layer.cornerRadius = 0.5 * buttonWidth
-        buttonFullscreen.layer.cornerRadius = 0.5 * buttonWidth
+        button.layer.cornerRadius = 0.5 * buttonWidth
     }
     
-    private func setupButtonShadows() {
-        addShadows(for: buttonExit)
-        addShadows(for: buttonBackground)
-        addShadows(for: buttonPalette)
-        addShadows(for: buttonProPalette)
-        addShadows(for: buttonImport)
-        addShadows(for: buttonFormat)
-        addShadows(for: buttonFullscreen)
-        buttonPalette.layer.shadowColor = UIColor.clear.cgColor
-        buttonProPalette.layer.shadowColor = UIColor.clear.cgColor
-        buttonImport.layer.shadowColor = UIColor.clear.cgColor
-    }
-    
-    private func addShadows(for button: UIButton) {
+    private func setupButtonShadows(for button: UIButton) {
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         button.layer.masksToBounds = false
         button.layer.shadowRadius = 1.0
         button.layer.shadowOpacity = 0.5
+    }
+    
+    private func hideShadow(for button: UIButton) {
+        button.layer.shadowColor = UIColor.clear.cgColor
     }
     
     private func setupButtonAnimations() {
