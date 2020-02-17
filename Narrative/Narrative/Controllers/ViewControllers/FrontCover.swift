@@ -48,9 +48,9 @@ class FrontCover: UIViewController {
         super.viewDidLoad()
         bManager = ButtonManager()
         
-        self.setupColorPicker()
-        self.setupProColorPicker()
-        self.setupButtons()
+        setupColorPicker()
+        setupProColorPicker()
+        setupButtons()
     }
     
     private func setupColorPicker() {

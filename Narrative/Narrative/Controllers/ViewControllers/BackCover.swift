@@ -35,6 +35,7 @@ class BackCover: UIViewController {
     @IBOutlet var labelPageNumberEditor: UILabel!
     
     // MARK: Variables
+    var bManager: ButtonManager!
     var previousColor: UIColor = UIColor.white
     var colorPickerView: ColorPickerView!
     var neatColorPicker: ChromaColorPicker!
@@ -44,6 +45,7 @@ class BackCover: UIViewController {
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        bManager = ButtonManager()
         
         self.setupColorPicker()
         self.setupProColorPicker()
@@ -75,40 +77,23 @@ class BackCover: UIViewController {
     }
     
     private func setupButtons() {
-        setupButtonRadius(for: buttonBackground)
-        setupButtonRadius(for: buttonPalette)
-        setupButtonRadius(for: buttonProPalette)
-        setupButtonRadius(for: buttonImport)
-        setupButtonRadius(for: buttonFormat)
-        setupButtonRadius(for: buttonFullscreen)
-        setupButtonShadows(for: buttonExit)
-        setupButtonShadows(for: buttonBackground)
-        setupButtonShadows(for: buttonPalette)
-        setupButtonShadows(for: buttonProPalette)
-        setupButtonShadows(for: buttonImport)
-        setupButtonShadows(for: buttonFormat)
-        setupButtonShadows(for: buttonFullscreen)
-        hideShadow(for: buttonPalette)
-        hideShadow(for: buttonProPalette)
-        hideShadow(for: buttonImport)
+        bManager.addRadius(for: buttonBackground)
+        bManager.addRadius(for: buttonPalette)
+        bManager.addRadius(for: buttonProPalette)
+        bManager.addRadius(for: buttonImport)
+        bManager.addRadius(for: buttonFormat)
+        bManager.addRadius(for: buttonFullscreen)
+        bManager.addShadow(for: buttonExit)
+        bManager.addShadow(for: buttonBackground)
+        bManager.addShadow(for: buttonPalette)
+        bManager.addShadow(for: buttonProPalette)
+        bManager.addShadow(for: buttonImport)
+        bManager.addShadow(for: buttonFormat)
+        bManager.addShadow(for: buttonFullscreen)
+        bManager.hideShadow(for: buttonPalette)
+        bManager.hideShadow(for: buttonProPalette)
+        bManager.hideShadow(for: buttonImport)
         setupButtonAnimations()
-    }
-    
-    private func setupButtonRadius(for button: UIButton) {
-        let buttonWidth = buttonBackground.bounds.size.width
-        button.layer.cornerRadius = 0.5 * buttonWidth
-    }
-    
-    private func setupButtonShadows(for button: UIButton) {
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        button.layer.masksToBounds = false
-        button.layer.shadowRadius = 1.0
-        button.layer.shadowOpacity = 0.5
-    }
-    
-    private func hideShadow(for button: UIButton) {
-        button.layer.shadowColor = UIColor.clear.cgColor
     }
     
     private func setupButtonAnimations() {
@@ -131,23 +116,23 @@ class BackCover: UIViewController {
     
     // MARK: Button Functionality
     @IBAction func menuVisibility(_ sender: Any) {
-        buttonMenu.isEnabled = false
+        bManager.disable(buttonMenu)
         
         if !buttonExit.isEnabled {
-            // TODO: disable text, background, fullscreen
-            buttonBackground.isEnabled = false
-            buttonFormat.isEnabled = false
-            buttonFullscreen.isEnabled = false
+            // TODO: disable text
+            bManager.disable(buttonBackground)
+            bManager.disable(buttonFormat)
+            bManager.disable(buttonFullscreen)
             
             let animationView:LOTAnimationView = buttonMenu.subviews.first as! LOTAnimationView
             animationView.play(fromProgress: 0.0, toProgress: 0.5) { (completed) in
-                self.buttonMenu.isEnabled = true
+                self.bManager.enable(self.buttonMenu)
             }
             
-            buttonReset.isEnabled = true
-            buttonResetSave.isEnabled = true
-            buttonSave.isEnabled = true
-            buttonExit.isEnabled = true
+            bManager.enable(buttonReset)
+            bManager.enable(buttonResetSave)
+            bManager.enable(buttonSave)
+            bManager.enable(buttonExit)
             var animator: ChainableAnimator = ChainableAnimator(view: buttonReset)
             animator.transform(y: 40).animate(t: 0.2)
             animator = ChainableAnimator(view: buttonResetSave)
@@ -160,13 +145,13 @@ class BackCover: UIViewController {
         else {
             let animationView:LOTAnimationView = buttonMenu.subviews.first as! LOTAnimationView
             animationView.play(fromProgress: 0.5, toProgress: 1.0) { (completed) in
-                self.buttonMenu.isEnabled = true
+                self.bManager.enable(self.buttonMenu)
             }
             
-            buttonReset.isEnabled = true
-            buttonResetSave.isEnabled = true
-            buttonSave.isEnabled = false
-            buttonExit.isEnabled = false
+            bManager.disable(buttonReset)
+            bManager.disable(buttonResetSave)
+            bManager.disable(buttonSave)
+            bManager.disable(buttonExit)
             var animator: ChainableAnimator = ChainableAnimator(view: buttonReset)
             animator.transform(y: -40).animate(t: 0.2)
             animator = ChainableAnimator(view: buttonResetSave)
@@ -175,9 +160,9 @@ class BackCover: UIViewController {
             animator.transform(y: -40).thenAfter(t: 0.2).transform(y: -40).thenAfter(t: 0.2).transform(y: -40).animate(t: 0.2)
             animator = ChainableAnimator(view: buttonExit)
             animator.transform(y: -40).thenAfter(t: 0.2).transform(y: -40).thenAfter(t: 0.2).transform(y: -40).thenAfter(t: 0.2).transform(y: -40).animate(t: 0.2) {
-                self.buttonBackground.isEnabled = true
-                self.buttonFormat.isEnabled = true
-                self.buttonFullscreen.isEnabled = true
+                self.bManager.enable(self.buttonBackground)
+                self.bManager.enable(self.buttonFormat)
+                self.bManager.enable(self.buttonFullscreen)
             }
         }
     }
@@ -198,11 +183,11 @@ class BackCover: UIViewController {
     }
     
     @IBAction func backgroundMenuVisibility(_ sender: Any) {
-        buttonBackground.isEnabled = false
+        bManager.disable(buttonBackground)
         if !buttonPalette.isEnabled {
-            buttonMenu.isEnabled = false
-            buttonFormat.isEnabled = false
-            buttonFullscreen.isEnabled = false
+            bManager.disable(buttonMenu)
+            bManager.disable(buttonFormat)
+            bManager.disable(buttonFullscreen)
             
             var animator: ChainableAnimator = ChainableAnimator(view: buttonPalette)
             animator.transform(x: -55).thenAfter(t: 0.2).transform(y: -60).animate(t: 0.2)
@@ -210,22 +195,22 @@ class BackCover: UIViewController {
             animator.transform(x: -55).animate(t: 0.2)
             animator = ChainableAnimator(view: buttonImport)
             animator.transform(x: -55).thenAfter(t: 0.2).transform(y: 60).animate(t: 0.2) {
-                self.buttonPalette.isEnabled = true
-                self.buttonProPalette.isEnabled = true
-                self.buttonImport.isEnabled = true
-                self.buttonBackground.isEnabled = true
-                self.buttonPalette.layer.shadowColor = UIColor.black.cgColor
-                self.buttonProPalette.layer.shadowColor = UIColor.black.cgColor
-                self.buttonImport.layer.shadowColor = UIColor.black.cgColor
+                self.bManager.enable(self.buttonPalette)
+                self.bManager.enable(self.buttonProPalette)
+                self.bManager.enable(self.buttonImport)
+                self.bManager.enable(self.buttonBackground)
+                self.bManager.showShadow(for: self.buttonPalette)
+                self.bManager.showShadow(for: self.buttonProPalette)
+                self.bManager.showShadow(for: self.buttonImport)
             }
         }
         else {
-            buttonPalette.isEnabled = false
-            buttonProPalette.isEnabled = false
-            buttonImport.isEnabled = false
-            buttonPalette.layer.shadowColor = UIColor.clear.cgColor
-            buttonProPalette.layer.shadowColor = UIColor.clear.cgColor
-            buttonImport.layer.shadowColor = UIColor.clear.cgColor
+            bManager.disable(buttonPalette)
+            bManager.disable(buttonProPalette)
+            bManager.disable(buttonImport)
+            bManager.hideShadow(for: buttonPalette)
+            bManager.hideShadow(for: buttonProPalette)
+            bManager.hideShadow(for: buttonImport)
             
             var animator: ChainableAnimator = ChainableAnimator(view: buttonPalette)
             animator.transform(y: 60).thenAfter(t: 0.2).transform(x: 55).animate(t: 0.2)
@@ -233,10 +218,10 @@ class BackCover: UIViewController {
             animator.transform(x: 55).animate(t: 0.2)
             animator = ChainableAnimator(view: buttonImport)
             animator.transform(y: -60).thenAfter(t: 0.2).transform(x: 55).animate(t: 0.2) {
-                self.buttonMenu.isEnabled = true
-                self.buttonBackground.isEnabled = true
-                self.buttonFormat.isEnabled = true
-                self.buttonFullscreen.isEnabled = true
+                self.bManager.enable(self.buttonMenu)
+                self.bManager.enable(self.buttonBackground)
+                self.bManager.enable(self.buttonFormat)
+                self.bManager.enable(self.buttonFullscreen)
             }
         }
     }
@@ -244,16 +229,16 @@ class BackCover: UIViewController {
     @IBAction func changeBackgroundColorStandard(_ sender: Any) {
         if colorPickerView.isHidden {
             colorPickerView.isHidden = false
-            buttonProPalette.isEnabled = false
-            buttonImport.isEnabled = false
-            buttonBackground.isEnabled = false
+            bManager.disable(buttonProPalette)
+            bManager.disable(buttonImport)
+            bManager.disable(buttonBackground)
             tapVisibility.isEnabled = true
         }
         else {
             colorPickerView.isHidden = true
-            buttonProPalette.isEnabled = true
-            buttonImport.isEnabled = true
-            buttonBackground.isEnabled = true
+            bManager.enable(buttonProPalette)
+            bManager.enable(buttonImport)
+            bManager.enable(buttonBackground)
             tapVisibility.isEnabled = false
         }
         (self.parent as! BookManager).changeSwipeGesture(enabled: colorPickerView.isHidden)
@@ -262,16 +247,16 @@ class BackCover: UIViewController {
     @IBAction func changeBackgroundColorSpecial(_ sender: Any) {
         if neatColorPicker.isHidden {
             neatColorPicker.isHidden = false
-            buttonPalette.isEnabled = false
-            buttonImport.isEnabled = false
-            buttonBackground.isEnabled = false
+            bManager.disable(buttonPalette)
+            bManager.disable(buttonImport)
+            bManager.disable(buttonBackground)
             tapVisibility.isEnabled = true
         }
         else {
             neatColorPicker.isHidden = true
-            buttonPalette.isEnabled = true
-            buttonImport.isEnabled = true
-            buttonBackground.isEnabled = true
+            bManager.enable(buttonPalette)
+            bManager.enable(buttonImport)
+            bManager.enable(buttonBackground)
             tapVisibility.isEnabled = false
         }
         (self.parent as! BookManager).changeSwipeGesture(enabled: neatColorPicker.isHidden)
@@ -325,10 +310,10 @@ class BackCover: UIViewController {
     // MARK: Tap Register
     @IBAction func uielementsVisibility(_ sender: Any) {
         if !colorPickerView.isHidden || !neatColorPicker.isHidden {
-            buttonPalette.isEnabled = true
-            buttonProPalette.isEnabled = true
-            buttonImport.isEnabled = true
-            buttonBackground.isEnabled = true
+            bManager.enable(buttonPalette)
+            bManager.enable(buttonProPalette)
+            bManager.enable(buttonImport)
+            bManager.enable(buttonBackground)
             tapVisibility.isEnabled = false
             if !colorPickerView.isHidden {
                 colorPickerView.isHidden = true
@@ -376,10 +361,10 @@ extension BackCover: ColorPickerViewDelegate {
         // TODO: refactor this method
         // A color has been selected
         self.imageBackground.image = nil
-        buttonBackground.isEnabled = true
+        bManager.enable(buttonPalette)
         colorPickerView.isHidden = true
-        buttonProPalette.isEnabled = true
-        buttonImport.isEnabled = true
+        bManager.enable(buttonProPalette)
+        bManager.enable(buttonImport)
         if previousColor != colorPickerView.colors[indexPath.row] {
             previousColor = colorPickerView.colors[indexPath.row]
             self.view.backgroundColor = colorPickerView.colors[indexPath.row]
@@ -420,12 +405,12 @@ extension BackCover: ColorPickerViewDelegateFlowLayout {
 extension BackCover: ChromaColorPickerDelegate {
     func colorPickerDidChooseColor(_ colorPicker: ChromaColorPicker, color: UIColor) {
         self.imageBackground.image = nil
-        buttonBackground.isEnabled = true
+        bManager.enable(buttonBackground)
         previousColor = color
         self.view.backgroundColor = color
         neatColorPicker.isHidden = true
-        buttonPalette.isEnabled = true
-        buttonImport.isEnabled = true
+        bManager.enable(buttonPalette)
+        bManager.enable(buttonImport)
         (self.parent as! BookManager).changeSwipeGesture(enabled: true)
         tapVisibility.isEnabled = false
     }
