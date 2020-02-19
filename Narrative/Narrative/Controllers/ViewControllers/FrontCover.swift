@@ -160,10 +160,10 @@ class FrontCover: UIViewController {
             animator.moveUp(buttonSave, 120, 0.4, .curveEaseOut)
             animator.moveUp(buttonExit, 160, 0.2, .curveEaseOut)
             
-            self.bManager.enable(self.buttonBackground)
-            self.bManager.enable(self.buttonFormat)
-            self.bManager.enable(self.buttonAddPage)
-            self.bManager.enable(self.buttonFullscreen)
+            bManager.enable(buttonBackground)
+            bManager.enable(buttonFormat)
+            bManager.enable(buttonAddPage)
+            bManager.enable(buttonFullscreen)
         }
     }
     @IBAction func reset(_ sender: Any) {
@@ -196,13 +196,13 @@ class FrontCover: UIViewController {
             animator.moveLeft(buttonImport, 55, 0.4, .curveEaseIn)
             animator.moveDown(buttonImport, 60, 0.4, .curveEaseIn)
             
-            self.bManager.enable(self.buttonPalette)
-            self.bManager.enable(self.buttonProPalette)
-            self.bManager.enable(self.buttonImport)
-            self.bManager.enable(self.buttonBackground)
-            self.bManager.showShadow(for: self.buttonPalette)
-            self.bManager.showShadow(for: self.buttonProPalette)
-            self.bManager.showShadow(for: self.buttonImport)
+            bManager.enable(buttonPalette)
+            bManager.enable(buttonProPalette)
+            bManager.enable(buttonImport)
+            bManager.enable(buttonBackground)
+            bManager.showShadow(for: buttonPalette)
+            bManager.showShadow(for: buttonProPalette)
+            bManager.showShadow(for: buttonImport)
         }
         else {
             bManager.disable(buttonPalette)
@@ -218,11 +218,11 @@ class FrontCover: UIViewController {
             animator.moveUp(buttonImport, 60, 0.4, .curveEaseIn)
             animator.moveRight(buttonImport, 55, 0.4, .curveEaseIn)
             
-            self.bManager.enable(self.buttonMenu)
-            self.bManager.enable(self.buttonBackground)
-            self.bManager.enable(self.buttonFormat)
-            self.bManager.enable(self.buttonAddPage)
-            self.bManager.enable(self.buttonFullscreen)
+            bManager.enable(buttonMenu)
+            bManager.enable(buttonBackground)
+            bManager.enable(buttonFormat)
+            bManager.enable(buttonAddPage)
+            bManager.enable(buttonFullscreen)
         }
     }
     

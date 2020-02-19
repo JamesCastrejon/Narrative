@@ -8,7 +8,6 @@
 
 import UIKit
 import Lottie
-import ChainableAnimations
 import IGColorPicker
 import ChromaColorPicker
 import YPImagePicker
@@ -38,6 +37,7 @@ class Page: UIViewController {
     
     // MARK: Variables
     var bManager: ButtonManager!
+    var animator: AnimationManager!
     var previousColor: UIColor = UIColor.white
     var colorPickerView: ColorPickerView!
     var neatColorPicker: ChromaColorPicker!
@@ -48,6 +48,7 @@ class Page: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bManager = ButtonManager()
+        animator = AnimationManager()
         
         labelPageNumberEditor.text = "Page \(Book.pageNumber)"
         setupColorPicker()
@@ -146,14 +147,11 @@ class Page: UIViewController {
             bManager.enable(buttonResetSave)
             bManager.enable(buttonSave)
             bManager.enable(buttonExit)
-            var animator: ChainableAnimator = ChainableAnimator(view: buttonReset)
-            animator.transform(y: 40).animate(t: 0.2)
-            animator = ChainableAnimator(view: buttonResetSave)
-            animator.transform(y: 40).thenAfter(t: 0.2).transform(y: 40).animate(t: 0.2)
-            animator = ChainableAnimator(view: buttonSave)
-            animator.transform(y: 40).thenAfter(t: 0.2).transform(y: 40).thenAfter(t: 0.2).transform(y: 40).animate(t: 0.2)
-            animator = ChainableAnimator(view: buttonExit)
-            animator.transform(y: 40).thenAfter(t: 0.2).transform(y: 40).thenAfter(t: 0.2).transform(y: 40).thenAfter(t: 0.2).transform(y: 40).animate(t: 0.2)
+            
+            animator.moveDown(buttonReset, 40, 0.2, .curveEaseOut)
+            animator.moveDown(buttonResetSave, 80, 0.4, .curveEaseOut)
+            animator.moveDown(buttonSave, 120, 0.6, .curveEaseOut)
+            animator.moveDown(buttonExit, 160, 0.8, .curveEaseOut)
         }
         else {
             let animationView:LOTAnimationView = buttonMenu.subviews.first as! LOTAnimationView
@@ -165,20 +163,17 @@ class Page: UIViewController {
             bManager.disable(buttonResetSave)
             bManager.disable(buttonSave)
             bManager.disable(buttonExit)
-            var animator: ChainableAnimator = ChainableAnimator(view: buttonReset)
-            animator.transform(y: -40).animate(t: 0.2)
-            animator = ChainableAnimator(view: buttonResetSave)
-            animator.transform(y: -40).thenAfter(t: 0.2).transform(y: -40).animate(t: 0.2)
-            animator = ChainableAnimator(view: buttonSave)
-            animator.transform(y: -40).thenAfter(t: 0.2).transform(y: -40).thenAfter(t: 0.2).transform(y: -40).animate(t: 0.2)
-            animator = ChainableAnimator(view: buttonExit)
-            animator.transform(y: -40).thenAfter(t: 0.2).transform(y: -40).thenAfter(t: 0.2).transform(y: -40).thenAfter(t: 0.2).transform(y: -40).animate(t: 0.2) {
-                self.bManager.enable(self.buttonBackground)
-                self.bManager.enable(self.buttonFormat)
-                self.bManager.enable(self.buttonAddPage)
-                self.bManager.enable(self.buttonDeletePage)
-                self.bManager.enable(self.buttonFullscreen)
-            }
+            
+            animator.moveUp(buttonReset, 40, 0.8, .curveEaseOut)
+            animator.moveUp(buttonResetSave, 80, 0.6, .curveEaseOut)
+            animator.moveUp(buttonSave, 120, 0.4, .curveEaseOut)
+            animator.moveUp(buttonExit, 160, 0.2, .curveEaseOut)
+            
+            bManager.enable(buttonBackground)
+            bManager.enable(buttonFormat)
+            bManager.enable(buttonAddPage)
+            bManager.enable(buttonDeletePage)
+            bManager.enable(buttonFullscreen)
         }
     }
     @IBAction func reset(_ sender: Any) {
@@ -206,20 +201,19 @@ class Page: UIViewController {
             bManager.disable(buttonDeletePage)
             bManager.disable(buttonFullscreen)
             
-            var animator: ChainableAnimator = ChainableAnimator(view: buttonPalette)
-            animator.transform(x: -55).thenAfter(t: 0.2).transform(y: -60).animate(t: 0.2)
-            animator = ChainableAnimator(view: buttonProPalette)
-            animator.transform(x: -55).animate(t: 0.2)
-            animator = ChainableAnimator(view: buttonImport)
-            animator.transform(x: -55).thenAfter(t: 0.2).transform(y: 60).animate(t: 0.2) {
-                self.bManager.enable(self.buttonPalette)
-                self.bManager.enable(self.buttonProPalette)
-                self.bManager.enable(self.buttonImport)
-                self.bManager.enable(self.buttonBackground)
-                self.bManager.showShadow(for: self.buttonPalette)
-                self.bManager.showShadow(for: self.buttonProPalette)
-                self.bManager.showShadow(for: self.buttonImport)
-            }
+            animator.moveLeft(buttonPalette, 55, 0.4, .curveEaseIn)
+            animator.moveUp(buttonPalette, 60, 0.4, .curveEaseIn)
+            animator.moveLeft(buttonProPalette, 55, 0.4, .curveEaseIn)
+            animator.moveLeft(buttonImport, 55, 0.4, .curveEaseIn)
+            animator.moveDown(buttonImport, 60, 0.4, .curveEaseIn)
+            
+            bManager.enable(buttonPalette)
+            bManager.enable(buttonProPalette)
+            bManager.enable(buttonImport)
+            bManager.enable(buttonBackground)
+            bManager.showShadow(for: buttonPalette)
+            bManager.showShadow(for: buttonProPalette)
+            bManager.showShadow(for: buttonImport)
         }
         else {
             bManager.disable(buttonPalette)
@@ -229,19 +223,17 @@ class Page: UIViewController {
             bManager.hideShadow(for: buttonProPalette)
             bManager.hideShadow(for: buttonImport)
             
-            var animator: ChainableAnimator = ChainableAnimator(view: buttonPalette)
-            animator.transform(y: 60).thenAfter(t: 0.2).transform(x: 55).animate(t: 0.2)
-            animator = ChainableAnimator(view: buttonProPalette)
-            animator.transform(x: 55).animate(t: 0.2)
-            animator = ChainableAnimator(view: buttonImport)
-            animator.transform(y: -60).thenAfter(t: 0.2).transform(x: 55).animate(t: 0.2) {
-                self.bManager.enable(self.buttonMenu)
-                self.bManager.enable(self.buttonBackground)
-                self.bManager.enable(self.buttonFormat)
-                self.bManager.enable(self.buttonAddPage)
-                self.bManager.enable(self.buttonDeletePage)
-                self.bManager.enable(self.buttonFullscreen)
-            }
+            animator.moveDown(buttonPalette, 60, 0.4, .curveEaseIn)
+            animator.moveRight(buttonPalette, 55, 0.4, .curveEaseIn)
+            animator.moveRight(buttonProPalette, 55, 0.4, .curveEaseIn)
+            animator.moveUp(buttonImport, 60, 0.4, .curveEaseIn)
+            animator.moveRight(buttonImport, 55, 0.4, .curveEaseIn)
+            
+            bManager.enable(buttonMenu)
+            bManager.enable(buttonFormat)
+            bManager.enable(buttonAddPage)
+            bManager.enable(buttonDeletePage)
+            bManager.enable(buttonFullscreen)
         }
     }
     
@@ -301,6 +293,7 @@ class Page: UIViewController {
         if Book.orderedViewControllers.count < 20 && self.restorationIdentifier != "BackCover" {
             var book: Book = Book()
             book.addPage()
+            animator.pop(buttonAddPage, 1.5, 0.2)
         } else {
             let alertController = UIAlertController(title: "Oh, no!", message: "Sorry but you cannot have more than 20 pages.\n:(", preferredStyle: .alert)
             
@@ -313,6 +306,7 @@ class Page: UIViewController {
     
     @IBAction func deletePage(_ sender: Any) {
         if Book.orderedViewControllers.count > 3 && self.restorationIdentifier! != "FrontCover" && self.restorationIdentifier! != "BackCover" {
+            self.animator.pop(self.buttonDeletePage, 0.5, 0.2)
             let alertController = UIAlertController(title: "Stop!", message: "Are you sure?", preferredStyle: .alert)
             
             let action1 = UIAlertAction(title: "Yes", style: .destructive) { (action:UIAlertAction) in
@@ -336,34 +330,20 @@ class Page: UIViewController {
     }
     
     @IBAction func hideUIElements(_ sender: Any) {
-        var animator: ChainableAnimator = ChainableAnimator(view: buttonMenu)
-        animator.transform(x: -80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonReset)
-        animator.transform(x: -80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonResetSave)
-        animator.transform(x: -80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonSave)
-        animator.transform(x: -80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonExit)
-        animator.transform(x: -80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonBackground)
-        animator.transform(x: 80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonPalette)
-        animator.transform(x: 80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonProPalette)
-        animator.transform(x: 80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonImport)
-        animator.transform(x: 80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonFormat)
-        animator.transform(x: 80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonAddPage)
-        animator.transform(x: 80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonDeletePage)
-        animator.transform(x: 80).animate(t: 0.3)
-        animator = ChainableAnimator(view: buttonFullscreen)
-        animator.transform(x: 80).animate(t: 0.3)
-        animator = ChainableAnimator(view: labelPageNumberEditor)
-        animator.transform(y: 80).animate(t: 0.3)
+        animator.moveLeft(buttonMenu, 80, 0.3, .curveEaseIn)
+        animator.moveLeft(buttonReset, 80, 0.3, .curveEaseIn)
+        animator.moveLeft(buttonResetSave, 80, 0.3, .curveEaseIn)
+        animator.moveLeft(buttonSave, 80, 0.3, .curveEaseIn)
+        animator.moveLeft(buttonExit, 80, 0.3, .curveEaseIn)
+        animator.moveRight(buttonBackground, 80, 0.3, .curveEaseIn)
+        animator.moveRight(buttonPalette, 80, 0.3, .curveEaseIn)
+        animator.moveRight(buttonProPalette, 80, 0.3, .curveEaseIn)
+        animator.moveRight(buttonImport, 80, 0.3, .curveEaseIn)
+        animator.moveRight(buttonFormat, 80, 0.3, .curveEaseIn)
+        animator.moveRight(buttonAddPage, 80, 0.3, .curveEaseIn)
+        animator.moveRight(buttonDeletePage, 80, 0.3, .curveEaseIn)
+        animator.moveRight(buttonFullscreen, 80, 0.3, .curveEaseIn)
+        animator.moveDown(labelPageNumberEditor, 80, 0.3, .curveEaseIn)
         
         tapVisibility.isEnabled = true
     }
@@ -386,34 +366,20 @@ class Page: UIViewController {
             }
         }
         else {
-            var animator: ChainableAnimator = ChainableAnimator(view: buttonMenu)
-            animator.transform(x: 80).animate(t: 0.3)
-            animator = ChainableAnimator(view: buttonReset)
-            animator.transform(x: 80).animate(t: 0.3)
-            animator = ChainableAnimator(view: buttonResetSave)
-            animator.transform(x: 80).animate(t: 0.3)
-            animator = ChainableAnimator(view: buttonSave)
-            animator.transform(x: 80).animate(t: 0.3)
-            animator = ChainableAnimator(view: buttonExit)
-            animator.transform(x: 80).animate(t: 0.3)
-            animator = ChainableAnimator(view: buttonBackground)
-            animator.transform(x: -80).animate(t: 0.3)
-            animator = ChainableAnimator(view: buttonPalette)
-            animator.transform(x: -80).animate(t: 0.3)
-            animator = ChainableAnimator(view: buttonProPalette)
-            animator.transform(x: -80).animate(t: 0.3)
-            animator = ChainableAnimator(view: buttonImport)
-            animator.transform(x: -80).animate(t: 0.3)
-            animator = ChainableAnimator(view: buttonFormat)
-            animator.transform(x: -80).animate(t: 0.3)
-            animator = ChainableAnimator(view: buttonAddPage)
-            animator.transform(x: -80).animate(t: 0.3)
-            animator = ChainableAnimator(view: buttonDeletePage)
-            animator.transform(x: -80).animate(t: 0.3)
-            animator = ChainableAnimator(view: buttonFullscreen)
-            animator.transform(x: -80).animate(t: 0.3)
-            animator = ChainableAnimator(view: labelPageNumberEditor)
-            animator.transform(y: -80).animate(t: 0.3)
+            animator.moveRight(buttonMenu, 80, 0.3, .curveEaseOut)
+            animator.moveRight(buttonReset, 80, 0.3, .curveEaseOut)
+            animator.moveRight(buttonResetSave, 80, 0.3, .curveEaseOut)
+            animator.moveRight(buttonSave, 80, 0.3, .curveEaseOut)
+            animator.moveRight(buttonExit, 80, 0.3, .curveEaseOut)
+            animator.moveLeft(buttonBackground, 80, 0.3, .curveEaseOut)
+            animator.moveLeft(buttonPalette, 80, 0.3, .curveEaseOut)
+            animator.moveLeft(buttonProPalette, 80, 0.3, .curveEaseOut)
+            animator.moveLeft(buttonImport, 80, 0.3, .curveEaseOut)
+            animator.moveLeft(buttonFormat, 80, 0.3, .curveEaseOut)
+            animator.moveLeft(buttonAddPage, 80, 0.3, .curveEaseOut)
+            animator.moveLeft(buttonDeletePage, 80, 0.3, .curveEaseOut)
+            animator.moveLeft(buttonFullscreen, 80, 0.3, .curveEaseOut)
+            animator.moveUp(labelPageNumberEditor, 80, 0.3, .curveEaseOut)
             tapVisibility.isEnabled = false
         }
     }
