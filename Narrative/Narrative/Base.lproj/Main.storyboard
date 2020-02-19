@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,42 +16,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Narrative" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="IEd-3I-4SA">
-                                <rect key="frame" x="95.5" y="28" width="184" height="47.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="IEd-3I-4SA" secondAttribute="height" multiplier="181:47" id="qH6-4d-acy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="40"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GlG-Pw-cJI">
-                                <rect key="frame" x="138" y="83.5" width="99" height="36"/>
+                                <rect key="frame" x="138" y="76" width="99" height="36"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
                                 <state key="normal" title="New Book">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="35"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="7X1-Dc-5QR" kind="presentation" modalTransitionStyle="coverVertical" id="4KR-6z-tVc"/>
+                                    <segue destination="7X1-Dc-5QR" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="4KR-6z-tVc"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Junior Tales" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="IEd-3I-4SA">
+                                <rect key="frame" x="98.5" y="20" width="178" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="IEd-3I-4SA" secondAttribute="height" multiplier="89:24" id="0t2-Ri-7d7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="50"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="GlG-Pw-cJI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AWm-zA-zpW"/>
-                            <constraint firstItem="IEd-3I-4SA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="Pj0-bW-L55"/>
-                            <constraint firstItem="IEd-3I-4SA" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.49" id="UoF-HY-aJ1"/>
-                            <constraint firstItem="GlG-Pw-cJI" firstAttribute="top" secondItem="IEd-3I-4SA" secondAttribute="bottom" constant="8" id="XKc-9n-jMP"/>
+                            <constraint firstItem="IEd-3I-4SA" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.475" id="EdD-1B-jFe"/>
+                            <constraint firstItem="GlG-Pw-cJI" firstAttribute="top" secondItem="IEd-3I-4SA" secondAttribute="bottom" constant="8" id="c1L-vd-85f"/>
                             <constraint firstItem="IEd-3I-4SA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eU7-jH-5kL"/>
+                            <constraint firstItem="IEd-3I-4SA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="vvF-qa-QcX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="669.60000000000002" y="133.5832083958021"/>
         </scene>
         <!--Book Manager-->
         <scene sceneID="BmI-Pv-IUv">
@@ -61,7 +63,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="7X1-Dc-5QR" customClass="BookManager" customModule="Narrative" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="avf-w2-X95" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="930" y="134"/>
+            <point key="canvasLocation" x="1442" y="134"/>
         </scene>
         <!--Front Cover-->
         <scene sceneID="JRV-oe-HGY">
@@ -72,7 +74,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SKn-2a-3bn" userLabel="ImageBackground">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="-20" width="375" height="687"/>
                                 <gestureRecognizers/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Front Cover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQJ-Ra-oCZ" userLabel="Label Page Number Editor">
@@ -320,7 +322,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="234" y="850"/>
+            <point key="canvasLocation" x="746" y="850"/>
         </scene>
         <!--Page-->
         <scene sceneID="lAN-1Q-ts0">
@@ -331,7 +333,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="By1-ro-m7G" userLabel="ImageBackground">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="-20" width="375" height="687"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3aA-rn-fVG" userLabel="Label Page Number Editor">
                                 <rect key="frame" x="154.5" y="618" width="66.5" height="29"/>
@@ -596,7 +598,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="930" y="850"/>
+            <point key="canvasLocation" x="1442" y="850"/>
         </scene>
         <!--Back Cover-->
         <scene sceneID="1a7-eT-Wa0">
@@ -607,7 +609,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eKv-Wy-5Un" userLabel="ImageBackground">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="-20" width="375" height="687"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kzh-g0-CRt">
                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -837,7 +839,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1620" y="850"/>
+            <point key="canvasLocation" x="2135" y="850"/>
         </scene>
     </scenes>
     <resources>

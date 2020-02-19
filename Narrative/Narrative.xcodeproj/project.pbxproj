@@ -14,6 +14,7 @@
 		D141BCBB23FAF40800466EBB /* ButtonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D141BCBA23FAF40800466EBB /* ButtonManager.swift */; };
 		D178A8F3221F030A002193FC /* FrontCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D178A8F2221F030A002193FC /* FrontCover.swift */; };
 		D18F4789221DC53600A58BA5 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18F4788221DC53600A58BA5 /* MainMenu.swift */; };
+		D1B02AE523FCA157000E30E1 /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B02AE423FCA157000E30E1 /* AnimationManager.swift */; };
 		D1BA58A7221B746800483F2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BA58A6221B746800483F2F /* AppDelegate.swift */; };
 		D1BA58AC221B746800483F2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1BA58AA221B746800483F2F /* Main.storyboard */; };
 		D1BA58AE221B74B100483F2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1BA58AD221B74B100483F2F /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		D141BCBA23FAF40800466EBB /* ButtonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonManager.swift; sourceTree = "<group>"; };
 		D178A8F2221F030A002193FC /* FrontCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontCover.swift; sourceTree = "<group>"; };
 		D18F4788221DC53600A58BA5 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		D1B02AE423FCA157000E30E1 /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		D1BA58A3221B746800483F2F /* Narrative.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Narrative.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1BA58A6221B746800483F2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1BA58AB221B746800483F2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				D141BCBA23FAF40800466EBB /* ButtonManager.swift */,
+				D1B02AE423FCA157000E30E1 /* AnimationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -104,10 +107,10 @@
 			isa = PBXGroup;
 			children = (
 				D1BA58B2221B74B100483F2F /* Info.plist */,
-				D1BA58A6221B746800483F2F /* AppDelegate.swift */,
-				D1BA58AA221B746800483F2F /* Main.storyboard */,
-				D1BA58AF221B74B100483F2F /* LaunchScreen.storyboard */,
 				D1BA58AD221B74B100483F2F /* Assets.xcassets */,
+				D1BA58A6221B746800483F2F /* AppDelegate.swift */,
+				D1BA58AF221B74B100483F2F /* LaunchScreen.storyboard */,
+				D1BA58AA221B746800483F2F /* Main.storyboard */,
 				D1C9AB50221DEFC3001EC435 /* Animations */,
 				D1BA58B8221B758F00483F2F /* Controllers */,
 				D1BA58B9221B759900483F2F /* Models */,
@@ -290,6 +293,7 @@
 				D1BA58A7221B746800483F2F /* AppDelegate.swift in Sources */,
 				D124262D223DBE1500C04C48 /* BackCover.swift in Sources */,
 				D141BCBB23FAF40800466EBB /* ButtonManager.swift in Sources */,
+				D1B02AE523FCA157000E30E1 /* AnimationManager.swift in Sources */,
 				D1242625223DA01A00C04C48 /* Book.swift in Sources */,
 				D1C9AB60221E05BF001EC435 /* BookManager.swift in Sources */,
 			);
@@ -445,7 +449,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.donutproductions.Narrative;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jamesanthonycastrejon.Narrative;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -464,7 +468,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.donutproductions.Narrative;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jamesanthonycastrejon.Narrative;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
