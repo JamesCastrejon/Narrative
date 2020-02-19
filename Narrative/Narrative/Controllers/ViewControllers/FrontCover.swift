@@ -8,7 +8,6 @@
 
 import UIKit
 import Lottie
-import ChainableAnimations
 import IGColorPicker
 import ChromaColorPicker
 import YPImagePicker
@@ -137,14 +136,19 @@ class FrontCover: UIViewController {
             bManager.enable(buttonResetSave)
             bManager.enable(buttonSave)
             bManager.enable(buttonExit)
-            var animator: ChainableAnimator = ChainableAnimator(view: buttonReset)
-            animator.transform(y: 40).animate(t: 0.2)
-            animator = ChainableAnimator(view: buttonResetSave)
-            animator.transform(y: 40).thenAfter(t: 0.2).transform(y: 40).animate(t: 0.2)
-            animator = ChainableAnimator(view: buttonSave)
-            animator.transform(y: 40).thenAfter(t: 0.2).transform(y: 40).thenAfter(t: 0.2).transform(y: 40).animate(t: 0.2)
-            animator = ChainableAnimator(view: buttonExit)
-            animator.transform(y: 40).thenAfter(t: 0.2).transform(y: 40).thenAfter(t: 0.2).transform(y: 40).thenAfter(t: 0.2).transform(y: 40).animate(t: 0.2)
+            let animator = AnimationManager()
+            animator.moveDown(buttonReset, 40, 0.2, .curveEaseIn)
+            animator.moveDown(buttonResetSave, 80, 0.2, .curveEaseIn)
+            animator.moveDown(buttonSave, 120, 0.2, .curveEaseIn)
+            animator.moveDown(buttonExit, 160, 0.2, .curveEaseIn)
+//            var animator: ChainableAnimator = ChainableAnimator(view: buttonReset)
+//            animator.transform(y: 40).animate(t: 0.2)
+//            animator = ChainableAnimator(view: buttonResetSave)
+//            animator.transform(y: 40).thenAfter(t: 0.2).transform(y: 40).animate(t: 0.2)
+//            animator = ChainableAnimator(view: buttonSave)
+//            animator.transform(y: 40).thenAfter(t: 0.2).transform(y: 40).thenAfter(t: 0.2).transform(y: 40).animate(t: 0.2)
+//            animator = ChainableAnimator(view: buttonExit)
+//            animator.transform(y: 40).thenAfter(t: 0.2).transform(y: 40).thenAfter(t: 0.2).transform(y: 40).thenAfter(t: 0.2).transform(y: 40).animate(t: 0.2)
         }
         else {
             let animationView:LOTAnimationView = buttonMenu.subviews.first as! LOTAnimationView
@@ -156,19 +160,24 @@ class FrontCover: UIViewController {
             bManager.disable(buttonResetSave)
             bManager.disable(buttonSave)
             bManager.disable(buttonExit)
-            var animator: ChainableAnimator = ChainableAnimator(view: buttonReset)
-            animator.transform(y: -40).animate(t: 0.2)
-            animator = ChainableAnimator(view: buttonResetSave)
-            animator.transform(y: -40).thenAfter(t: 0.2).transform(y: -40).animate(t: 0.2)
-            animator = ChainableAnimator(view: buttonSave)
-            animator.transform(y: -40).thenAfter(t: 0.2).transform(y: -40).thenAfter(t: 0.2).transform(y: -40).animate(t: 0.2)
-            animator = ChainableAnimator(view: buttonExit)
-            animator.transform(y: -40).thenAfter(t: 0.2).transform(y: -40).thenAfter(t: 0.2).transform(y: -40).thenAfter(t: 0.2).transform(y: -40).animate(t: 0.2) {
-                self.bManager.enable(self.buttonBackground)
-                self.bManager.enable(self.buttonFormat)
-                self.bManager.enable(self.buttonAddPage)
-                self.bManager.enable(self.buttonFullscreen)
-            }
+            let animator = AnimationManager()
+            animator.moveUp(buttonReset, 40, 0.2, .curveEaseIn)
+            animator.moveUp(buttonResetSave, 80, 0.2, .curveEaseIn)
+            animator.moveUp(buttonSave, 120, 0.2, .curveEaseIn)
+            animator.moveUp(buttonExit, 160, 0.2, .curveEaseIn)
+//            var animator: ChainableAnimator = ChainableAnimator(view: buttonReset)
+//            animator.transform(y: -40).animate(t: 0.2)
+//            animator = ChainableAnimator(view: buttonResetSave)
+//            animator.transform(y: -40).thenAfter(t: 0.2).transform(y: -40).animate(t: 0.2)
+//            animator = ChainableAnimator(view: buttonSave)
+//            animator.transform(y: -40).thenAfter(t: 0.2).transform(y: -40).thenAfter(t: 0.2).transform(y: -40).animate(t: 0.2)
+//            animator = ChainableAnimator(view: buttonExit)
+//            animator.transform(y: -40).thenAfter(t: 0.2).transform(y: -40).thenAfter(t: 0.2).transform(y: -40).thenAfter(t: 0.2).transform(y: -40).animate(t: 0.2) {
+            self.bManager.enable(self.buttonBackground)
+            self.bManager.enable(self.buttonFormat)
+            self.bManager.enable(self.buttonAddPage)
+            self.bManager.enable(self.buttonFullscreen)
+//            }
         }
     }
     @IBAction func reset(_ sender: Any) {
@@ -195,20 +204,26 @@ class FrontCover: UIViewController {
             bManager.disable(buttonAddPage)
             bManager.disable(buttonFullscreen)
             
-            var animator: ChainableAnimator = ChainableAnimator(view: buttonPalette)
-            animator.transform(x: -55).thenAfter(t: 0.2).transform(y: -60).animate(t: 0.2)
-            animator = ChainableAnimator(view: buttonProPalette)
-            animator.transform(x: -55).animate(t: 0.2)
-            animator = ChainableAnimator(view: buttonImport)
-            animator.transform(x: -55).thenAfter(t: 0.2).transform(y: 60).animate(t: 0.2) {
-                self.bManager.enable(self.buttonPalette)
-                self.bManager.enable(self.buttonProPalette)
-                self.bManager.enable(self.buttonImport)
-                self.bManager.enable(self.buttonBackground)
-                self.bManager.showShadow(for: self.buttonPalette)
-                self.bManager.showShadow(for: self.buttonProPalette)
-                self.bManager.showShadow(for: self.buttonImport)
-            }
+            let animator = AnimationManager()
+            animator.moveLeft(buttonPalette, 55, 0.2, .curveEaseIn)
+            animator.moveUp(buttonPalette, 60, 0.2, .curveEaseIn)
+            animator.moveLeft(buttonProPalette, 55, 0.2, .curveEaseIn)
+            animator.moveLeft(buttonImport, 55, 0.2, .curveEaseIn)
+            animator.moveDown(buttonImport, 60, 0.2, .curveEaseIn)
+//            var animator: ChainableAnimator = ChainableAnimator(view: buttonPalette)
+//            animator.transform(x: -55).thenAfter(t: 0.2).transform(y: -60).animate(t: 0.2)
+//            animator = ChainableAnimator(view: buttonProPalette)
+//            animator.transform(x: -55).animate(t: 0.2)
+//            animator = ChainableAnimator(view: buttonImport)
+//            animator.transform(x: -55).thenAfter(t: 0.2).transform(y: 60).animate(t: 0.2) {
+            self.bManager.enable(self.buttonPalette)
+            self.bManager.enable(self.buttonProPalette)
+            self.bManager.enable(self.buttonImport)
+            self.bManager.enable(self.buttonBackground)
+            self.bManager.showShadow(for: self.buttonPalette)
+            self.bManager.showShadow(for: self.buttonProPalette)
+            self.bManager.showShadow(for: self.buttonImport)
+//            }
         }
         else {
             bManager.disable(buttonPalette)
@@ -218,18 +233,24 @@ class FrontCover: UIViewController {
             bManager.hideShadow(for: buttonProPalette)
             bManager.hideShadow(for: buttonImport)
             
-            var animator: ChainableAnimator = ChainableAnimator(view: buttonPalette)
-            animator.transform(y: 60).thenAfter(t: 0.2).transform(x: 55).animate(t: 0.2)
-            animator = ChainableAnimator(view: buttonProPalette)
-            animator.transform(x: 55).animate(t: 0.2)
-            animator = ChainableAnimator(view: buttonImport)
-            animator.transform(y: -60).thenAfter(t: 0.2).transform(x: 55).animate(t: 0.2) {
-                self.bManager.enable(self.buttonMenu)
-                self.bManager.enable(self.buttonBackground)
-                self.bManager.enable(self.buttonFormat)
-                self.bManager.enable(self.buttonAddPage)
-                self.bManager.enable(self.buttonFullscreen)
-            }
+            let animator = AnimationManager()
+            animator.moveDown(buttonPalette, 60, 0.2, .curveEaseIn)
+            animator.moveRight(buttonPalette, 55, 0.2, .curveEaseIn)
+            animator.moveRight(buttonProPalette, 55, 0.2, .curveEaseIn)
+            animator.moveUp(buttonImport, 60, 0.2, .curveEaseIn)
+//            animator.moveright(buttonImport, 55, 0.2, .curveEaseIn)
+//            var animator: ChainableAnimator = ChainableAnimator(view: buttonPalette)
+//            animator.transform(y: 60).thenAfter(t: 0.2).transform(x: 55).animate(t: 0.2)
+//            animator = ChainableAnimator(view: buttonProPalette)
+//            animator.transform(x: 55).animate(t: 0.2)
+//            animator = ChainableAnimator(view: buttonImport)
+//            animator.transform(y: -60).thenAfter(t: 0.2).transform(x: 55).animate(t: 0.2) {
+            self.bManager.enable(self.buttonMenu)
+            self.bManager.enable(self.buttonBackground)
+            self.bManager.enable(self.buttonFormat)
+            self.bManager.enable(self.buttonAddPage)
+            self.bManager.enable(self.buttonFullscreen)
+//            }
         }
     }
     
