@@ -14,55 +14,59 @@ class AnimationManager {
     func moveLeft(_ button: UIButton,_ amount: CGFloat,_ time: Double,_ speedOptions: UIView.AnimationOptions) {
         UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
         animations: {
-            var frame = button.frame
-            frame.origin.x -= amount
-            button.frame = frame
+            button.frame.origin.x -= amount
         }, completion: nil)
     }
     
     func moveRight(_ button: UIButton,_ amount: CGFloat,_ time: Double,_ speedOptions: UIView.AnimationOptions) {
         UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
         animations: {
-            var frame = button.frame
-            frame.origin.x += amount
-            button.frame = frame
+            button.frame.origin.x += amount
         }, completion: nil)
     }
     
     func moveUp(_ button: UIButton,_ amount: CGFloat,_ time: Double,_ speedOptions: UIView.AnimationOptions) {
         UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
         animations: {
-            var frame = button.frame
-            frame.origin.y -= amount
-            button.frame = frame
+            button.frame.origin.y -= amount
         }, completion: nil)
     }
     
     func moveDown(_ button: UIButton,_ amount: CGFloat,_ time: Double,_ speedOptions: UIView.AnimationOptions) {
         UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
         animations: {
-            var frame = button.frame
-            frame.origin.y += amount
-            button.frame = frame
+            button.frame.origin.y += amount
         }, completion: nil)
+    }
+    
+    func scale(_ button: UIButton,_ amount: CGFloat,_ time: Double) {
+        UIView.animate(withDuration: time) {
+            button.transform = CGAffineTransform(scaleX: amount, y: amount)
+        }
+    }
+    
+    func pop(_ button: UIButton,_ amount: CGFloat,_ time: Double) {
+        UIView.animate(withDuration: time, animations: {
+            button.transform = CGAffineTransform(scaleX: amount, y: amount)
+        }, completion: { _ in
+            UIView.animate(withDuration: time) {
+                button.transform = CGAffineTransform.identity
+            }
+        })
     }
     
     // MARK: - UIView Animations
     func moveUp(_ view: UIView,_ amount: CGFloat,_ time: Double,_ speedOptions: UIView.AnimationOptions) {
         UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
         animations: {
-            var frame = view.frame
-            frame.origin.y -= amount
-            view.frame = frame
+            view.frame.origin.y -= amount
         }, completion: nil)
     }
     
     func moveDown(_ view: UIView,_ amount: CGFloat,_ time: Double,_ speedOptions: UIView.AnimationOptions) {
         UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
         animations: {
-            var frame = view.frame
-            frame.origin.y += amount
-            view.frame = frame
+            view.frame.origin.y += amount
         }, completion: nil)
     }
     
