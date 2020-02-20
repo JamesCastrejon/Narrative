@@ -88,15 +88,9 @@ class FrontCover: UIViewController {
         bManager.addRadius(for: buttonFullscreen)
         bManager.addShadow(for: buttonExit)
         bManager.addShadow(for: buttonBackground)
-        bManager.addShadow(for: buttonPalette)
-        bManager.addShadow(for: buttonProPalette)
-        bManager.addShadow(for: buttonImport)
         bManager.addShadow(for: buttonFormat)
         bManager.addShadow(for: buttonAddPage)
         bManager.addShadow(for: buttonFullscreen)
-        bManager.hideShadow(for: buttonPalette)
-        bManager.hideShadow(for: buttonProPalette)
-        bManager.hideShadow(for: buttonImport)
         setupButtonAnimations()
     }
     
@@ -130,7 +124,7 @@ class FrontCover: UIViewController {
             bManager.disable(buttonFullscreen)
             
             let animationView:LOTAnimationView = buttonMenu.subviews.first as! LOTAnimationView
-            animationView.play(fromProgress: 0.0, toProgress: 0.5) { (completed) in
+            animationView.play(fromProgress: 0.1, toProgress: 0.5) { (completed) in
                 self.bManager.enable(self.buttonMenu)
             }
             
@@ -146,7 +140,7 @@ class FrontCover: UIViewController {
         }
         else {
             let animationView:LOTAnimationView = buttonMenu.subviews.first as! LOTAnimationView
-            animationView.play(fromProgress: 0.5, toProgress: 1.0) { (completed) in
+            animationView.play(fromProgress: 0.6, toProgress: 1.0) { (completed) in
                 self.bManager.enable(self.buttonMenu)
             }
             
@@ -166,16 +160,17 @@ class FrontCover: UIViewController {
             bManager.enable(buttonFullscreen)
         }
     }
+    
     @IBAction func reset(_ sender: Any) {
-        
+        print("Touched Reset")
     }
     
     @IBAction func resetSave(_ sender: Any) {
-        
+        print("Touched Reset & Save")
     }
     
     @IBAction func save(_ sender: Any) {
-        
+        print("Touched Save")
     }
     
     @IBAction func exit(_ sender: Any) {
@@ -192,9 +187,9 @@ class FrontCover: UIViewController {
             
             animator.moveLeft(buttonPalette, 55, 0.4, .curveEaseIn)
             animator.moveUp(buttonPalette, 60, 0.4, .curveEaseIn)
-            animator.moveLeft(buttonProPalette, 55, 0.4, .curveEaseIn)
-            animator.moveLeft(buttonImport, 55, 0.4, .curveEaseIn)
-            animator.moveDown(buttonImport, 60, 0.4, .curveEaseIn)
+            animator.moveLeft(buttonProPalette, 55, 0.4, 0.1, .curveEaseIn)
+            animator.moveLeft(buttonImport, 55, 0.4, 0.2, .curveEaseIn)
+            animator.moveDown(buttonImport, 60, 0.4, 0.2, .curveEaseIn)
             
             bManager.enable(buttonPalette)
             bManager.enable(buttonProPalette)
@@ -214,9 +209,9 @@ class FrontCover: UIViewController {
             
             animator.moveDown(buttonPalette, 60, 0.4, .curveEaseIn)
             animator.moveRight(buttonPalette, 55, 0.4, .curveEaseIn)
-            animator.moveRight(buttonProPalette, 55, 0.4, .curveEaseIn)
-            animator.moveUp(buttonImport, 60, 0.4, .curveEaseIn)
-            animator.moveRight(buttonImport, 55, 0.4, .curveEaseIn)
+            animator.moveRight(buttonProPalette, 55, 0.4, 0.1, .curveEaseIn)
+            animator.moveUp(buttonImport, 60, 0.4, 0.2, .curveEaseIn)
+            animator.moveRight(buttonImport, 55, 0.4, 0.2, .curveEaseIn)
             
             bManager.enable(buttonMenu)
             bManager.enable(buttonBackground)
@@ -275,7 +270,7 @@ class FrontCover: UIViewController {
     }
     
     @IBAction func changePageFormat(_ sender: Any) {
-        print("Format")
+        print("Touched Format")
     }
     
     @IBAction func addPage(_ sender: Any) {
@@ -352,7 +347,7 @@ extension FrontCover: ColorPickerViewDelegate {
     func colorPickerView(_ colorPickerView: ColorPickerView, didSelectItemAt indexPath: IndexPath) {
         // TODO: refactor this method
         // A color has been selected
-        self.imageBackground.image = nil
+        imageBackground.image = nil
         bManager.enable(buttonPalette)
         colorPickerView.isHidden = true
         bManager.enable(buttonProPalette)
@@ -396,7 +391,7 @@ extension FrontCover: ColorPickerViewDelegateFlowLayout {
 // MARK: - ChromaColorPicker Delegate
 extension FrontCover: ChromaColorPickerDelegate {
     func colorPickerDidChooseColor(_ colorPicker: ChromaColorPicker, color: UIColor) {
-        self.imageBackground.image = nil
+        imageBackground.image = nil
         bManager.enable(buttonBackground)
         previousColor = color
         self.view.backgroundColor = color
