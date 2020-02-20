@@ -99,7 +99,7 @@ class FrontCover: UIViewController {
     }
     
     private func addAnimations(for button: UIButton,with animation: String,_ width:CGFloat,_ height: CGFloat) {
-        let animationView = LOTAnimationView(name: animation)
+        let animationView = AnimationView(name: animation)
         animationView.frame = CGRect(
             x: 0,
             y: 0,
@@ -123,7 +123,7 @@ class FrontCover: UIViewController {
             bManager.disable(buttonAddPage)
             bManager.disable(buttonFullscreen)
             
-            let animationView:LOTAnimationView = buttonMenu.subviews.first as! LOTAnimationView
+            let animationView:AnimationView = buttonMenu.subviews.first as! AnimationView
             animationView.play(fromProgress: 0.1, toProgress: 0.5) { (completed) in
                 self.bManager.enable(self.buttonMenu)
             }
@@ -139,7 +139,7 @@ class FrontCover: UIViewController {
             animator.moveDown(buttonExit, 160, 0.8, .curveEaseOut)
         }
         else {
-            let animationView:LOTAnimationView = buttonMenu.subviews.first as! LOTAnimationView
+            let animationView:AnimationView = buttonMenu.subviews.first as! AnimationView
             animationView.play(fromProgress: 0.6, toProgress: 1.0) { (completed) in
                 self.bManager.enable(self.buttonMenu)
             }
