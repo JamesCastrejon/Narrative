@@ -30,8 +30,8 @@ class YPLoadingView: UIView {
         processingLabel.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 751), for: .horizontal)
         
         // Style
-        backgroundColor = UIColor.ypLabel.withAlphaComponent(0.8)
-        processingLabel.textColor = .ypSystemBackground
+        backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        processingLabel.textColor = .white
         spinner.hidesWhenStopped = true
         
         // Content

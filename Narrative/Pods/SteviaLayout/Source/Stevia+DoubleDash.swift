@@ -6,7 +6,6 @@
 //  Copyright © 2016 Sacha Durand Saint Omer. All rights reserved.
 //
 
-#if canImport(UIKit)
 import UIKit
 
 infix operator -- :AdditionPrecedence
@@ -97,4 +96,3 @@ public func -- (left: UIView, right: SteviaRightFlexibleMargin) -> UIView {
 public func -- (left: [UIView], right: SteviaRightFlexibleMargin) -> [UIView] {
     return left-right
 }
-#endif

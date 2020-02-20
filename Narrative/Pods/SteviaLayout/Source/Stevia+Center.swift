@@ -6,7 +6,6 @@
 //  Copyright © 2016 Sacha Durand Saint Omer. All rights reserved.
 //
 
-#if canImport(UIKit)
 import UIKit
 
 public extension UIView {
@@ -22,7 +21,7 @@ public extension UIView {
      
      */
     @discardableResult
-    func centerInContainer() -> Self {
+    public func centerInContainer() -> UIView {
         if let spv = superview {
             alignCenter(self, with: spv)
         }
@@ -40,7 +39,7 @@ public extension UIView {
      
      */
     @discardableResult
-    func centerHorizontally() -> Self {
+    public func centerHorizontally() -> UIView {
         if let spv = superview {
             align(vertically: self, spv)
         }
@@ -58,7 +57,7 @@ public extension UIView {
      
      */
     @discardableResult
-    func centerVertically() -> Self {
+    public func centerVertically() -> UIView {
         if let spv = superview {
             align(horizontally: self, spv)
         }
@@ -76,7 +75,7 @@ public extension UIView {
      
      */
     @discardableResult
-    func centerHorizontally(_ offset: CGFloat) -> Self {
+    public func centerHorizontally(_ offset: CGFloat) -> UIView {
         if let spv = superview {
             alignVertically(self, with: spv, offset: offset)
         }
@@ -94,11 +93,10 @@ public extension UIView {
      
      */
     @discardableResult
-    func centerVertically(_ offset: CGFloat) -> Self {
+    public func centerVertically(_ offset: CGFloat) -> UIView {
         if let spv = superview {
             alignHorizontally(self, with: spv, offset: offset)
         }
         return self
     }
 }
-#endif

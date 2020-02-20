@@ -96,7 +96,7 @@ class BackCover: UIViewController {
     }
     
     private func addAnimations(for button: UIButton,with animation: String,_ width:CGFloat,_ height: CGFloat) {
-        let animationView = LOTAnimationView(name: animation)
+        let animationView = AnimationView(name: animation)
         animationView.frame = CGRect(
             x: 0,
             y: 0,
@@ -119,7 +119,7 @@ class BackCover: UIViewController {
             bManager.disable(buttonFormat)
             bManager.disable(buttonFullscreen)
             
-            let animationView:LOTAnimationView = buttonMenu.subviews.first as! LOTAnimationView
+            let animationView:AnimationView = buttonMenu.subviews.first as! AnimationView
             animationView.play(fromProgress: 0.1, toProgress: 0.5) { (completed) in
                 self.bManager.enable(self.buttonMenu)
             }
@@ -135,7 +135,7 @@ class BackCover: UIViewController {
             animator.moveDown(buttonExit, 160, 0.8, .curveEaseOut)
         }
         else {
-            let animationView:LOTAnimationView = buttonMenu.subviews.first as! LOTAnimationView
+            let animationView:AnimationView = buttonMenu.subviews.first as! AnimationView
             animationView.play(fromProgress: 0.6, toProgress: 1.0) { (completed) in
                 self.bManager.enable(self.buttonMenu)
             }
@@ -279,6 +279,7 @@ class BackCover: UIViewController {
         animator.moveRight(buttonFormat, 80, 0.3, .curveEaseIn)
         animator.moveRight(buttonFullscreen, 80, 0.3, .curveEaseIn)
         animator.moveDown(labelPageNumberEditor, 80, 0.3, .curveEaseIn)
+        animator.toast(view, "Tap to exit Fullscreen")
         
         tapVisibility.isEnabled = true
     }

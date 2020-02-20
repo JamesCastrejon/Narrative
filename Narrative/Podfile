@@ -6,5 +6,5 @@ target 'Narrative' do
   pod 'Toast-Swift', '~> 4.0.1'
   pod 'IGColorPicker'
   pod 'ChromaColorPicker'
-  pod 'YPImagePicker'
+  pod 'YPImagePicker', '~> 3.5.3'
 end

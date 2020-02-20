@@ -20,6 +20,7 @@ internal extension UIImage {
     /// Kudos to Trevor Harmon and his UIImage+Resize category from
     // which this code is heavily inspired.
     func resetOrientation() -> UIImage {
+        
         // Image has no orientation, so keep the same
         if imageOrientation == .up {
             return self

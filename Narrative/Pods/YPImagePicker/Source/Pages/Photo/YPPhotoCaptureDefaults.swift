@@ -64,8 +64,6 @@ extension YPPhotoCapture {
                     self?.session.startRunning()
                     completion()
                     self?.tryToSetupPreview()
-                @unknown default:
-                    fatalError()
                 }
             }
         }
@@ -103,48 +101,11 @@ extension YPPhotoCapture {
         setFocusPointOnDevice(device: device!, point: point)
     }
     
-    // MARK: - Zoom
-    
-    func zoom(began: Bool, scale: CGFloat) {
-        guard let device = device else {
-            return
-        }
-        
-        if began {
-            initVideoZoomFactor = device.videoZoomFactor
-            return
-        }
-        
-        do {
-            try device.lockForConfiguration()
-            defer { device.unlockForConfiguration() }
-            
-            var minAvailableVideoZoomFactor: CGFloat = 1.0
-            if #available(iOS 11.0, *) {
-                minAvailableVideoZoomFactor = device.minAvailableVideoZoomFactor
-            }
-            var maxAvailableVideoZoomFactor: CGFloat = device.activeFormat.videoMaxZoomFactor
-            if #available(iOS 11.0, *) {
-                maxAvailableVideoZoomFactor = device.maxAvailableVideoZoomFactor
-            }
-            maxAvailableVideoZoomFactor = min(maxAvailableVideoZoomFactor, YPConfig.maxCameraZoomFactor)
-            
-            let desiredZoomFactor = initVideoZoomFactor * scale
-            device.videoZoomFactor = max(minAvailableVideoZoomFactor, min(desiredZoomFactor, maxAvailableVideoZoomFactor))
-        }
-        catch let error {
-           print("💩 \(error)")
-        }
-    }
-    
     // MARK: - Flip
     
-    func flipCamera(completion: @escaping () -> Void) {
+    func flipCamera() {
         sessionQueue.async { [weak self] in
             self?.flip()
-            DispatchQueue.main.async {
-                completion()
-            }
         }
     }
     
@@ -162,7 +123,7 @@ extension YPPhotoCapture {
     
     func setCurrentOrienation() {
         let connection = output.connection(with: .video)
-        let orientation = YPDeviceOrientationHelper.shared.currentDeviceOrientation
+        let orientation = UIDevice.current.orientation
         switch orientation {
         case .portrait:
             connection?.videoOrientation = .portrait

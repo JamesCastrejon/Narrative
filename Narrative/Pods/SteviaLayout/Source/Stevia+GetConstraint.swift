@@ -6,7 +6,6 @@
 //  Copyright © 2016 Sacha Durand Saint Omer. All rights reserved.
 //
 
-#if canImport(UIKit)
 import UIKit
 
 public extension UIView {
@@ -22,7 +21,7 @@ public extension UIView {
     ```
     - Returns: The left NSLayoutConstraint if found.
      */
-    var leftConstraint: NSLayoutConstraint? {
+    public var leftConstraint: NSLayoutConstraint? {
         return constraintForView(self, attribute: .left)
     }
 
@@ -38,7 +37,7 @@ public extension UIView {
     ```
     - Returns: The right NSLayoutConstraint if found.
      */
-    var rightConstraint: NSLayoutConstraint? {
+    public var rightConstraint: NSLayoutConstraint? {
         return constraintForView(self, attribute: .right)
     }
         
@@ -54,7 +53,7 @@ public extension UIView {
     ```
     - Returns: The top NSLayoutConstraint if found.
      */
-    var topConstraint: NSLayoutConstraint? {
+    public var topConstraint: NSLayoutConstraint? {
         return constraintForView(self, attribute: .top)
     }
     
@@ -70,7 +69,7 @@ public extension UIView {
     ```
      - Returns: The bottom NSLayoutConstraint if found.
      */
-    var bottomConstraint: NSLayoutConstraint? {
+    public var bottomConstraint: NSLayoutConstraint? {
         return constraintForView(self, attribute: .bottom)
     }
     
@@ -86,7 +85,7 @@ public extension UIView {
     ```
     - Returns: The height NSLayoutConstraint if found.
     */
-    var heightConstraint: NSLayoutConstraint? {
+    public var heightConstraint: NSLayoutConstraint? {
         return constraintForView(self, attribute: .height)
     }
     
@@ -102,7 +101,7 @@ public extension UIView {
      ```
      - Returns: The width NSLayoutConstraint if found.
      */
-    var widthConstraint: NSLayoutConstraint? {
+    public var widthConstraint: NSLayoutConstraint? {
         return constraintForView(self, attribute: .width)
     }
     
@@ -118,7 +117,7 @@ public extension UIView {
      ```
      - Returns: The trailing NSLayoutConstraint if found.
      */
-    var trailingConstraint: NSLayoutConstraint? {
+    public var trailingConstraint: NSLayoutConstraint? {
         return constraintForView(self, attribute: .trailing)
     }
     
@@ -134,7 +133,7 @@ public extension UIView {
      ```
      - Returns: The leading NSLayoutConstraint if found.
      */
-    var leadingConstraint: NSLayoutConstraint? {
+    public var leadingConstraint: NSLayoutConstraint? {
         return constraintForView(self, attribute: .leading)
     }
     
@@ -150,7 +149,7 @@ public extension UIView {
      ```
      - Returns: The width NSLayoutConstraint if found.
      */
-    var centerXConstraint: NSLayoutConstraint? {
+    public var centerXConstraint: NSLayoutConstraint? {
         return constraintForView(self, attribute: .centerX)
     }
     
@@ -166,7 +165,7 @@ public extension UIView {
      ```
      - Returns: The width NSLayoutConstraint if found.
      */
-    var centerYConstraint: NSLayoutConstraint? {
+    public var centerYConstraint: NSLayoutConstraint? {
         return constraintForView(self, attribute: .centerY)
     }
 }
@@ -196,4 +195,3 @@ func constraintForView(_ v: UIView, attribute: NSLayoutConstraint.Attribute) -> 
     // Look for constraint on superview.
     return lookForConstraint(in: v.superview)
 }
-#endif

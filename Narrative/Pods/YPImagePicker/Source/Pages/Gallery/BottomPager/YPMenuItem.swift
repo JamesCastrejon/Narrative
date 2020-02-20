@@ -29,7 +29,7 @@ final class YPMenuItem: UIView {
     }
     
     func setup() {
-        backgroundColor = YPImagePickerConfiguration.shared.colors.bottomMenuItemBackgroundColor
+        backgroundColor = .clear
         
         sv(
             textLabel,
@@ -42,18 +42,26 @@ final class YPMenuItem: UIView {
         
         textLabel.style { l in
             l.textAlignment = .center
-            l.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
-            l.textColor = YPImagePickerConfiguration.shared.colors.bottomMenuItemUnselectedTextColor
+            l.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.medium)
+            l.textColor = self.unselectedColor()
             l.adjustsFontSizeToFitWidth = true
             l.numberOfLines = 2
         }
     }
-
+    
+    func selectedColor() -> UIColor {
+        return YPImagePickerConfiguration.shared.bottomMenuItemSelectedColour
+    }
+    
+    func unselectedColor() -> UIColor {
+        return YPImagePickerConfiguration.shared.bottomMenuItemUnSelectedColour
+    }
+    
     func select() {
-        textLabel.textColor = YPImagePickerConfiguration.shared.colors.bottomMenuItemSelectedTextColor
+        textLabel.textColor = selectedColor()
     }
     
     func deselect() {
-        textLabel.textColor = YPImagePickerConfiguration.shared.colors.bottomMenuItemUnselectedTextColor
+        textLabel.textColor = unselectedColor()
     }
 }

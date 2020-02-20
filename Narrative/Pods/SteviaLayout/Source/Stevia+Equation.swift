@@ -6,7 +6,6 @@
 //  Copyright © 2017 Sacha Durand Saint Omer. All rights reserved.
 //
 
-#if canImport(UIKit)
 import UIKit
 
 public struct SteviaAttribute {
@@ -32,51 +31,51 @@ public struct SteviaAttribute {
 
 public extension UIView {
     
-    var Width: SteviaAttribute {
+    public var Width: SteviaAttribute {
         return SteviaAttribute(view: self, attribute: .width)
     }
     
-    var Height: SteviaAttribute {
+    public var Height: SteviaAttribute {
         return SteviaAttribute(view: self, attribute: .height)
     }
     
-    var Top: SteviaAttribute {
+    public var Top: SteviaAttribute {
         return SteviaAttribute(view: self, attribute: .top)
     }
     
-    var Bottom: SteviaAttribute {
+    public var Bottom: SteviaAttribute {
         return SteviaAttribute(view: self, attribute: .bottom)
     }
     
-    var Left: SteviaAttribute {
+    public var Left: SteviaAttribute {
         return SteviaAttribute(view: self, attribute: .left)
     }
     
-    var Right: SteviaAttribute {
+    public var Right: SteviaAttribute {
         return SteviaAttribute(view: self, attribute: .right)
     }
     
-    var Leading: SteviaAttribute {
+    public var Leading: SteviaAttribute {
         return SteviaAttribute(view: self, attribute: .leading)
     }
     
-    var Trailing: SteviaAttribute {
+    public var Trailing: SteviaAttribute {
         return SteviaAttribute(view: self, attribute: .trailing)
     }
     
-    var CenterX: SteviaAttribute {
+    public var CenterX: SteviaAttribute {
         return SteviaAttribute(view: self, attribute: .centerX)
     }
     
-    var CenterY: SteviaAttribute {
+    public var CenterY: SteviaAttribute {
         return SteviaAttribute(view: self, attribute: .centerY)
     }
     
-    var FirstBaseline: SteviaAttribute {
+    public var FirstBaseline: SteviaAttribute {
         return SteviaAttribute(view: self, attribute: .firstBaseline)
     }
     
-    var LastBaseline: SteviaAttribute {
+    public var LastBaseline: SteviaAttribute {
         return SteviaAttribute(view: self, attribute: .lastBaseline)
     }
 }
@@ -231,19 +230,11 @@ public func == (left: SteviaAttribute, right: CGFloat) -> NSLayoutConstraint {
 @discardableResult
 public func >= (left: SteviaAttribute, right: CGFloat) -> NSLayoutConstraint {
     if let spv = left.view.superview {
-        var toItem: UIView? = spv
-        var constant: CGFloat = right
-        if left.attribute == .width || left.attribute == .height {
-            toItem = nil
-        }
-        if left.attribute == .bottom || left.attribute == .right {
-            constant = -constant
-        }
         return spv.addConstraint(item: left.view,
                                  attribute: left.attribute,
                                  relatedBy: .greaterThanOrEqual,
-                                 toItem: toItem,
-                                 constant: constant)
+                                 toItem: spv,
+                                 constant: right)
     }
     return NSLayoutConstraint()
 }
@@ -251,20 +242,11 @@ public func >= (left: SteviaAttribute, right: CGFloat) -> NSLayoutConstraint {
 @discardableResult
 public func <= (left: SteviaAttribute, right: CGFloat) -> NSLayoutConstraint {
     if let spv = left.view.superview {
-        var toItem: UIView? = spv
-        var constant: CGFloat = right
-        if left.attribute == .width || left.attribute == .height {
-            toItem = nil
-        }
-        if left.attribute == .bottom || left.attribute == .right {
-            constant = -constant
-        }
         return spv.addConstraint(item: left.view,
                                  attribute: left.attribute,
                                  relatedBy: .lessThanOrEqual,
-                                 toItem: toItem,
-                                 constant: constant)
+                                 toItem: spv,
+                                 constant: right)
     }
     return NSLayoutConstraint()
 }
-#endif

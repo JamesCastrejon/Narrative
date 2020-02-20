@@ -45,8 +45,6 @@ extension YPPermissionCheckable where Self: UIViewController {
                     block(granted)
                 }
             })
-        @unknown default:
-            fatalError()
         }
     }
 }

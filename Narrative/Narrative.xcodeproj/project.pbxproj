@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6563B9AD107052D338A4DB0A /* Pods_Narrative.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0F0E0B9128311AF2C30A9F /* Pods_Narrative.framework */; };
+		3188548295EF3C29097DD946 /* Pods_Narrative.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26D1CFB301EBF97EFD2585C4 /* Pods_Narrative.framework */; };
 		D1242625223DA01A00C04C48 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1242624223DA01900C04C48 /* Book.swift */; };
 		D1242627223DBC3D00C04C48 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1242626223DBC3D00C04C48 /* Page.swift */; };
 		D124262D223DBE1500C04C48 /* BackCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D124262C223DBE1500C04C48 /* BackCover.swift */; };
@@ -24,9 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3E60AF1EC4EC37D364667C29 /* Pods-Narrative.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Narrative.release.xcconfig"; path = "Target Support Files/Pods-Narrative/Pods-Narrative.release.xcconfig"; sourceTree = "<group>"; };
-		5C0F0E0B9128311AF2C30A9F /* Pods_Narrative.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Narrative.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC4CD2CE262B37DC3C26FA5B /* Pods-Narrative.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Narrative.debug.xcconfig"; path = "Target Support Files/Pods-Narrative/Pods-Narrative.debug.xcconfig"; sourceTree = "<group>"; };
+		26D1CFB301EBF97EFD2585C4 /* Pods_Narrative.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Narrative.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DFD118C395465CBF8A2D2D6 /* Pods-Narrative.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Narrative.release.xcconfig"; path = "Target Support Files/Pods-Narrative/Pods-Narrative.release.xcconfig"; sourceTree = "<group>"; };
+		4655E4FE267A0785370B80B3 /* Pods-Narrative.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Narrative.debug.xcconfig"; path = "Target Support Files/Pods-Narrative/Pods-Narrative.debug.xcconfig"; sourceTree = "<group>"; };
 		D1242624223DA01900C04C48 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		D1242626223DBC3D00C04C48 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		D124262C223DBE1500C04C48 /* BackCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackCover.swift; sourceTree = "<group>"; };
@@ -49,17 +49,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6563B9AD107052D338A4DB0A /* Pods_Narrative.framework in Frameworks */,
+				3188548295EF3C29097DD946 /* Pods_Narrative.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		84911A34D5CC52383DD4E683 /* Frameworks */ = {
+		6309EFF80396C4795B447807 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5C0F0E0B9128311AF2C30A9F /* Pods_Narrative.framework */,
+				26D1CFB301EBF97EFD2585C4 /* Pods_Narrative.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -91,7 +91,7 @@
 				D1BA58A5221B746800483F2F /* Narrative */,
 				D1BA58A4221B746800483F2F /* Products */,
 				FDEB2D0F29E7B21BD25F024E /* Pods */,
-				84911A34D5CC52383DD4E683 /* Frameworks */,
+				6309EFF80396C4795B447807 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -146,8 +146,8 @@
 		FDEB2D0F29E7B21BD25F024E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BC4CD2CE262B37DC3C26FA5B /* Pods-Narrative.debug.xcconfig */,
-				3E60AF1EC4EC37D364667C29 /* Pods-Narrative.release.xcconfig */,
+				4655E4FE267A0785370B80B3 /* Pods-Narrative.debug.xcconfig */,
+				2DFD118C395465CBF8A2D2D6 /* Pods-Narrative.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -159,11 +159,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1BA58B5221B74B100483F2F /* Build configuration list for PBXNativeTarget "Narrative" */;
 			buildPhases = (
-				D7577EEE4192645740E56132 /* [CP] Check Pods Manifest.lock */,
+				87D3283985AA485A09141C6A /* [CP] Check Pods Manifest.lock */,
 				D1BA589F221B746800483F2F /* Sources */,
 				D1BA58A1221B746800483F2F /* Resources */,
 				085B7368EF121C3CC35685AC /* Frameworks */,
-				9EA484DE183639E179D978A6 /* [CP] Embed Pods Frameworks */,
+				D2485938DE4F93FEA6AD0F75 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -222,24 +222,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9EA484DE183639E179D978A6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Narrative/Pods-Narrative-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Narrative/Pods-Narrative-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Narrative/Pods-Narrative-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D7577EEE4192645740E56132 /* [CP] Check Pods Manifest.lock */ = {
+		87D3283985AA485A09141C6A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -259,6 +242,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2485938DE4F93FEA6AD0F75 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Narrative/Pods-Narrative-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Narrative/Pods-Narrative-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Narrative/Pods-Narrative-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -420,7 +420,7 @@
 		};
 		D1BA58B6221B74B100483F2F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BC4CD2CE262B37DC3C26FA5B /* Pods-Narrative.debug.xcconfig */;
+			baseConfigurationReference = 4655E4FE267A0785370B80B3 /* Pods-Narrative.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -439,7 +439,7 @@
 		};
 		D1BA58B7221B74B100483F2F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E60AF1EC4EC37D364667C29 /* Pods-Narrative.release.xcconfig */;
+			baseConfigurationReference = 2DFD118C395465CBF8A2D2D6 /* Pods-Narrative.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

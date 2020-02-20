@@ -6,7 +6,6 @@
 //  Copyright © 2015 Sacha Durand Saint Omer. All rights reserved.
 //
 
-#if canImport(UIKit)
 import UIKit
 
 public extension UIButton {
@@ -19,7 +18,7 @@ public extension UIButton {
      - Returns: Itself for chaining purposes
     */
     @discardableResult
-    func text(_ t: String) -> Self {
+    public func text(_ t: String) -> Self {
         setTitle(t, for: .normal)
         return self
     }
@@ -33,7 +32,7 @@ public extension UIButton {
      - Returns: Itself for chaining purposes
      */
     @discardableResult
-    func textKey(_ t: String) -> Self {
+    public func textKey(_ t: String) -> Self {
         text(NSLocalizedString(t, comment: ""))
         return self
     }
@@ -46,7 +45,7 @@ public extension UIButton {
      - Returns: Itself for chaining purposes
      */
     @discardableResult
-    func image(_ s: String) -> Self {
+    public func image(_ s: String) -> Self {
         setImage(UIImage(named: s), for: .normal)
         return self
     }
@@ -58,7 +57,7 @@ public extension UITextField {
      - Returns: Itself for chaining purposes
      */
     @discardableResult
-    func placeholder(_ t: String) -> Self {
+    public func placeholder(_ t: String) -> Self {
         placeholder = t
         return self
     }
@@ -70,7 +69,7 @@ public extension UILabel {
      - Returns: Itself for chaining purposes
      */
     @discardableResult
-    func text(_ t: String) -> Self {
+    public func text(_ t: String) -> Self {
         text = t
         return self
     }
@@ -81,7 +80,7 @@ public extension UILabel {
      - Returns: Itself for chaining purposes
      */
     @discardableResult
-    func textKey(_ t: String) -> Self {
+    public func textKey(_ t: String) -> Self {
         text(NSLocalizedString(t, comment: ""))
         return self
     }
@@ -101,4 +100,3 @@ extension UIImageView {
         return self
     }
 }
-#endif

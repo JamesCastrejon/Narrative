@@ -6,7 +6,6 @@
 //  Copyright © 2016 Sacha Durand Saint Omer. All rights reserved.
 //
 
-#if canImport(UIKit)
 import UIKit
 
 public extension UIView {
@@ -27,7 +26,7 @@ public extension UIView {
      
      */
     @discardableResult
-    func size(_ points: CGFloat) -> Self {
+    public func size(_ points: CGFloat) -> UIView {
         width(points)
         height(points)
         return self
@@ -53,7 +52,7 @@ public extension UIView {
      
      */
     @discardableResult
-    func height(_ points: CGFloat) -> Self {
+    public func height(_ points: CGFloat) -> UIView {
         return size(.height, points: points)
     }
     
@@ -71,7 +70,7 @@ public extension UIView {
      
      */
     @discardableResult
-    func width(_ points: CGFloat) -> Self {
+    public func width(_ points: CGFloat) -> UIView {
         return size(.width, points: points)
     }
     
@@ -95,7 +94,7 @@ public extension UIView {
      
      */
     @discardableResult
-    func height(_ fm: SteviaFlexibleMargin) -> Self {
+    public func height(_ fm: SteviaFlexibleMargin) -> UIView {
         return size(.height, relatedBy: fm.relation, points: fm.points)
     }
     
@@ -113,13 +112,13 @@ public extension UIView {
      
      */
     @discardableResult
-    func width(_ fm: SteviaFlexibleMargin) -> Self {
+    public func width(_ fm: SteviaFlexibleMargin) -> UIView {
         return size(.width, relatedBy: fm.relation, points: fm.points)
     }
     
     fileprivate func size(_ attribute: NSLayoutConstraint.Attribute,
                           relatedBy: NSLayoutConstraint.Relation = .equal,
-                          points: CGFloat) -> Self {
+                          points: CGFloat) -> UIView {
         let c = constraint(item: self,
                            attribute: attribute,
                            relatedBy: relatedBy,
@@ -148,7 +147,7 @@ public func equal(sizes views: UIView...) -> [UIView] {
     return equal(sizes: views)
 }
 
-@available(*, deprecated, renamed:"equal(sizes:)")
+@available(*, deprecated: 4.1.0, renamed:"equal(sizes:)")
 @discardableResult
 public func equalSizes(_ views: UIView...) -> [UIView] {
     return equal(sizes: views)
@@ -171,7 +170,7 @@ public func equal(sizes views: [UIView]) -> [UIView] {
     return views
 }
 
-@available(*, deprecated, renamed:"equal(sizes:)")
+@available(*, deprecated: 4.1.0, renamed:"equal(sizes:)")
 @discardableResult
 public func equalSizes(_ views: [UIView]) -> [UIView] {
     equal(heights: views)
@@ -194,7 +193,7 @@ public func equal(widths views: UIView...) -> [UIView] {
     return equal(widths: views)
 }
 
-@available(*, deprecated, renamed:"equal(widths:)")
+@available(*, deprecated: 4.1.0, renamed:"equal(widths:)")
 @discardableResult
 public func equalWidths(_ views: UIView...) -> [UIView] {
     return equal(widths: views)
@@ -216,7 +215,7 @@ public func equal(widths views: [UIView]) -> [UIView] {
     return views
 }
 
-@available(*, deprecated, renamed:"equal(widths:)")
+@available(*, deprecated: 4.1.0, renamed:"equal(widths:)")
 @discardableResult
 public func equalWidths(_ views: [UIView]) -> [UIView] {
     equal(.width, views: views)
@@ -238,7 +237,7 @@ public func equal(heights views: UIView...) -> [UIView] {
     return equal(heights: views)
 }
 
-@available(*, deprecated, renamed:"equal(heights:)")
+@available(*, deprecated: 4.1.0, renamed:"equal(heights:)")
 @discardableResult
 public func equalHeights(_ views: UIView...) -> [UIView] {
     return equal(heights: views)
@@ -260,7 +259,7 @@ public func equal(heights views: [UIView]) -> [UIView] {
     return views
 }
 
-@available(*, deprecated, renamed:"equal(heights:)")
+@available(*, deprecated: 4.1.0, renamed:"equal(heights:)")
 @discardableResult
 public func equalHeights(_ views: [UIView]) -> [UIView] {
     equal(.height, views: views)
@@ -278,4 +277,3 @@ private func equal(_ attribute: NSLayoutConstraint.Attribute, views: [UIView]) {
         previousView = v
     }
 }
-#endif

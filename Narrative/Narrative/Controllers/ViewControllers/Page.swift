@@ -290,6 +290,7 @@ class Page: UIViewController {
             var book: Book = Book()
             book.addPage()
             animator.pop(buttonAddPage, 1.5, 0.2)
+            animator.toast(view, "Added Page")
         } else {
             let alertController = UIAlertController(title: "Oh, no!", message: "Sorry but you cannot have more than 20 pages.\n:(", preferredStyle: .alert)
             
@@ -340,6 +341,7 @@ class Page: UIViewController {
         animator.moveRight(buttonDeletePage, 80, 0.3, .curveEaseIn)
         animator.moveRight(buttonFullscreen, 80, 0.3, .curveEaseIn)
         animator.moveDown(labelPageNumberEditor, 80, 0.3, .curveEaseIn)
+        animator.toast(view, "Tap to exit Fullscreen")
         
         tapVisibility.isEnabled = true
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toast_Swift
 
 class AnimationManager {
     
@@ -96,6 +97,11 @@ class AnimationManager {
         animations: {
             view.frame.origin.y += amount
         }, completion: nil)
+    }
+    
+    // MARK: - Toast Animations
+    func toast(_ view: UIView, _ message: String) {
+        view.makeToast(message)
     }
     
 }

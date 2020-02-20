@@ -20,8 +20,6 @@ extension AVCaptureDevice {
                 torchMode = .off
             case .off:
                 torchMode = .auto
-            @unknown default:
-                fatalError()
             }
             unlockForConfiguration()
         } catch _ { }

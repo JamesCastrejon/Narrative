@@ -43,7 +43,7 @@ class YPFiltersView: UIView {
         
         imageView.heightEqualsWidth()
         
-        backgroundColor = .offWhiteOrBlack
+        backgroundColor = UIColor(r: 247, g: 247, b: 247)
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         collectionView.backgroundColor = .clear

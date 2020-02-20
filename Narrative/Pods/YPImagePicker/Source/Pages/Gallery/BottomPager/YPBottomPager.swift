@@ -13,7 +13,8 @@ protocol YPBottomPagerDelegate: class {
     func pagerScrollViewDidScroll(_ scrollView: UIScrollView)
     func pagerDidSelectController(_ vc: UIViewController)
 }
-open class YPBottomPager: UIViewController, UIScrollViewDelegate {
+
+public class YPBottomPager: UIViewController, UIScrollViewDelegate {
     
     weak var delegate: YPBottomPagerDelegate?
     var controllers = [UIViewController]() { didSet { reload() } }
@@ -26,7 +27,7 @@ open class YPBottomPager: UIViewController, UIScrollViewDelegate {
         return controllers[currentPage]
     }
     
-    override open func loadView() {
+    override public func loadView() {
         self.automaticallyAdjustsScrollViewInsets = false
         v.scrollView.delegate = self
         view = v

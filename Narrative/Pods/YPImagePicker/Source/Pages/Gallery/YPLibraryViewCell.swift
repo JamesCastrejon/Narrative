@@ -13,8 +13,8 @@ class YPMultipleSelectionIndicator: UIView {
     
     let circle = UIView()
     let label = UILabel()
-    var selectionColor = UIColor.ypSystemBlue
-
+    var selectionColor = UIColor.black
+    
     convenience init() {
         self.init(frame: .zero)
         
@@ -91,19 +91,16 @@ class YPLibraryViewCell: UICollectionViewCell {
         durationLabel.isHidden = true
         selectionOverlay.backgroundColor = .white
         selectionOverlay.alpha = 0
-        backgroundColor = .ypSecondarySystemBackground
+        backgroundColor = UIColor(r: 247, g: 247, b: 247)
     }
 
     override var isSelected: Bool {
-        didSet { refreshSelection() }
+        didSet { isHighlighted = isSelected }
     }
     
     override var isHighlighted: Bool {
-        didSet { refreshSelection() }
-    }
-    
-    private func refreshSelection() {
-        let showOverlay = isSelected || isHighlighted
-        selectionOverlay.alpha = showOverlay ? 0.6 : 0
+        didSet {
+            selectionOverlay.alpha = isHighlighted ? 0.6 : 0
+        }
     }
 }

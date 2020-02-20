@@ -8,7 +8,6 @@
 
 import Foundation
 import Photos
-import UIKit
 
 class YPAlbumsManager {
     
@@ -36,14 +35,13 @@ class YPAlbumsManager {
                 if album.numberOfItems > 0 {
                     let r = PHAsset.fetchKeyAssets(in: assetCollection, options: nil)
                     if let first = r?.firstObject {
-                        let deviceScale = UIScreen.main.scale
-                        let targetSize = CGSize(width: 78*deviceScale, height: 78*deviceScale)
+                        let targetSize = CGSize(width: 78*2, height: 78*2)
                         let options = PHImageRequestOptions()
                         options.isSynchronous = true
-                        options.deliveryMode = .opportunistic
+                        options.deliveryMode = .fastFormat
                         PHImageManager.default().requestImage(for: first,
                                                               targetSize: targetSize,
-                                                              contentMode: .aspectFill,
+                                                              contentMode: .aspectFit,
                                                               options: options,
                                                               resultHandler: { image, _ in
                                                                 album.thumbnail = image

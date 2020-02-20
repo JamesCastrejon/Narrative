@@ -68,7 +68,6 @@ class LibraryMediaManager {
     func fetchVideoUrlAndCrop(for videoAsset: PHAsset, cropRect: CGRect, callback: @escaping (URL) -> Void) {
         let videosOptions = PHVideoRequestOptions()
         videosOptions.isNetworkAccessAllowed = true
-        videosOptions.deliveryMode = .highQualityFormat
         imageManager?.requestAVAsset(forVideo: videoAsset, options: videosOptions) { asset, _, _ in
             do {
                 guard let asset = asset else { print("⚠️ PHCachingImageManager >>> Don't have the asset"); return }
@@ -95,22 +94,24 @@ class LibraryMediaManager {
                 
                 try videoCompositionTrack.insertTimeRange(trackTimeRange, of: videoTrack, at: CMTime.zero)
                 
-                // Layer Instructions
-                let layerInstructions = AVMutableVideoCompositionLayerInstruction(assetTrack: videoCompositionTrack)
-                var transform = videoTrack.preferredTransform
-                transform.tx -= cropRect.minX
-                transform.ty -= cropRect.minY
-                layerInstructions.setTransform(transform, at: CMTime.zero)
+                // 2. Create the instructions
                 
-                // CompositionInstruction
                 let mainInstructions = AVMutableVideoCompositionInstruction()
                 mainInstructions.timeRange = trackTimeRange
+                
+                // 3. Adding the layer instructions. Transforming
+                
+                let layerInstructions = AVMutableVideoCompositionLayerInstruction(assetTrack: videoCompositionTrack)
+                layerInstructions.setTransform(videoTrack.getTransform(cropRect: cropRect), at: CMTime.zero)
+                layerInstructions.setOpacity(1.0, at: CMTime.zero)
                 mainInstructions.layerInstructions = [layerInstructions]
                 
-                // Video Composition
-                let videoComposition = AVMutableVideoComposition(propertiesOf: asset)
+                // 4. Create the main composition and add the instructions
+                
+                let videoComposition = AVMutableVideoComposition()
+                videoComposition.renderSize = cropRect.size
                 videoComposition.instructions = [mainInstructions]
-                videoComposition.renderSize = cropRect.size // needed? 
+                videoComposition.frameDuration = CMTimeMake(value: 1, timescale: 30)
                 
                 // 5. Configuring export session
                 
@@ -136,7 +137,7 @@ class LibraryMediaManager {
                     DispatchQueue.main.async {
                         if let url = exportSession?.outputURL, exportSession?.status == .completed {
                             callback(url)
-                            if let index = self.currentExportSessions.firstIndex(of:exportSession!) {
+                            if let index = self.currentExportSessions.index(of:exportSession!) {
                                 self.currentExportSessions.remove(at: index)
                             }
                         } else {
@@ -173,3 +174,4 @@ class LibraryMediaManager {
         }
     }
 }
+

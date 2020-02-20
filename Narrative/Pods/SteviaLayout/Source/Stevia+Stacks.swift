@@ -6,7 +6,6 @@
 //  Copyright © 2016 Sacha Durand Saint Omer. All rights reserved.
 //
 
-#if canImport(UIKit)
 import UIKit
 
 public extension UIView {
@@ -33,12 +32,12 @@ public extension UIView {
      ```
      */
     @discardableResult
-    func layout(_ objects: Any...) -> [UIView] {
+    public func layout(_ objects: Any...) -> [UIView] {
         return layout(objects)
     }
     
     @discardableResult
-    func layout(_ objects: [Any]) -> [UIView] {
+    public func layout(_ objects: [Any]) -> [UIView] {
         var previousMargin: CGFloat?
         var previousFlexibleMargin: SteviaFlexibleMargin?
         
@@ -161,4 +160,3 @@ public extension UIView {
         return v
     }
 }
-#endif
