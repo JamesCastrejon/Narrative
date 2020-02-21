@@ -323,7 +323,7 @@ class FrontCover: UIViewController {
         animator.moveRight(buttonFormat, 80, 0.3, .curveEaseIn)
         animator.moveRight(buttonAddPage, 80, 0.3, .curveEaseIn)
         animator.moveRight(buttonFullscreen, 80, 0.3, .curveEaseIn)
-        animator.moveDown(labelPageNumberEditor, 80, 0.3, .curveEaseIn)
+//        animator.moveDown(labelPageNumberEditor, 80, 0.3, .curveEaseIn)
 //        animator.toast(view, "Tap to exit Fullscreen")
         
         tapVisibility.isEnabled = true
@@ -359,7 +359,7 @@ class FrontCover: UIViewController {
             animator.moveLeft(buttonFormat, 80, 0.3, .curveEaseOut)
             animator.moveLeft(buttonAddPage, 80, 0.3, .curveEaseOut)
             animator.moveLeft(buttonFullscreen, 80, 0.3, .curveEaseOut)
-            animator.moveUp(labelPageNumberEditor, 80, 0.3, .curveEaseOut)
+//            animator.moveUp(labelPageNumberEditor, 80, 0.3, .curveEaseOut)
             tapVisibility.isEnabled = false
         }
     }

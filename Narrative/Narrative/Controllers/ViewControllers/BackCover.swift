@@ -296,7 +296,7 @@ class BackCover: UIViewController {
 //        animator.moveRight(buttonImport, 80, 0.3, .curveEaseIn)
         animator.moveRight(buttonFormat, 80, 0.3, .curveEaseIn)
         animator.moveRight(buttonFullscreen, 80, 0.3, .curveEaseIn)
-        animator.moveDown(labelPageNumberEditor, 80, 0.3, .curveEaseIn)
+//        animator.moveDown(labelPageNumberEditor, 80, 0.3, .curveEaseIn)
 //        animator.toast(view, "Tap to exit Fullscreen")
         
         tapVisibility.isEnabled = true
@@ -331,7 +331,7 @@ class BackCover: UIViewController {
 //            animator.moveLeft(buttonImport, 80, 0.3, .curveEaseOut)
             animator.moveLeft(buttonFormat, 80, 0.3, .curveEaseOut)
             animator.moveLeft(buttonFullscreen, 80, 0.3, .curveEaseOut)
-            animator.moveUp(labelPageNumberEditor, 80, 0.3, .curveEaseOut)
+//            animator.moveUp(labelPageNumberEditor, 80, 0.3, .curveEaseOut)
             tapVisibility.isEnabled = false
         }
     }
