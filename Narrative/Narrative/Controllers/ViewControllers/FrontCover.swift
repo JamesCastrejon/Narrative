@@ -54,6 +54,14 @@ class FrontCover: UIViewController {
         setupButtons()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        animator.fade(labelPageNumberEditor, 1.0, 1.0, .curveLinear)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        labelPageNumberEditor.alpha = 1.0
+    }
+    
     private func setupColorPicker() {
         colorPickerView = ColorPickerView(frame: CGRect(x: 0.0, y: 0.0, width: 180, height: 200))
         colorPickerView.delegate = self
@@ -303,7 +311,7 @@ class FrontCover: UIViewController {
         animator.moveRight(buttonAddPage, 80, 0.3, .curveEaseIn)
         animator.moveRight(buttonFullscreen, 80, 0.3, .curveEaseIn)
         animator.moveDown(labelPageNumberEditor, 80, 0.3, .curveEaseIn)
-        animator.toast(view, "Tap to exit Fullscreen")
+//        animator.toast(view, "Tap to exit Fullscreen")
         
         tapVisibility.isEnabled = true
     }

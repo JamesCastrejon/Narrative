@@ -56,8 +56,13 @@ class Page: UIViewController {
         setupButtons()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         labelPageNumberEditor.text = "Page \(Book.pageNumber)"
+        animator.fade(labelPageNumberEditor, 1.0, 1.0, .curveLinear)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        labelPageNumberEditor.alpha = 1.0
     }
     
     private func setupColorPicker() {
@@ -341,7 +346,7 @@ class Page: UIViewController {
         animator.moveRight(buttonDeletePage, 80, 0.3, .curveEaseIn)
         animator.moveRight(buttonFullscreen, 80, 0.3, .curveEaseIn)
         animator.moveDown(labelPageNumberEditor, 80, 0.3, .curveEaseIn)
-        animator.toast(view, "Tap to exit Fullscreen")
+//        animator.toast(view, "Tap to exit Fullscreen")
         
         tapVisibility.isEnabled = true
     }

@@ -68,6 +68,34 @@ class AnimationManager {
         }, completion: nil)
     }
     
+    func moveLeft(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ speedOptions: UIView.AnimationOptions, _ completion: ((Bool) -> Void)?) {
+        UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
+        animations: {
+            button.frame.origin.x -= amount
+        }, completion: completion)
+    }
+    
+    func moveRight(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ speedOptions: UIView.AnimationOptions, _ completion: ((Bool) -> Void)?) {
+        UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
+        animations: {
+            button.frame.origin.x += amount
+        }, completion: completion)
+    }
+    
+    func moveUp(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ speedOptions: UIView.AnimationOptions, _ completion: ((Bool) -> Void)?) {
+        UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
+        animations: {
+            button.frame.origin.y -= amount
+        }, completion: completion)
+    }
+    
+    func moveDown(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ speedOptions: UIView.AnimationOptions, _ completion: ((Bool) -> Void)?) {
+        UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
+        animations: {
+            button.frame.origin.y += amount
+        }, completion: completion)
+    }
+    
     func scale(_ button: UIButton, _ amount: CGFloat, _ time: Double) {
         UIView.animate(withDuration: time) {
             button.transform = CGAffineTransform(scaleX: amount, y: amount)
@@ -96,6 +124,13 @@ class AnimationManager {
         UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
         animations: {
             view.frame.origin.y += amount
+        }, completion: nil)
+    }
+    
+    func fade(_ view: UIView, _ time: Double, _ delay: Double, _ speedOptions: UIView.AnimationOptions) {
+        UIView.animate(withDuration: time, delay: delay, options: speedOptions,
+        animations: {
+            view.alpha = 0.0
         }, completion: nil)
     }
     

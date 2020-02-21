@@ -12,7 +12,7 @@ import UIKit
 struct Book {
     
     static var orderedViewControllers: [UIViewController] = []
-    static var pageNumber: Int = 0
+    static var pageNumber = 0
     
     mutating func initialize() {
         Book.orderedViewControllers = [
