@@ -96,6 +96,9 @@ class FrontCover: UIViewController {
         bManager.addRadius(for: buttonFullscreen)
         bManager.addShadow(for: buttonExit)
         bManager.addShadow(for: buttonBackground)
+        bManager.addShadow(for: buttonPalette)
+        bManager.addShadow(for: buttonProPalette)
+        bManager.addShadow(for: buttonImport)
         bManager.addShadow(for: buttonFormat)
         bManager.addShadow(for: buttonAddPage)
         bManager.addShadow(for: buttonFullscreen)
@@ -123,7 +126,6 @@ class FrontCover: UIViewController {
     // MARK: Button Functionality
     @IBAction func menuVisibility(_ sender: Any) {
         bManager.disable(buttonMenu)
-        
         if !buttonExit.isEnabled {
             // TODO: disable text
             bManager.disable(buttonBackground)
@@ -140,6 +142,10 @@ class FrontCover: UIViewController {
             bManager.enable(buttonResetSave)
             bManager.enable(buttonSave)
             bManager.enable(buttonExit)
+            bManager.show(buttonReset)
+            bManager.show(buttonResetSave)
+            bManager.show(buttonSave)
+            bManager.show(buttonExit)
             
             animator.moveDown(buttonReset, 40, 0.2, .curveEaseOut)
             animator.moveDown(buttonResetSave, 80, 0.4, .curveEaseOut)
@@ -156,8 +162,12 @@ class FrontCover: UIViewController {
             bManager.disable(buttonResetSave)
             bManager.disable(buttonSave)
             bManager.disable(buttonExit)
-            
-            animator.moveUp(buttonReset, 40, 0.8, .curveEaseOut)
+            animator.moveUp(buttonReset, 40, 0.8, 0.0, .curveEaseOut) { _ in
+                self.bManager.hide(self.buttonReset)
+                self.bManager.hide(self.buttonResetSave)
+                self.bManager.hide(self.buttonSave)
+                self.bManager.hide(self.buttonExit)
+            }
             animator.moveUp(buttonResetSave, 80, 0.6, .curveEaseOut)
             animator.moveUp(buttonSave, 120, 0.4, .curveEaseOut)
             animator.moveUp(buttonExit, 160, 0.2, .curveEaseOut)
@@ -193,33 +203,36 @@ class FrontCover: UIViewController {
             bManager.disable(buttonAddPage)
             bManager.disable(buttonFullscreen)
             
+            bManager.show(buttonPalette)
+            bManager.show(buttonProPalette)
+            bManager.show(buttonImport)
+            
             animator.moveLeft(buttonPalette, 55, 0.4, .curveEaseIn)
             animator.moveUp(buttonPalette, 60, 0.4, .curveEaseIn)
-            animator.moveLeft(buttonProPalette, 55, 0.4, 0.1, .curveEaseIn)
-            animator.moveLeft(buttonImport, 55, 0.4, 0.2, .curveEaseIn)
-            animator.moveDown(buttonImport, 60, 0.4, 0.2, .curveEaseIn)
+            animator.moveLeft(buttonProPalette, 55, 0.4, 0.1, .curveEaseIn, nil)
+            animator.moveLeft(buttonImport, 55, 0.4, 0.2, .curveEaseIn, nil)
+            animator.moveDown(buttonImport, 60, 0.4, 0.2, .curveEaseIn) { _ in
+                self.bManager.enable(self.buttonBackground)
+            }
             
             bManager.enable(buttonPalette)
             bManager.enable(buttonProPalette)
             bManager.enable(buttonImport)
-            bManager.enable(buttonBackground)
-            bManager.showShadow(for: buttonPalette)
-            bManager.showShadow(for: buttonProPalette)
-            bManager.showShadow(for: buttonImport)
         }
         else {
             bManager.disable(buttonPalette)
             bManager.disable(buttonProPalette)
             bManager.disable(buttonImport)
-            bManager.hideShadow(for: buttonPalette)
-            bManager.hideShadow(for: buttonProPalette)
-            bManager.hideShadow(for: buttonImport)
             
             animator.moveDown(buttonPalette, 60, 0.4, .curveEaseIn)
             animator.moveRight(buttonPalette, 55, 0.4, .curveEaseIn)
-            animator.moveRight(buttonProPalette, 55, 0.4, 0.1, .curveEaseIn)
-            animator.moveUp(buttonImport, 60, 0.4, 0.2, .curveEaseIn)
-            animator.moveRight(buttonImport, 55, 0.4, 0.2, .curveEaseIn)
+            animator.moveRight(buttonProPalette, 55, 0.4, 0.1, .curveEaseIn, nil)
+            animator.moveUp(buttonImport, 60, 0.4, 0.2, .curveEaseIn, nil)
+            animator.moveRight(buttonImport, 55, 0.4, 0.2, .curveEaseIn) { _ in
+                self.bManager.hide(self.buttonPalette)
+                self.bManager.hide(self.buttonProPalette)
+                self.bManager.hide(self.buttonImport)
+            }
             
             bManager.enable(buttonMenu)
             bManager.enable(buttonBackground)
@@ -299,14 +312,14 @@ class FrontCover: UIViewController {
     
     @IBAction func hideUIElements(_ sender: Any) {
         animator.moveLeft(buttonMenu, 80, 0.3, .curveEaseIn)
-        animator.moveLeft(buttonReset, 80, 0.3, .curveEaseIn)
-        animator.moveLeft(buttonResetSave, 80, 0.3, .curveEaseIn)
-        animator.moveLeft(buttonSave, 80, 0.3, .curveEaseIn)
-        animator.moveLeft(buttonExit, 80, 0.3, .curveEaseIn)
+//        animator.moveLeft(buttonReset, 80, 0.3, .curveEaseIn)
+//        animator.moveLeft(buttonResetSave, 80, 0.3, .curveEaseIn)
+//        animator.moveLeft(buttonSave, 80, 0.3, .curveEaseIn)
+//        animator.moveLeft(buttonExit, 80, 0.3, .curveEaseIn)
         animator.moveRight(buttonBackground, 80, 0.3, .curveEaseIn)
-        animator.moveRight(buttonPalette, 80, 0.3, .curveEaseIn)
-        animator.moveRight(buttonProPalette, 80, 0.3, .curveEaseIn)
-        animator.moveRight(buttonImport, 80, 0.3, .curveEaseIn)
+//        animator.moveRight(buttonPalette, 80, 0.3, .curveEaseIn)
+//        animator.moveRight(buttonProPalette, 80, 0.3, .curveEaseIn)
+//        animator.moveRight(buttonImport, 80, 0.3, .curveEaseIn)
         animator.moveRight(buttonFormat, 80, 0.3, .curveEaseIn)
         animator.moveRight(buttonAddPage, 80, 0.3, .curveEaseIn)
         animator.moveRight(buttonFullscreen, 80, 0.3, .curveEaseIn)
@@ -335,14 +348,14 @@ class FrontCover: UIViewController {
         }
         else {
             animator.moveRight(buttonMenu, 80, 0.3, .curveEaseOut)
-            animator.moveRight(buttonReset, 80, 0.3, .curveEaseOut)
-            animator.moveRight(buttonResetSave, 80, 0.3, .curveEaseOut)
-            animator.moveRight(buttonSave, 80, 0.3, .curveEaseOut)
-            animator.moveRight(buttonExit, 80, 0.3, .curveEaseOut)
+//            animator.moveRight(buttonReset, 80, 0.3, .curveEaseOut)
+//            animator.moveRight(buttonResetSave, 80, 0.3, .curveEaseOut)
+//            animator.moveRight(buttonSave, 80, 0.3, .curveEaseOut)
+//            animator.moveRight(buttonExit, 80, 0.3, .curveEaseOut)
             animator.moveLeft(buttonBackground, 80, 0.3, .curveEaseOut)
-            animator.moveLeft(buttonPalette, 80, 0.3, .curveEaseOut)
-            animator.moveLeft(buttonProPalette, 80, 0.3, .curveEaseOut)
-            animator.moveLeft(buttonImport, 80, 0.3, .curveEaseOut)
+//            animator.moveLeft(buttonPalette, 80, 0.3, .curveEaseOut)
+//            animator.moveLeft(buttonProPalette, 80, 0.3, .curveEaseOut)
+//            animator.moveLeft(buttonImport, 80, 0.3, .curveEaseOut)
             animator.moveLeft(buttonFormat, 80, 0.3, .curveEaseOut)
             animator.moveLeft(buttonAddPage, 80, 0.3, .curveEaseOut)
             animator.moveLeft(buttonFullscreen, 80, 0.3, .curveEaseOut)

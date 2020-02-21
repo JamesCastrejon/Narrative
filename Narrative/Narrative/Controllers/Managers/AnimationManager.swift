@@ -14,83 +14,55 @@ class AnimationManager {
     // MARK: - Button (UIControl) Animations
     func moveLeft(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ speedOptions: UIView.AnimationOptions) {
         UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
-        animations: {
-            button.frame.origin.x -= amount
-        }, completion: nil)
-    }
-    
-    func moveRight(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ speedOptions: UIView.AnimationOptions) {
-        UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
-        animations: {
-            button.frame.origin.x += amount
-        }, completion: nil)
-    }
-    
-    func moveUp(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ speedOptions: UIView.AnimationOptions) {
-        UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
-        animations: {
-            button.frame.origin.y -= amount
-        }, completion: nil)
-    }
-    
-    func moveDown(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ speedOptions: UIView.AnimationOptions) {
-        UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
-        animations: {
-            button.frame.origin.y += amount
-        }, completion: nil)
-    }
-    
-    func moveLeft(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ delay: Double, _ speedOptions: UIView.AnimationOptions) {
-        UIView.animate(withDuration: time, delay: delay, options: speedOptions,
                        animations: {
                         button.frame.origin.x -= amount
         }, completion: nil)
     }
     
-    func moveRight(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ delay: Double, _ speedOptions: UIView.AnimationOptions) {
-        UIView.animate(withDuration: time, delay: delay, options: speedOptions,
+    func moveRight(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ speedOptions: UIView.AnimationOptions) {
+        UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
                        animations: {
                         button.frame.origin.x += amount
         }, completion: nil)
     }
     
-    func moveUp(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ delay: Double, _ speedOptions: UIView.AnimationOptions) {
-        UIView.animate(withDuration: time, delay: delay, options: speedOptions,
+    func moveUp(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ speedOptions: UIView.AnimationOptions) {
+        UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
                        animations: {
                         button.frame.origin.y -= amount
         }, completion: nil)
     }
     
-    func moveDown(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ delay: Double, _ speedOptions: UIView.AnimationOptions) {
-        UIView.animate(withDuration: time, delay: delay, options: speedOptions,
+    func moveDown(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ speedOptions: UIView.AnimationOptions) {
+        UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
                        animations: {
                         button.frame.origin.y += amount
         }, completion: nil)
     }
     
-    func moveLeft(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ speedOptions: UIView.AnimationOptions, _ completion: ((Bool) -> Void)?) {
-        UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
+    func moveLeft(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ delay: Double, _ speedOptions: UIView.AnimationOptions, _ completion: ((Bool) -> Void)?) {
+        UIView.animate(withDuration: time, delay: delay, options: speedOptions,
         animations: {
             button.frame.origin.x -= amount
         }, completion: completion)
     }
     
-    func moveRight(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ speedOptions: UIView.AnimationOptions, _ completion: ((Bool) -> Void)?) {
-        UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
+    func moveRight(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ delay: Double, _ speedOptions: UIView.AnimationOptions, _ completion: ((Bool) -> Void)?) {
+        UIView.animate(withDuration: time, delay: delay, options: speedOptions,
         animations: {
             button.frame.origin.x += amount
         }, completion: completion)
     }
     
-    func moveUp(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ speedOptions: UIView.AnimationOptions, _ completion: ((Bool) -> Void)?) {
-        UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
+    func moveUp(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ delay: Double, _ speedOptions: UIView.AnimationOptions, _ completion: ((Bool) -> Void)?) {
+        UIView.animate(withDuration: time, delay: delay, options: speedOptions,
         animations: {
             button.frame.origin.y -= amount
         }, completion: completion)
     }
     
-    func moveDown(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ speedOptions: UIView.AnimationOptions, _ completion: ((Bool) -> Void)?) {
-        UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
+    func moveDown(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ delay: Double, _ speedOptions: UIView.AnimationOptions, _ completion: ((Bool) -> Void)?) {
+        UIView.animate(withDuration: time, delay: delay, options: speedOptions,
         animations: {
             button.frame.origin.y += amount
         }, completion: completion)
