@@ -39,7 +39,7 @@ class FrontCover: UIViewController {
     var animator: AnimationManager!
     var previousColor: UIColor = UIColor.white
     var colorPickerView: ColorPickerView!
-    var neatColorPicker: ChromaColorPicker!
+    var proColorPickerView: ChromaColorPicker!
     let picker = YPImagePicker()
     // TODO: Replace this with loaded color/image, keep white if nonexistent
     
@@ -75,15 +75,15 @@ class FrontCover: UIViewController {
     }
     
     private func setupProColorPicker() {
-        neatColorPicker = ChromaColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
-        neatColorPicker.delegate = self
-        neatColorPicker.center = self.view.center
-        neatColorPicker.padding = 5
-        neatColorPicker.stroke = 3
-        neatColorPicker.hexLabel.textColor = UIColor.white
-        neatColorPicker.isHidden = true
+        proColorPickerView = ChromaColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+        proColorPickerView.delegate = self
+        proColorPickerView.center = self.view.center
+        proColorPickerView.padding = 5
+        proColorPickerView.stroke = 3
+        proColorPickerView.hexLabel.textColor = UIColor.white
+        proColorPickerView.isHidden = true
         
-        view.addSubview(neatColorPicker)
+        view.addSubview(proColorPickerView)
     }
     
     private func setupButtons() {
@@ -94,6 +94,7 @@ class FrontCover: UIViewController {
         bManager.addRadius(for: buttonFormat)
         bManager.addRadius(for: buttonAddPage)
         bManager.addRadius(for: buttonFullscreen)
+        bManager.addShadow(for: buttonMenu)
         bManager.addShadow(for: buttonExit)
         bManager.addShadow(for: buttonBackground)
         bManager.addShadow(for: buttonPalette)
@@ -261,21 +262,21 @@ class FrontCover: UIViewController {
     }
     
     @IBAction func changeBackgroundColorSpecial(_ sender: Any) {
-        if neatColorPicker.isHidden {
-            neatColorPicker.isHidden = false
+        if proColorPickerView.isHidden {
+            proColorPickerView.isHidden = false
             bManager.disable(buttonPalette)
             bManager.disable(buttonImport)
             bManager.disable(buttonBackground)
             tapVisibility.isEnabled = true
         }
         else {
-            neatColorPicker.isHidden = true
+            proColorPickerView.isHidden = true
             bManager.enable(buttonPalette)
             bManager.enable(buttonImport)
             bManager.enable(buttonBackground)
             tapVisibility.isEnabled = false
         }
-        (self.parent as! BookManager).changeSwipeGesture(enabled: neatColorPicker.isHidden)
+        (self.parent as! BookManager).changeSwipeGesture(enabled: proColorPickerView.isHidden)
     }
     
     @IBAction func changeBackgroundImportImage(_ sender: Any) {
@@ -331,7 +332,7 @@ class FrontCover: UIViewController {
     
     // MARK: Tap Register
     @IBAction func uielementsVisibility(_ sender: Any) {
-        if !colorPickerView.isHidden || !neatColorPicker.isHidden {
+        if !colorPickerView.isHidden || !proColorPickerView.isHidden {
             bManager.enable(buttonPalette)
             bManager.enable(buttonProPalette)
             bManager.enable(buttonImport)
@@ -341,9 +342,9 @@ class FrontCover: UIViewController {
                 colorPickerView.isHidden = true
                 (self.parent as! BookManager).changeSwipeGesture(enabled: colorPickerView.isHidden)
             }
-            else if !neatColorPicker.isHidden {
-                neatColorPicker.isHidden = true
-                (self.parent as! BookManager).changeSwipeGesture(enabled: neatColorPicker.isHidden)
+            else if !proColorPickerView.isHidden {
+                proColorPickerView.isHidden = true
+                (self.parent as! BookManager).changeSwipeGesture(enabled: proColorPickerView.isHidden)
             }
         }
         else {
@@ -418,7 +419,7 @@ extension FrontCover: ChromaColorPickerDelegate {
         bManager.enable(buttonBackground)
         previousColor = color
         self.view.backgroundColor = color
-        neatColorPicker.isHidden = true
+        proColorPickerView.isHidden = true
         bManager.enable(buttonPalette)
         bManager.enable(buttonImport)
         (self.parent as! BookManager).changeSwipeGesture(enabled: true)
