@@ -3,7 +3,6 @@ platform :ios, '12.1'
 target 'Narrative' do
   use_frameworks!
   pod 'lottie-ios'
-  pod 'Toast-Swift', '~> 4.0.1'
   pod 'IGColorPicker'
   pod 'ChromaColorPicker'
   pod 'YPImagePicker', '~> 3.5.3'

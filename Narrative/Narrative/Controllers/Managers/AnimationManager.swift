@@ -7,36 +7,35 @@
 //
 
 import UIKit
-import Toast_Swift
 
 class AnimationManager {
     
     // MARK: - Button (UIControl) Animations
     func moveLeft(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ speedOptions: UIView.AnimationOptions) {
         UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
-                       animations: {
-                        button.frame.origin.x -= amount
+        animations: {
+            button.frame.origin.x -= amount
         }, completion: nil)
     }
     
     func moveRight(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ speedOptions: UIView.AnimationOptions) {
         UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
-                       animations: {
-                        button.frame.origin.x += amount
+        animations: {
+            button.frame.origin.x += amount
         }, completion: nil)
     }
     
     func moveUp(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ speedOptions: UIView.AnimationOptions) {
         UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
-                       animations: {
-                        button.frame.origin.y -= amount
+        animations: {
+            button.frame.origin.y -= amount
         }, completion: nil)
     }
     
     func moveDown(_ button: UIButton, _ amount: CGFloat, _ time: Double, _ speedOptions: UIView.AnimationOptions) {
         UIView.animate(withDuration: time, delay: 0.0, options: speedOptions,
-                       animations: {
-                        button.frame.origin.y += amount
+        animations: {
+            button.frame.origin.y += amount
         }, completion: nil)
     }
     
@@ -105,10 +104,4 @@ class AnimationManager {
             view.alpha = 0.0
         }, completion: nil)
     }
-    
-    // MARK: - Toast Animations
-    func toast(_ view: UIView, _ message: String) {
-        view.makeToast(message)
-    }
-    
 }

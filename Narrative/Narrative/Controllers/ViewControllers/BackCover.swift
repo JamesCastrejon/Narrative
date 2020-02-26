@@ -54,11 +54,11 @@ class BackCover: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        animator.fade(labelPageNumberEditor, 1.0, 1.0, .curveLinear)
+        labelPageNumberEditor.alpha = 1.0
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        labelPageNumberEditor.alpha = 1.0
+    override func viewDidAppear(_ animated: Bool) {
+        animator.fade(labelPageNumberEditor, 1.0, 1.0, .curveLinear)
     }
     
     private func setupColorPicker() {
@@ -163,11 +163,12 @@ class BackCover: UIViewController {
                 self.bManager.hide(self.buttonReset)
                 self.bManager.hide(self.buttonResetSave)
                 self.bManager.hide(self.buttonSave)
-                self.bManager.hide(self.buttonExit)
             }
             animator.moveUp(buttonResetSave, 80, 0.6, .curveEaseOut)
             animator.moveUp(buttonSave, 120, 0.4, .curveEaseOut)
-            animator.moveUp(buttonExit, 160, 0.2, .curveEaseOut)
+            animator.moveUp(buttonExit, 160, 0.2, 0.0, .curveEaseOut) { _ in
+                self.bManager.hide(self.buttonExit)
+            }
             
             bManager.enable(buttonBackground)
             bManager.enable(buttonFormat)
@@ -290,18 +291,9 @@ class BackCover: UIViewController {
     
     @IBAction func hideUIElements(_ sender: Any) {
         animator.moveLeft(buttonMenu, 80, 0.3, .curveEaseIn)
-//        animator.moveLeft(buttonReset, 80, 0.3, .curveEaseIn)
-//        animator.moveLeft(buttonResetSave, 80, 0.3, .curveEaseIn)
-//        animator.moveLeft(buttonSave, 80, 0.3, .curveEaseIn)
-//        animator.moveLeft(buttonExit, 80, 0.3, .curveEaseIn)
         animator.moveRight(buttonBackground, 80, 0.3, .curveEaseIn)
-//        animator.moveRight(buttonPalette, 80, 0.3, .curveEaseIn)
-//        animator.moveRight(buttonProPalette, 80, 0.3, .curveEaseIn)
-//        animator.moveRight(buttonImport, 80, 0.3, .curveEaseIn)
         animator.moveRight(buttonFormat, 80, 0.3, .curveEaseIn)
         animator.moveRight(buttonFullscreen, 80, 0.3, .curveEaseIn)
-//        animator.moveDown(labelPageNumberEditor, 80, 0.3, .curveEaseIn)
-//        animator.toast(view, "Tap to exit Fullscreen")
         
         tapVisibility.isEnabled = true
     }
@@ -325,17 +317,9 @@ class BackCover: UIViewController {
         }
         else {
             animator.moveRight(buttonMenu, 80, 0.3, .curveEaseOut)
-//            animator.moveRight(buttonReset, 80, 0.3, .curveEaseOut)
-//            animator.moveRight(buttonResetSave, 80, 0.3, .curveEaseOut)
-//            animator.moveRight(buttonSave, 80, 0.3, .curveEaseOut)
-//            animator.moveRight(buttonExit, 80, 0.3, .curveEaseOut)
             animator.moveLeft(buttonBackground, 80, 0.3, .curveEaseOut)
-//            animator.moveLeft(buttonPalette, 80, 0.3, .curveEaseOut)
-//            animator.moveLeft(buttonProPalette, 80, 0.3, .curveEaseOut)
-//            animator.moveLeft(buttonImport, 80, 0.3, .curveEaseOut)
             animator.moveLeft(buttonFormat, 80, 0.3, .curveEaseOut)
             animator.moveLeft(buttonFullscreen, 80, 0.3, .curveEaseOut)
-//            animator.moveUp(labelPageNumberEditor, 80, 0.3, .curveEaseOut)
             tapVisibility.isEnabled = false
         }
     }
