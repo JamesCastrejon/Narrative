@@ -242,8 +242,8 @@ class FrontCover: UIViewController {
             bManager.show(buttonFontFamily)
             
             animator.moveLeft(buttonEditPalette, 55, 0.4, .curveEaseOut)
-            animator.moveLeft(buttonEditProPalette, 55, 0.4, 0.8, .curveEaseOut, nil)
-            animator.moveUp(buttonEditProPalette, 60, 0.4, 0.8, .curveEaseOut, nil)
+            animator.moveLeft(buttonEditProPalette, 55, 0.4, 0.08, .curveEaseOut, nil)
+            animator.moveUp(buttonEditProPalette, 60, 0.4, 0.08, .curveEaseOut, nil)
             animator.moveUp(buttonFontFamily, 60, 0.4, 0.16, .curveEaseOut) { _ in
                 self.bManager.enable(self.buttonEdit)
             }
@@ -256,8 +256,8 @@ class FrontCover: UIViewController {
             bManager.disable(buttonFontFamily)
             
             animator.moveRight(buttonEditPalette, 55, 0.4, .curveEaseIn)
-            animator.moveRight(buttonEditProPalette, 55, 0.4, 0.8, .curveEaseIn, nil)
-            animator.moveDown(buttonEditProPalette, 60, 0.4, 0.8, .curveEaseIn, nil)
+            animator.moveRight(buttonEditProPalette, 55, 0.4, 0.08, .curveEaseIn, nil)
+            animator.moveDown(buttonEditProPalette, 60, 0.4, 0.08, .curveEaseIn, nil)
             animator.moveDown(buttonFontFamily, 60, 0.4, 0.16, .curveEaseIn) { _ in
                 self.bManager.enable(self.buttonEdit)
                 self.bManager.hide(self.buttonEditPalette)
