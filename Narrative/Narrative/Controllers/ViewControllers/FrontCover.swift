@@ -17,11 +17,19 @@ class FrontCover: UIViewController {
     // MARK: Outlets
     @IBOutlet var tapVisibility: UITapGestureRecognizer!
     
+    @IBOutlet var viewCover: UIView!
+    @IBOutlet var imageBackground: UIImageView!
+    
     @IBOutlet var buttonMenu: UIButton!
     @IBOutlet var buttonReset: UIButton!
     @IBOutlet var buttonResetSave: UIButton!
     @IBOutlet var buttonSave: UIButton!
     @IBOutlet var buttonExit: UIButton!
+    
+    @IBOutlet var buttonEdit: UIButton!
+    @IBOutlet var buttonEditPalette: UIButton!
+    @IBOutlet var buttonEditProPalette: UIButton!
+    @IBOutlet var buttonFontFamily: UIButton!
     
     @IBOutlet var buttonBackground: UIButton!
     @IBOutlet var buttonPalette: UIButton!
@@ -29,9 +37,14 @@ class FrontCover: UIViewController {
     @IBOutlet var buttonImport: UIButton!
     
     @IBOutlet var buttonFormat: UIButton!
+    @IBOutlet var buttonOption1: UIButton!
+    @IBOutlet var buttonOption2: UIButton!
+    @IBOutlet var buttonOption3: UIButton!
+    @IBOutlet var buttonOption4: UIButton!
+    @IBOutlet var buttonOption5: UIButton!
+    
     @IBOutlet var buttonAddPage: UIButton!
     @IBOutlet var buttonFullscreen: UIButton!
-    @IBOutlet var imageBackground: UIImageView!
     @IBOutlet var labelPageNumberEditor: UILabel!
     
     // MARK: Variables
@@ -87,6 +100,10 @@ class FrontCover: UIViewController {
     }
     
     private func setupButtons() {
+        bManager.addRadius(for: buttonEdit)
+        bManager.addRadius(for: buttonEditPalette)
+        bManager.addRadius(for: buttonEditProPalette)
+        bManager.addRadius(for: buttonFontFamily)
         bManager.addRadius(for: buttonBackground)
         bManager.addRadius(for: buttonPalette)
         bManager.addRadius(for: buttonProPalette)
@@ -94,8 +111,17 @@ class FrontCover: UIViewController {
         bManager.addRadius(for: buttonFormat)
         bManager.addRadius(for: buttonAddPage)
         bManager.addRadius(for: buttonFullscreen)
+        bManager.addRadius(for: buttonOption1)
+        bManager.addRadius(for: buttonOption2)
+        bManager.addRadius(for: buttonOption3)
+        bManager.addRadius(for: buttonOption4)
+        bManager.addRadius(for: buttonOption5)
         bManager.addShadow(for: buttonMenu)
         bManager.addShadow(for: buttonExit)
+        bManager.addShadow(for: buttonEdit)
+        bManager.addShadow(for: buttonEditPalette)
+        bManager.addShadow(for: buttonEditProPalette)
+        bManager.addShadow(for: buttonFontFamily)
         bManager.addShadow(for: buttonBackground)
         bManager.addShadow(for: buttonPalette)
         bManager.addShadow(for: buttonProPalette)
@@ -103,6 +129,11 @@ class FrontCover: UIViewController {
         bManager.addShadow(for: buttonFormat)
         bManager.addShadow(for: buttonAddPage)
         bManager.addShadow(for: buttonFullscreen)
+        bManager.addShadow(for: buttonOption1)
+        bManager.addShadow(for: buttonOption2)
+        bManager.addShadow(for: buttonOption3)
+        bManager.addShadow(for: buttonOption4)
+        bManager.addShadow(for: buttonOption5)
         setupButtonAnimations()
     }
     
@@ -197,7 +228,64 @@ class FrontCover: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func editMenuVisibility(_ sender: Any) {
+        bManager.disable(buttonEdit)
+        if !buttonEditPalette.isEnabled {
+            bManager.disable(buttonMenu)
+            bManager.disable(buttonBackground)
+            bManager.disable(buttonFormat)
+            bManager.disable(buttonAddPage)
+            bManager.disable(buttonFullscreen)
+            
+            bManager.show(buttonEditPalette)
+            bManager.show(buttonEditProPalette)
+            bManager.show(buttonFontFamily)
+            
+            animator.moveLeft(buttonEditPalette, 55, 0.4, .curveEaseOut)
+            animator.moveLeft(buttonEditProPalette, 55, 0.4, 0.8, .curveEaseOut, nil)
+            animator.moveUp(buttonEditProPalette, 60, 0.4, 0.8, .curveEaseOut, nil)
+            animator.moveUp(buttonFontFamily, 60, 0.4, 0.16, .curveEaseOut) { _ in
+                self.bManager.enable(self.buttonEdit)
+            }
+            bManager.enable(buttonEditPalette)
+            bManager.enable(buttonEditProPalette)
+            bManager.enable(buttonFontFamily)
+        } else {
+            bManager.disable(buttonEditPalette)
+            bManager.disable(buttonEditProPalette)
+            bManager.disable(buttonFontFamily)
+            
+            animator.moveRight(buttonEditPalette, 55, 0.4, .curveEaseIn)
+            animator.moveRight(buttonEditProPalette, 55, 0.4, 0.8, .curveEaseIn, nil)
+            animator.moveDown(buttonEditProPalette, 60, 0.4, 0.8, .curveEaseIn, nil)
+            animator.moveDown(buttonFontFamily, 60, 0.4, 0.16, .curveEaseIn) { _ in
+                self.bManager.enable(self.buttonEdit)
+                self.bManager.hide(self.buttonEditPalette)
+                self.bManager.hide(self.buttonEditProPalette)
+                self.bManager.hide(self.buttonFontFamily)
+                self.bManager.enable(self.buttonMenu)
+                self.bManager.enable(self.buttonBackground)
+                self.bManager.enable(self.buttonFormat)
+                self.bManager.enable(self.buttonAddPage)
+                self.bManager.enable(self.buttonFullscreen)
+            }
+        }
+    }
+    
+    @IBAction func changeTextColorStandard(_ sender: Any) {
+        print()
+    }
+    
+    @IBAction func changeTextColorSpecial(_ sender: Any) {
+        print()
+    }
+    
+    @IBAction func changeFontFamily(_ sender: Any) {
+        print()
+    }
+    
     @IBAction func backgroundMenuVisibility(_ sender: Any) {
+        buttonEdit.isHidden = true // Deselect text
         bManager.disable(buttonBackground)
         if !buttonPalette.isEnabled {
             bManager.disable(buttonMenu)
@@ -209,11 +297,11 @@ class FrontCover: UIViewController {
             bManager.show(buttonProPalette)
             bManager.show(buttonImport)
             
-            animator.moveLeft(buttonPalette, 55, 0.4, .curveEaseIn)
-            animator.moveUp(buttonPalette, 60, 0.4, .curveEaseIn)
-            animator.moveLeft(buttonProPalette, 55, 0.4, 0.1, .curveEaseIn, nil)
-            animator.moveLeft(buttonImport, 55, 0.4, 0.2, .curveEaseIn, nil)
-            animator.moveDown(buttonImport, 60, 0.4, 0.2, .curveEaseIn) { _ in
+            animator.moveLeft(buttonPalette, 55, 0.4, .curveEaseOut)
+            animator.moveUp(buttonPalette, 60, 0.4, .curveEaseOut)
+            animator.moveLeft(buttonProPalette, 55, 0.4, 0.08, .curveEaseOut, nil)
+            animator.moveLeft(buttonImport, 55, 0.4, 0.16, .curveEaseOut, nil)
+            animator.moveDown(buttonImport, 60, 0.4, 0.16, .curveEaseOut) { _ in
                 self.bManager.enable(self.buttonBackground)
             }
             
@@ -228,19 +316,18 @@ class FrontCover: UIViewController {
             
             animator.moveDown(buttonPalette, 60, 0.4, .curveEaseIn)
             animator.moveRight(buttonPalette, 55, 0.4, .curveEaseIn)
-            animator.moveRight(buttonProPalette, 55, 0.4, 0.1, .curveEaseIn, nil)
-            animator.moveUp(buttonImport, 60, 0.4, 0.2, .curveEaseIn, nil)
-            animator.moveRight(buttonImport, 55, 0.4, 0.2, .curveEaseIn) { _ in
+            animator.moveRight(buttonProPalette, 55, 0.4, 0.08, .curveEaseIn, nil)
+            animator.moveUp(buttonImport, 60, 0.4, 0.16, .curveEaseIn, nil)
+            animator.moveRight(buttonImport, 55, 0.4, 0.16, .curveEaseIn) { _ in
                 self.bManager.hide(self.buttonPalette)
                 self.bManager.hide(self.buttonProPalette)
                 self.bManager.hide(self.buttonImport)
+                self.bManager.enable(self.buttonMenu)
+                self.bManager.enable(self.buttonBackground)
+                self.bManager.enable(self.buttonFormat)
+                self.bManager.enable(self.buttonAddPage)
+                self.bManager.enable(self.buttonFullscreen)
             }
-            
-            bManager.enable(buttonMenu)
-            bManager.enable(buttonBackground)
-            bManager.enable(buttonFormat)
-            bManager.enable(buttonAddPage)
-            bManager.enable(buttonFullscreen)
         }
     }
     
@@ -283,17 +370,75 @@ class FrontCover: UIViewController {
     @IBAction func changeBackgroundImportImage(_ sender: Any) {
         picker.didFinishPicking { [unowned picker] items, _ in
             if let photo = items.singlePhoto {
-                self.view.backgroundColor = UIColor.white
+                self.viewCover.backgroundColor = UIColor.white
                 self.imageBackground.image = photo.image
             }
             
             picker.dismiss(animated: true, completion: nil)
         }
+        backgroundMenuVisibility(buttonBackground)
         present(picker, animated: true, completion: nil)
     }
     
     @IBAction func changePageFormat(_ sender: Any) {
-        print("Touched Format")
+        buttonEdit.isHidden = true // TODO: deselect text
+        bManager.disable(buttonFormat)
+        if !buttonOption1.isEnabled {
+            bManager.disable(buttonMenu)
+            bManager.disable(buttonBackground)
+            bManager.disable(buttonAddPage)
+            bManager.disable(buttonFullscreen)
+            
+            animator.moveUp(buttonOption1, 60, 0.3, .curveEaseOut)
+            animator.moveUp(buttonOption2, 60, 0.3, .curveEaseOut)
+            animator.moveUp(buttonOption3, 60, 0.3, .curveEaseOut)
+            animator.moveUp(buttonOption4, 60, 0.3, .curveEaseOut)
+            animator.moveUp(buttonOption5, 60, 0.3, 0.0, .curveEaseOut) { _ in
+                self.bManager.enable(self.buttonFormat)
+            }
+            
+            bManager.enable(buttonOption1)
+            bManager.enable(buttonOption2)
+            bManager.enable(buttonOption3)
+            bManager.enable(buttonOption4)
+            bManager.enable(buttonOption5)
+        }
+        else {
+            bManager.disable(buttonOption1)
+            bManager.disable(buttonOption2)
+            bManager.disable(buttonOption3)
+            bManager.disable(buttonOption4)
+            bManager.disable(buttonOption5)
+            
+            animator.moveDown(buttonOption1, 60, 0.3, .curveEaseIn)
+            animator.moveDown(buttonOption2, 60, 0.3, .curveEaseIn)
+            animator.moveDown(buttonOption3, 60, 0.3, .curveEaseIn)
+            animator.moveDown(buttonOption4, 60, 0.3, .curveEaseIn)
+            animator.moveDown(buttonOption5, 60, 0.3, 0.0, .curveEaseIn) { _ in
+                self.bManager.enable(self.buttonFormat)
+                self.bManager.enable(self.buttonMenu)
+                self.bManager.enable(self.buttonBackground)
+                self.bManager.enable(self.buttonAddPage)
+                self.bManager.enable(self.buttonFullscreen)
+            }
+        }
+    }
+    
+    @IBAction func optionSelect(_ sender: UIButton) {
+        switch(sender.currentTitle) {
+        case "C":
+            print()
+        case "T":
+            print()
+        case "BL":
+            print()
+        case "E":
+            print()
+        case "=":
+            print()
+        default:
+            print()
+        }
     }
     
     @IBAction func addPage(_ sender: Any) {
@@ -312,6 +457,7 @@ class FrontCover: UIViewController {
     }
     
     @IBAction func hideUIElements(_ sender: Any) {
+        buttonEdit.isHidden = true// TODO: deselect text
         animator.moveLeft(buttonMenu, 80, 0.3, .curveEaseIn)
         animator.moveRight(buttonBackground, 80, 0.3, .curveEaseIn)
         animator.moveRight(buttonFormat, 80, 0.3, .curveEaseIn)
@@ -362,11 +508,11 @@ extension FrontCover: ColorPickerViewDelegate {
         bManager.enable(buttonImport)
         if previousColor != colorPickerView.colors[indexPath.row] {
             previousColor = colorPickerView.colors[indexPath.row]
-            self.view.backgroundColor = colorPickerView.colors[indexPath.row]
+            viewCover.backgroundColor = colorPickerView.colors[indexPath.row]
         }
         else {
             previousColor = UIColor.white
-            self.view.backgroundColor = UIColor.white
+            viewCover.backgroundColor = UIColor.white
         }
         (self.parent as! BookManager).changeSwipeGesture(enabled: true)
         tapVisibility.isEnabled = false
@@ -402,7 +548,7 @@ extension FrontCover: ChromaColorPickerDelegate {
         imageBackground.image = nil
         bManager.enable(buttonBackground)
         previousColor = color
-        self.view.backgroundColor = color
+        viewCover.backgroundColor = color
         proColorPickerView.isHidden = true
         bManager.enable(buttonPalette)
         bManager.enable(buttonImport)
