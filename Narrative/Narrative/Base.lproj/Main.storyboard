@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GlG-Pw-cJI">
-                                <rect key="frame" x="138" y="76" width="99" height="36"/>
+                                <rect key="frame" x="138" y="96" width="99" height="36"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
                                 <state key="normal" title="New Book">
                                     <color key="titleColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -31,7 +33,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Junior Tales" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="IEd-3I-4SA">
-                                <rect key="frame" x="98.5" y="20" width="178" height="48"/>
+                                <rect key="frame" x="98.5" y="40" width="178" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="IEd-3I-4SA" secondAttribute="height" multiplier="89:24" id="0t2-Ri-7d7"/>
                                 </constraints>
@@ -43,7 +45,7 @@
                                 </variation>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="GlG-Pw-cJI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AWm-zA-zpW"/>
                             <constraint firstItem="IEd-3I-4SA" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.475" id="EdD-1B-jFe"/>
@@ -81,26 +83,36 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                                         <gestureRecognizers/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1r-fV-0a6" userLabel="Title">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v1r-fV-0a6" userLabel="Title">
                                         <rect key="frame" x="150.5" y="167" width="74" height="41"/>
+                                        <gestureRecognizers/>
                                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="35"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
+                                        <color key="highlightedColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="2DU-4z-Lh5" appends="YES" id="qGc-sS-nuw"/>
+                                        </connections>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Inj-Il-rXF">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Inj-Il-rXF">
                                         <rect key="frame" x="150" y="208" width="75" height="24"/>
+                                        <gestureRecognizers/>
                                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
+                                        <color key="highlightedColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="75A-Uz-C44" appends="YES" id="pyM-bx-gMe"/>
+                                        </connections>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Author Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ey-br-3z0" userLabel="Author">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Author Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5ey-br-3z0" userLabel="Author">
                                         <rect key="frame" x="108.5" y="331" width="158.5" height="24"/>
+                                        <gestureRecognizers/>
                                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
+                                        <color key="highlightedColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="lgB-yL-994" appends="YES" id="99z-dg-PSp"/>
+                                        </connections>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="Inj-Il-rXF" firstAttribute="centerX" secondItem="qCL-iV-F1i" secondAttribute="centerX" id="8me-BP-t63"/>
                                     <constraint firstAttribute="bottom" secondItem="SKn-2a-3bn" secondAttribute="bottom" id="9nP-lc-Nfb"/>
@@ -234,7 +246,7 @@
                                     <action selector="changeFontFamily:" destination="5ag-Rg-rTH" eventType="touchUpInside" id="Ouo-FZ-O3H"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCi-pK-Qao" userLabel="Button Edit">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCi-pK-Qao" userLabel="Button Edit">
                                 <rect key="frame" x="315" y="185.5" width="40" height="40"/>
                                 <color key="backgroundColor" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -428,10 +440,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="line" placeholder="Tap to Edit" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="3RQ-aE-RGg">
+                                <rect key="frame" x="132" y="529" width="111.5" height="28"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <action selector="changeLabelText:" destination="5ag-Rg-rTH" eventType="editingDidEnd" id="Nf8-y6-Sq2"/>
+                                </connections>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="3RQ-aE-RGg" firstAttribute="top" secondItem="qCL-iV-F1i" secondAttribute="bottom" constant="8" id="035-HY-Hxl"/>
                             <constraint firstItem="qCL-iV-F1i" firstAttribute="centerY" secondItem="QUo-Pt-i5d" secondAttribute="centerY" id="2uh-T1-Vgv"/>
                             <constraint firstItem="zXb-H0-WYg" firstAttribute="leading" secondItem="Kh0-Aq-nwG" secondAttribute="trailing" constant="25" id="4CV-fG-0H6"/>
                             <constraint firstItem="2xO-Ps-AiH" firstAttribute="centerY" secondItem="Kh0-Aq-nwG" secondAttribute="centerY" id="5C1-4c-QLH"/>
@@ -441,6 +463,7 @@
                             <constraint firstItem="Cfx-r9-16W" firstAttribute="leading" secondItem="Gif-Jg-Kem" secondAttribute="leading" id="CIm-fw-ZYi"/>
                             <constraint firstItem="sW2-Pd-gJa" firstAttribute="top" secondItem="6uP-jS-VaO" secondAttribute="bottom" constant="24" id="Ec4-nD-Lvu"/>
                             <constraint firstItem="Gif-Jg-Kem" firstAttribute="trailing" secondItem="lTC-Vb-v8i" secondAttribute="trailing" constant="20" id="Fgf-hF-BiM"/>
+                            <constraint firstItem="ZQJ-Ra-oCZ" firstAttribute="centerX" secondItem="3RQ-aE-RGg" secondAttribute="centerX" id="GUT-SS-LJC"/>
                             <constraint firstItem="857-2y-1wL" firstAttribute="leading" secondItem="Gif-Jg-Kem" secondAttribute="leading" id="Ge9-vP-Jty"/>
                             <constraint firstItem="1DO-NL-pTh" firstAttribute="top" secondItem="NZt-Q6-iwt" secondAttribute="bottom" constant="24" id="Gur-fN-p4r"/>
                             <constraint firstItem="Gif-Jg-Kem" firstAttribute="trailing" secondItem="5Oq-LS-Acr" secondAttribute="trailing" constant="20" id="KZ8-y5-U7q"/>
@@ -510,7 +533,11 @@
                         <outlet property="buttonSave" destination="Cfx-r9-16W" id="6og-8K-36J"/>
                         <outlet property="imageBackground" destination="SKn-2a-3bn" id="iA5-LP-S23"/>
                         <outlet property="labelPageNumberEditor" destination="ZQJ-Ra-oCZ" id="XzO-EY-wcU"/>
+                        <outlet property="tapAuthor" destination="lgB-yL-994" id="Lki-MV-JmJ"/>
+                        <outlet property="tapSubtitle" destination="75A-Uz-C44" id="bfK-k0-SAe"/>
+                        <outlet property="tapTitle" destination="2DU-4z-Lh5" id="FxS-IM-4k5"/>
                         <outlet property="tapVisibility" destination="kFd-x4-RKB" id="gmM-NA-yhU"/>
+                        <outlet property="textFieldEdit" destination="3RQ-aE-RGg" id="CZt-ur-fu8"/>
                         <outlet property="viewCover" destination="qCL-iV-F1i" id="i7W-rT-72y"/>
                     </connections>
                 </viewController>
@@ -518,6 +545,21 @@
                 <tapGestureRecognizer enabled="NO" cancelsTouchesInView="NO" id="kFd-x4-RKB">
                     <connections>
                         <action selector="uielementsVisibility:" destination="5ag-Rg-rTH" id="awp-74-SDf"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="2DU-4z-Lh5" userLabel="Tap Title">
+                    <connections>
+                        <action selector="editLabel:" destination="5ag-Rg-rTH" id="sJZ-nA-vK4"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="75A-Uz-C44" userLabel="Tap Subtitle">
+                    <connections>
+                        <action selector="editLabel:" destination="5ag-Rg-rTH" id="mZg-9F-MQ0"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="lgB-yL-994" userLabel="Tap Author">
+                    <connections>
+                        <action selector="editLabel:" destination="5ag-Rg-rTH" id="25a-SE-U2U"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -532,7 +574,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="By1-ro-m7G" userLabel="ImageBackground">
-                                <rect key="frame" x="0.0" y="-20" width="375" height="687"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yne-ws-JRI">
                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -806,7 +848,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eKv-Wy-5Un" userLabel="ImageBackground">
-                                <rect key="frame" x="0.0" y="-20" width="375" height="687"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kzh-g0-CRt">
                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>

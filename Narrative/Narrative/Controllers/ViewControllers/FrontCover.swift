@@ -16,6 +16,9 @@ class FrontCover: UIViewController {
     
     // MARK: Outlets
     @IBOutlet var tapVisibility: UITapGestureRecognizer!
+    @IBOutlet var tapTitle: UITapGestureRecognizer!
+    @IBOutlet var tapSubtitle: UITapGestureRecognizer!
+    @IBOutlet var tapAuthor: UITapGestureRecognizer!
     
     @IBOutlet var viewCover: UIView!
     @IBOutlet var imageBackground: UIImageView!
@@ -45,11 +48,13 @@ class FrontCover: UIViewController {
     
     @IBOutlet var buttonAddPage: UIButton!
     @IBOutlet var buttonFullscreen: UIButton!
+    @IBOutlet var textFieldEdit: UITextField!
     @IBOutlet var labelPageNumberEditor: UILabel!
     
     // MARK: Variables
     var bManager: ButtonManager!
     var animator: AnimationManager!
+    var selectedLabel: UILabel?
     var previousColor: UIColor = UIColor.white
     var colorPickerView: ColorPickerView!
     var proColorPickerView: ChromaColorPicker!
@@ -61,6 +66,7 @@ class FrontCover: UIViewController {
         super.viewDidLoad()
         bManager = ButtonManager()
         animator = AnimationManager()
+        textFieldEdit.delegate = self
         
         setupColorPicker()
         setupProColorPicker()
@@ -157,6 +163,7 @@ class FrontCover: UIViewController {
     
     // MARK: Button Functionality
     @IBAction func menuVisibility(_ sender: Any) {
+        deselectLabel()
         bManager.disable(buttonMenu)
         if !buttonExit.isEnabled {
             // TODO: disable text
@@ -164,6 +171,9 @@ class FrontCover: UIViewController {
             bManager.disable(buttonFormat)
             bManager.disable(buttonAddPage)
             bManager.disable(buttonFullscreen)
+            tapTitle.isEnabled = false
+            tapSubtitle.isEnabled = false
+            tapAuthor.isEnabled = false
             
             let animationView:AnimationView = buttonMenu.subviews.first as! AnimationView
             animationView.play(fromProgress: 0.1, toProgress: 0.5) { (completed) in
@@ -209,6 +219,9 @@ class FrontCover: UIViewController {
             bManager.enable(buttonFormat)
             bManager.enable(buttonAddPage)
             bManager.enable(buttonFullscreen)
+            tapTitle.isEnabled = true
+            tapSubtitle.isEnabled = true
+            tapAuthor.isEnabled = true
         }
     }
     
@@ -236,6 +249,9 @@ class FrontCover: UIViewController {
             bManager.disable(buttonFormat)
             bManager.disable(buttonAddPage)
             bManager.disable(buttonFullscreen)
+            tapTitle.isEnabled = false
+            tapSubtitle.isEnabled = false
+            tapAuthor.isEnabled = false
             
             bManager.show(buttonEditPalette)
             bManager.show(buttonEditProPalette)
@@ -268,16 +284,47 @@ class FrontCover: UIViewController {
                 self.bManager.enable(self.buttonFormat)
                 self.bManager.enable(self.buttonAddPage)
                 self.bManager.enable(self.buttonFullscreen)
+                self.tapTitle.isEnabled = true
+                self.tapSubtitle.isEnabled = true
+                self.tapAuthor.isEnabled = true
             }
         }
     }
     
     @IBAction func changeTextColorStandard(_ sender: Any) {
-        print()
+        if colorPickerView.isHidden {
+            colorPickerView.isHidden = false
+            bManager.disable(buttonEditProPalette)
+            bManager.disable(buttonFontFamily)
+            bManager.disable(buttonEdit)
+            tapVisibility.isEnabled = true
+        }
+        else {
+            colorPickerView.isHidden = true
+            bManager.enable(buttonEditProPalette)
+            bManager.enable(buttonFontFamily)
+            bManager.enable(buttonEdit)
+            tapVisibility.isEnabled = false
+        }
+        (self.parent as! BookManager).changeSwipeGesture(enabled: colorPickerView.isHidden)
     }
     
     @IBAction func changeTextColorSpecial(_ sender: Any) {
-        print()
+        if proColorPickerView.isHidden {
+            proColorPickerView.isHidden = false
+            bManager.disable(buttonEditPalette)
+            bManager.disable(buttonFontFamily)
+            bManager.disable(buttonEdit)
+            tapVisibility.isEnabled = true
+        }
+        else {
+            proColorPickerView.isHidden = true
+            bManager.enable(buttonEditPalette)
+            bManager.enable(buttonFontFamily)
+            bManager.enable(buttonEdit)
+            tapVisibility.isEnabled = false
+        }
+        (self.parent as! BookManager).changeSwipeGesture(enabled: proColorPickerView.isHidden)
     }
     
     @IBAction func changeFontFamily(_ sender: Any) {
@@ -285,13 +332,16 @@ class FrontCover: UIViewController {
     }
     
     @IBAction func backgroundMenuVisibility(_ sender: Any) {
-        buttonEdit.isHidden = true // Deselect text
+        deselectLabel()
         bManager.disable(buttonBackground)
         if !buttonPalette.isEnabled {
             bManager.disable(buttonMenu)
             bManager.disable(buttonFormat)
             bManager.disable(buttonAddPage)
             bManager.disable(buttonFullscreen)
+            tapTitle.isEnabled = false
+            tapSubtitle.isEnabled = false
+            tapAuthor.isEnabled = false
             
             bManager.show(buttonPalette)
             bManager.show(buttonProPalette)
@@ -327,6 +377,9 @@ class FrontCover: UIViewController {
                 self.bManager.enable(self.buttonFormat)
                 self.bManager.enable(self.buttonAddPage)
                 self.bManager.enable(self.buttonFullscreen)
+                self.tapTitle.isEnabled = true
+                self.tapSubtitle.isEnabled = true
+                self.tapAuthor.isEnabled = true
             }
         }
     }
@@ -381,13 +434,16 @@ class FrontCover: UIViewController {
     }
     
     @IBAction func changePageFormat(_ sender: Any) {
-        buttonEdit.isHidden = true // TODO: deselect text
+        deselectLabel()
         bManager.disable(buttonFormat)
         if !buttonOption1.isEnabled {
             bManager.disable(buttonMenu)
             bManager.disable(buttonBackground)
             bManager.disable(buttonAddPage)
             bManager.disable(buttonFullscreen)
+            tapTitle.isEnabled = false
+            tapSubtitle.isEnabled = false
+            tapAuthor.isEnabled = false
             
             animator.moveUp(buttonOption1, 60, 0.3, .curveEaseOut)
             animator.moveUp(buttonOption2, 60, 0.3, .curveEaseOut)
@@ -420,6 +476,9 @@ class FrontCover: UIViewController {
                 self.bManager.enable(self.buttonBackground)
                 self.bManager.enable(self.buttonAddPage)
                 self.bManager.enable(self.buttonFullscreen)
+                self.tapTitle.isEnabled = true
+                self.tapSubtitle.isEnabled = true
+                self.tapAuthor.isEnabled = true
             }
         }
     }
@@ -457,7 +516,7 @@ class FrontCover: UIViewController {
     }
     
     @IBAction func hideUIElements(_ sender: Any) {
-        buttonEdit.isHidden = true// TODO: deselect text
+        deselectLabel()
         animator.moveLeft(buttonMenu, 80, 0.3, .curveEaseIn)
         animator.moveRight(buttonBackground, 80, 0.3, .curveEaseIn)
         animator.moveRight(buttonFormat, 80, 0.3, .curveEaseIn)
@@ -465,24 +524,32 @@ class FrontCover: UIViewController {
         animator.moveRight(buttonFullscreen, 80, 0.3, .curveEaseIn)
         
         tapVisibility.isEnabled = true
+        tapTitle.isEnabled = false
+        tapSubtitle.isEnabled = false
+        tapAuthor.isEnabled = false
     }
     
     // MARK: Tap Register
     @IBAction func uielementsVisibility(_ sender: Any) {
-        if !colorPickerView.isHidden || !proColorPickerView.isHidden {
+        tapVisibility.isEnabled = false
+        if !colorPickerView.isHidden {
+            colorPickerView.isHidden = true
+            (self.parent as! BookManager).changeSwipeGesture(enabled: colorPickerView.isHidden)
+        }
+        else if !proColorPickerView.isHidden {
+            proColorPickerView.isHidden = true
+            (self.parent as! BookManager).changeSwipeGesture(enabled: proColorPickerView.isHidden)
+        }
+        if !buttonPalette.isHidden || !buttonProPalette.isHidden {
             bManager.enable(buttonPalette)
             bManager.enable(buttonProPalette)
             bManager.enable(buttonImport)
             bManager.enable(buttonBackground)
-            tapVisibility.isEnabled = false
-            if !colorPickerView.isHidden {
-                colorPickerView.isHidden = true
-                (self.parent as! BookManager).changeSwipeGesture(enabled: colorPickerView.isHidden)
-            }
-            else if !proColorPickerView.isHidden {
-                proColorPickerView.isHidden = true
-                (self.parent as! BookManager).changeSwipeGesture(enabled: proColorPickerView.isHidden)
-            }
+        } else if !buttonEditPalette.isHidden || !buttonEditProPalette.isHidden {
+            bManager.enable(buttonEditPalette)
+            bManager.enable(buttonEditProPalette)
+            bManager.enable(buttonFontFamily)
+            bManager.enable(buttonEdit)
         }
         else {
             animator.moveRight(buttonMenu, 80, 0.3, .curveEaseOut)
@@ -491,8 +558,34 @@ class FrontCover: UIViewController {
             animator.moveLeft(buttonAddPage, 80, 0.3, .curveEaseOut)
             animator.moveLeft(buttonFullscreen, 80, 0.3, .curveEaseOut)
             
-            tapVisibility.isEnabled = false
+            tapTitle.isEnabled = true
+            tapSubtitle.isEnabled = true
+            tapAuthor.isEnabled = true
         }
+    }
+    
+    @IBAction func editLabel(_ sender: UITapGestureRecognizer) {
+        if selectedLabel != (sender.view as! UILabel) {
+            bManager.show(buttonEdit)
+            textFieldEdit.isHidden = false
+            if selectedLabel != nil {
+                selectedLabel!.isHighlighted = false
+                textFieldEdit.text = ""
+            }
+            selectedLabel = (sender.view as! UILabel)
+            selectedLabel!.isHighlighted = true
+        } else {
+            deselectLabel()
+        }
+    }
+    
+    func deselectLabel() {
+        buttonEdit.isHidden = true
+        if selectedLabel != nil {
+            selectedLabel!.isHighlighted = false
+            selectedLabel = nil
+        }
+        textFieldEdit.isHidden = true
     }
 }
 
@@ -501,19 +594,26 @@ extension FrontCover: ColorPickerViewDelegate {
     func colorPickerView(_ colorPickerView: ColorPickerView, didSelectItemAt indexPath: IndexPath) {
         // TODO: refactor this method
         // A color has been selected
-        imageBackground.image = nil
-        bManager.enable(buttonPalette)
+        if !buttonPalette.isHidden {
+            imageBackground.image = nil
+            bManager.enable(buttonBackground)
+            bManager.enable(buttonProPalette)
+            bManager.enable(buttonImport)
+            if previousColor != colorPickerView.colors[indexPath.row] {
+                previousColor = colorPickerView.colors[indexPath.row]
+                viewCover.backgroundColor = colorPickerView.colors[indexPath.row]
+            }
+            else {
+                previousColor = UIColor.white
+                viewCover.backgroundColor = UIColor.white
+            }
+        } else if !buttonEditPalette.isHidden {
+            selectedLabel?.textColor = colorPickerView.colors[indexPath.row]
+            bManager.enable(buttonEdit)
+            bManager.enable(buttonEditProPalette)
+            bManager.enable(buttonFontFamily)
+        }
         colorPickerView.isHidden = true
-        bManager.enable(buttonProPalette)
-        bManager.enable(buttonImport)
-        if previousColor != colorPickerView.colors[indexPath.row] {
-            previousColor = colorPickerView.colors[indexPath.row]
-            viewCover.backgroundColor = colorPickerView.colors[indexPath.row]
-        }
-        else {
-            previousColor = UIColor.white
-            viewCover.backgroundColor = UIColor.white
-        }
         (self.parent as! BookManager).changeSwipeGesture(enabled: true)
         tapVisibility.isEnabled = false
     }
@@ -545,14 +645,36 @@ extension FrontCover: ColorPickerViewDelegateFlowLayout {
 // MARK: - ChromaColorPicker Delegate
 extension FrontCover: ChromaColorPickerDelegate {
     func colorPickerDidChooseColor(_ colorPicker: ChromaColorPicker, color: UIColor) {
-        imageBackground.image = nil
-        bManager.enable(buttonBackground)
-        previousColor = color
-        viewCover.backgroundColor = color
+        if !buttonProPalette.isHidden {
+            imageBackground.image = nil
+            previousColor = color
+            viewCover.backgroundColor = color
+            bManager.enable(buttonBackground)
+            bManager.enable(buttonPalette)
+            bManager.enable(buttonImport)
+        } else if !buttonEditProPalette.isHidden {
+            selectedLabel?.textColor = color
+            bManager.enable(buttonEdit)
+            bManager.enable(buttonEditPalette)
+            bManager.enable(buttonFontFamily)
+        }
         proColorPickerView.isHidden = true
-        bManager.enable(buttonPalette)
-        bManager.enable(buttonImport)
         (self.parent as! BookManager).changeSwipeGesture(enabled: true)
         tapVisibility.isEnabled = false
+    }
+}
+
+// MARK: - UITextField Functionality
+extension FrontCover: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    @IBAction func changeLabelText(_ sender: UITextField) {
+        if sender.text != "" {
+            selectedLabel!.text = sender.text
+        }
     }
 }
