@@ -143,7 +143,6 @@ class FrontCover: UIViewController {
             tapSubtitle.isEnabled = false
             tapAuthor.isEnabled = false
             
-            
             bManager.enable(buttonReset)
             bManager.enable(buttonResetSave)
             bManager.enable(buttonSave)
@@ -295,8 +294,8 @@ class FrontCover: UIViewController {
         let alert = UIAlertController(title: "Choose a Font", message: "Note: Changing font will reset page format.", preferredStyle: .alert)
         let fontSize: CGFloat = (selectedLabel?.font.pointSize)!
         
-        let font1 = UIAlertAction(title: "Arial Rounded MT (Default)", style: .default, handler: { _ in
-            self.selectedLabel?.font = UIFont(name: "Arial Rounded MT", size: fontSize)
+        let font1 = UIAlertAction(title: "Arial Rounded (Default)", style: .default, handler: { _ in
+            self.selectedLabel?.font = UIFont(name: "Arial Rounded MT Bold", size: fontSize)
         })
         let font2 = UIAlertAction(title: "Bradley Hand", style: .default, handler: { _ in
             self.selectedLabel?.font = UIFont(name: "Bradley Hand", size: fontSize)
