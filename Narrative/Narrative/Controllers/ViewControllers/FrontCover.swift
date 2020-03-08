@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Lottie
 import IGColorPicker
 import ChromaColorPicker
 import YPImagePicker
@@ -22,6 +21,9 @@ class FrontCover: UIViewController {
     
     @IBOutlet var viewCover: UIView!
     @IBOutlet var imageBackground: UIImageView!
+    @IBOutlet var labelTitle: UILabel!
+    @IBOutlet var labelSubtitle: UILabel!
+    @IBOutlet var labelAuthor: UILabel!
     
     @IBOutlet var buttonMenu: UIButton!
     @IBOutlet var buttonReset: UIButton!
@@ -40,11 +42,6 @@ class FrontCover: UIViewController {
     @IBOutlet var buttonImport: UIButton!
     
     @IBOutlet var buttonFormat: UIButton!
-    @IBOutlet var buttonOption1: UIButton!
-    @IBOutlet var buttonOption2: UIButton!
-    @IBOutlet var buttonOption3: UIButton!
-    @IBOutlet var buttonOption4: UIButton!
-    @IBOutlet var buttonOption5: UIButton!
     
     @IBOutlet var buttonAddPage: UIButton!
     @IBOutlet var buttonFullscreen: UIButton!
@@ -117,11 +114,6 @@ class FrontCover: UIViewController {
         bManager.addRadius(for: buttonFormat)
         bManager.addRadius(for: buttonAddPage)
         bManager.addRadius(for: buttonFullscreen)
-        bManager.addRadius(for: buttonOption1)
-        bManager.addRadius(for: buttonOption2)
-        bManager.addRadius(for: buttonOption3)
-        bManager.addRadius(for: buttonOption4)
-        bManager.addRadius(for: buttonOption5)
         bManager.addShadow(for: buttonMenu)
         bManager.addShadow(for: buttonExit)
         bManager.addShadow(for: buttonEdit)
@@ -135,30 +127,6 @@ class FrontCover: UIViewController {
         bManager.addShadow(for: buttonFormat)
         bManager.addShadow(for: buttonAddPage)
         bManager.addShadow(for: buttonFullscreen)
-        bManager.addShadow(for: buttonOption1)
-        bManager.addShadow(for: buttonOption2)
-        bManager.addShadow(for: buttonOption3)
-        bManager.addShadow(for: buttonOption4)
-        bManager.addShadow(for: buttonOption5)
-        setupButtonAnimations()
-    }
-    
-    private func setupButtonAnimations() {
-        addAnimations(for: buttonMenu, with: "HamburgerMenu", 100, 100)
-    }
-    
-    private func addAnimations(for button: UIButton,with animation: String,_ width:CGFloat,_ height: CGFloat) {
-        let animationView = AnimationView(name: animation)
-        animationView.frame = CGRect(
-            x: 0,
-            y: 0,
-            width: width,
-            height: height)
-        animationView.center = button.center
-        animationView.contentMode = .scaleAspectFit
-        animationView.isUserInteractionEnabled = false
-        
-        button.addSubview(animationView)
     }
     
     // MARK: Button Functionality
@@ -175,10 +143,6 @@ class FrontCover: UIViewController {
             tapSubtitle.isEnabled = false
             tapAuthor.isEnabled = false
             
-            let animationView:AnimationView = buttonMenu.subviews.first as! AnimationView
-            animationView.play(fromProgress: 0.1, toProgress: 0.5) { (completed) in
-                self.bManager.enable(self.buttonMenu)
-            }
             
             bManager.enable(buttonReset)
             bManager.enable(buttonResetSave)
@@ -192,14 +156,11 @@ class FrontCover: UIViewController {
             animator.moveDown(buttonReset, 40, 0.2, .curveEaseOut)
             animator.moveDown(buttonResetSave, 80, 0.4, .curveEaseOut)
             animator.moveDown(buttonSave, 120, 0.6, .curveEaseOut)
-            animator.moveDown(buttonExit, 160, 0.8, .curveEaseOut)
-        }
-        else {
-            let animationView:AnimationView = buttonMenu.subviews.first as! AnimationView
-            animationView.play(fromProgress: 0.6, toProgress: 1.0) { (completed) in
+            animator.moveDown(buttonExit, 160, 0.8, 0.0, .curveEaseOut) { _ in
                 self.bManager.enable(self.buttonMenu)
             }
-            
+        }
+        else {
             bManager.disable(buttonReset)
             bManager.disable(buttonResetSave)
             bManager.disable(buttonSave)
@@ -208,6 +169,7 @@ class FrontCover: UIViewController {
                 self.bManager.hide(self.buttonReset)
                 self.bManager.hide(self.buttonResetSave)
                 self.bManager.hide(self.buttonSave)
+                self.bManager.enable(self.buttonMenu)
             }
             animator.moveUp(buttonResetSave, 80, 0.6, .curveEaseOut)
             animator.moveUp(buttonSave, 120, 0.4, .curveEaseOut)
@@ -252,6 +214,7 @@ class FrontCover: UIViewController {
             tapTitle.isEnabled = false
             tapSubtitle.isEnabled = false
             tapAuthor.isEnabled = false
+            textFieldEdit.isEnabled = false
             
             bManager.show(buttonEditPalette)
             bManager.show(buttonEditProPalette)
@@ -287,6 +250,7 @@ class FrontCover: UIViewController {
                 self.tapTitle.isEnabled = true
                 self.tapSubtitle.isEnabled = true
                 self.tapAuthor.isEnabled = true
+                self.textFieldEdit.isEnabled = true
             }
         }
     }
@@ -328,7 +292,34 @@ class FrontCover: UIViewController {
     }
     
     @IBAction func changeFontFamily(_ sender: Any) {
-        print()
+        let alert = UIAlertController(title: "Choose a Font", message: "Note: Changing font will reset page format.", preferredStyle: .alert)
+        let fontSize: CGFloat = (selectedLabel?.font.pointSize)!
+        
+        let font1 = UIAlertAction(title: "Arial Rounded MT (Default)", style: .default, handler: { _ in
+            self.selectedLabel?.font = UIFont(name: "Arial Rounded MT", size: fontSize)
+        })
+        let font2 = UIAlertAction(title: "Bradley Hand", style: .default, handler: { _ in
+            self.selectedLabel?.font = UIFont(name: "Bradley Hand", size: fontSize)
+        })
+        let font3 = UIAlertAction(title: "Chalkboard SE", style: .default, handler: { _ in
+            self.selectedLabel?.font = UIFont(name: "Chalkboard SE", size: fontSize)
+        })
+        let font4 = UIAlertAction(title: "Helvetica", style: .default, handler: { _ in
+            self.selectedLabel?.font = UIFont(name: "Helvetica", size: fontSize)
+        })
+        let font5 = UIAlertAction(title: "Kefa", style: .default, handler: { _ in
+            self.selectedLabel?.font = UIFont(name: "Kefa", size: fontSize)
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(font1)
+        alert.addAction(font2)
+        alert.addAction(font3)
+        alert.addAction(font4)
+        alert.addAction(font5)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
+        editMenuVisibility(buttonEdit)
     }
     
     @IBAction func backgroundMenuVisibility(_ sender: Any) {
@@ -435,69 +426,48 @@ class FrontCover: UIViewController {
     
     @IBAction func changePageFormat(_ sender: Any) {
         deselectLabel()
-        bManager.disable(buttonFormat)
-        if !buttonOption1.isEnabled {
-            bManager.disable(buttonMenu)
-            bManager.disable(buttonBackground)
-            bManager.disable(buttonAddPage)
-            bManager.disable(buttonFullscreen)
-            tapTitle.isEnabled = false
-            tapSubtitle.isEnabled = false
-            tapAuthor.isEnabled = false
-            
-            animator.moveUp(buttonOption1, 60, 0.3, .curveEaseOut)
-            animator.moveUp(buttonOption2, 60, 0.3, .curveEaseOut)
-            animator.moveUp(buttonOption3, 60, 0.3, .curveEaseOut)
-            animator.moveUp(buttonOption4, 60, 0.3, .curveEaseOut)
-            animator.moveUp(buttonOption5, 60, 0.3, 0.0, .curveEaseOut) { _ in
-                self.bManager.enable(self.buttonFormat)
-            }
-            
-            bManager.enable(buttonOption1)
-            bManager.enable(buttonOption2)
-            bManager.enable(buttonOption3)
-            bManager.enable(buttonOption4)
-            bManager.enable(buttonOption5)
-        }
-        else {
-            bManager.disable(buttonOption1)
-            bManager.disable(buttonOption2)
-            bManager.disable(buttonOption3)
-            bManager.disable(buttonOption4)
-            bManager.disable(buttonOption5)
-            
-            animator.moveDown(buttonOption1, 60, 0.3, .curveEaseIn)
-            animator.moveDown(buttonOption2, 60, 0.3, .curveEaseIn)
-            animator.moveDown(buttonOption3, 60, 0.3, .curveEaseIn)
-            animator.moveDown(buttonOption4, 60, 0.3, .curveEaseIn)
-            animator.moveDown(buttonOption5, 60, 0.3, 0.0, .curveEaseIn) { _ in
-                self.bManager.enable(self.buttonFormat)
-                self.bManager.enable(self.buttonMenu)
-                self.bManager.enable(self.buttonBackground)
-                self.bManager.enable(self.buttonAddPage)
-                self.bManager.enable(self.buttonFullscreen)
-                self.tapTitle.isEnabled = true
-                self.tapSubtitle.isEnabled = true
-                self.tapAuthor.isEnabled = true
-            }
-        }
-    }
-    
-    @IBAction func optionSelect(_ sender: UIButton) {
-        switch(sender.currentTitle) {
-        case "C":
-            print()
-        case "T":
-            print()
-        case "BL":
-            print()
-        case "E":
-            print()
-        case "=":
-            print()
-        default:
-            print()
-        }
+        let alert = UIAlertController(title: "Format Front Cover", message: "", preferredStyle: .alert)
+        let width = viewCover.frame.width
+        let height = viewCover.frame.height
+        
+        let format1 = UIAlertAction(title: "Center (Default)", style: .default, handler: { _ in
+            self.animator.moveTo(self.labelTitle, (width/2) - (self.labelTitle.frame.width/2), (height/2) - (self.labelTitle.frame.height/2))
+            self.animator.moveTo(self.labelSubtitle, (width/2) - (self.labelSubtitle.frame.width/2), (height/2) + (self.labelTitle.frame.height/2))
+            self.animator.moveTo(self.labelAuthor, (width/2) - (self.labelAuthor.frame.width/2), height - self.labelAuthor.frame.height - 20)
+        })
+        let format2 = UIAlertAction(title: "Top", style: .default, handler: { _ in
+            self.animator.moveTo(self.labelTitle, (width/2) - (self.labelTitle.frame.width/2), 8)
+            self.animator.moveTo(self.labelSubtitle, (width/2) - (self.labelSubtitle.frame.width/2), self.labelTitle.frame.height)
+            self.animator.moveTo(self.labelAuthor, (width/2) - (self.labelAuthor.frame.width/2), self.labelTitle.frame.height + self.labelSubtitle.frame.height + 2)
+        })
+        let format3 = UIAlertAction(title: "Bottom Left", style: .default, handler: { _ in
+            self.animator.moveTo(self.labelTitle, 16, height - (self.labelAuthor.frame.height + self.labelSubtitle.frame.height + self.labelTitle.frame.height + 8))
+            self.animator.moveTo(self.labelSubtitle, 16, height - (self.labelAuthor.frame.height + self.labelSubtitle.frame.height + 8))
+            self.animator.moveTo(self.labelAuthor, 16, height - self.labelAuthor.frame.height - 8)
+        })
+        let format4 = UIAlertAction(title: "Hide All", style: .default, handler: { _ in
+            self.labelTitle.isHidden = true
+            self.labelSubtitle.isHidden = true
+            self.labelAuthor.isHidden = true
+        })
+        let format5 = UIAlertAction(title: "Hide Subtitle", style: .default, handler: { _ in
+            self.labelSubtitle.isHidden = true
+        })
+        let format6 = UIAlertAction(title: "Show All", style: .default, handler: { _ in
+            self.labelTitle.isHidden = false
+            self.labelSubtitle.isHidden = false
+            self.labelAuthor.isHidden = false
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(format1)
+        alert.addAction(format2)
+        alert.addAction(format3)
+        alert.addAction(format4)
+        alert.addAction(format5)
+        alert.addAction(format6)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func addPage(_ sender: Any) {
@@ -675,6 +645,7 @@ extension FrontCover: UITextFieldDelegate {
     @IBAction func changeLabelText(_ sender: UITextField) {
         if sender.text != "" {
             selectedLabel!.text = sender.text
+            sender.text = ""
         }
     }
 }

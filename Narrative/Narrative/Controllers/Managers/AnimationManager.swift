@@ -98,6 +98,11 @@ class AnimationManager {
         }, completion: nil)
     }
     
+    func moveTo(_ view: UIView, _ x: CGFloat, _ y: CGFloat) {
+        view.frame.origin.x = x
+        view.frame.origin.y = y
+    }
+    
     func fade(_ view: UIView, _ time: Double, _ delay: Double, _ speedOptions: UIView.AnimationOptions) {
         UIView.animate(withDuration: time, delay: delay, options: speedOptions,
         animations: {
